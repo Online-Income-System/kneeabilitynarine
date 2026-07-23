@@ -1,7 +1,9 @@
 .DS_Store
 node_modules/
-*.log
+dist/
 .netlify/
-# large raw source material stays out of git — lives in content/source locally / Drive
+.env.local
+*.log
+# large raw source material stays out of git
 content/source/*
 !content/source/.gitkeep

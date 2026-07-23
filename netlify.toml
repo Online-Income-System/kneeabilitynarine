@@ -1,24 +1,6 @@
-# Netlify config — kneeabilitynarine.com
+# Netlify deploy config — kneeabilitynarine.com
+# Static build via vite-react-ssg (publish dir: dist).
+
 [build]
-  publish = "site"
-  # no build step yet — plain static site. Add one here if we introduce a bundler.
-
-# Security / caching headers
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Force https + apex/www canonical (adjust once DNS strategy is confirmed)
-[[redirects]]
-  from = "http://kneeabilitynarine.com/*"
-  to = "https://www.kneeabilitynarine.com/:splat"
-  status = 301
-  force = true
+  command = "npm run build"
+  publish = "dist"
