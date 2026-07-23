@@ -11,7 +11,7 @@ const HERO_KICKER = "1:1 Rehab Training · Burbank, CA & Online";
 const HERO_HEADLINE = "Get out of knee and back pain.";
 const HERO_HEADLINE_ACCENT = "Without surgery, shots, or steroids."; // italic green
 const HERO_SUBHEADLINE =
-  "You've tried rest, PT, maybe even the surgery, and the pain keeps coming back. I rebuild your body from the ground up until you're stronger, more mobile, and pain free. That's my guarantee.";
+  "Hike again. Dance again. Sleep through the night again. Even if you've tried rest, PT, shots, and being told to just live with it.";
 const HERO_CTA_LABEL = "Text me to start";
 
 export default function Home() {
