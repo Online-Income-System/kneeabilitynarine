@@ -3,41 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- INFRASTRUCTURE SHELL ONLY — sections are placeholders, built out step-by-step. -->
-  <title>Knee Ability Narine — Knee Pain Rehab &amp; Strength Coaching</title>
-  <meta name="description" content="Placeholder — final meta description written with the copy pass.">
+  <title>Knee Ability Narine | Get Out of Knee &amp; Back Pain Without Surgery, Shots, or Steroids</title>
+  <meta name="description" content="1:1 rehab training in Burbank, CA and online. Narine has helped 55+ people get out of knee and back pain without surgery, shots, or steroids. 5.0 stars on Google. Text her to start.">
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
 
-  <!-- 01 · NAV — logo + Home / About / Services / Contact + Book CTA -->
-  <header id="nav"></header>
+  <!-- 01 · HEADER -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="Knee Ability Narine home">
+        <!-- TODO: swap wordmark for her logo file (green version) once assets land -->
+        <span class="brand-mark">Knee&nbsp;Ability</span>
+        <span class="brand-name">Narine</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="/" aria-current="page">Home</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+      </nav>
+      <div class="header-cta">
+        <!-- TODO: real phone number for the sms: link (her converting "text me" feature) -->
+        <a class="btn btn-primary btn-sm" href="sms:+18180000000">Text Me</a>
+        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-  <!-- 02 · HERO — headline, subhead, primary CTA, Google + Yelp rating badges -->
-  <section id="hero"></section>
+  <main>
 
-  <!-- 03 · REVIEW CAROUSEL — custom carousel fed by /data/reviews.json (Google + Yelp) -->
-  <section id="reviews"></section>
+    <!-- 02 · HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">1:1 Rehab Training · Burbank, CA &amp; Online</p>
+          <h1>Get out of knee and back pain. Without surgery, shots, or steroids.</h1>
+          <p class="hero-lead">I'm Narine. I've helped 55+ people get out of pain by rebuilding them from the ground up. My one rule: we never push through pain.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="sms:+18180000000">Text Me to Start</a>
+            <a class="btn btn-ghost" href="#reviews">Read the Reviews</a>
+          </div>
+          <div class="rating-badges" id="rating-badges" aria-label="Review ratings">
+            <!-- Rendered by reviews.js: Google 5.0 ★ (20 reviews) · Yelp 5.0 ★ -->
+          </div>
+        </div>
+        <div class="hero-media">
+          <!-- TODO: hero photo of Narine (from "Pics for website") — placeholder block for now -->
+          <div class="hero-photo-placeholder" role="img" aria-label="Photo of Narine coaching a client">
+            <span>Narine's photo<br>goes here</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- 04 · THE REAL PROBLEM — pain-point section (pattern: ability-training.com) -->
-  <section id="problem"></section>
+    <!-- 03 · REVIEW CAROUSEL -->
+    <section class="reviews" id="reviews" aria-label="Client reviews from Google and Yelp">
+      <div class="reviews-head">
+        <h2>Real people. Real reviews.</h2>
+        <p class="reviews-sub">Every review below is verbatim, from her public Google and Yelp pages.</p>
+      </div>
+      <div class="carousel" id="review-carousel">
+        <div class="carousel-track" id="carousel-track"><!-- cards rendered by reviews.js --></div>
+      </div>
+    </section>
 
-  <!-- 05 · HOW IT WORKS — Narine's method, stepped -->
-  <section id="method"></section>
+    <!-- 04 · THE REAL PROBLEM — built next -->
+    <section id="problem"></section>
 
-  <!-- 06 · VIDEO TESTIMONIALS — client stories (John, Ruzanna, Mary, …) -->
-  <section id="proof"></section>
+    <!-- 05 · HOW IT WORKS / METHOD — built next -->
+    <section id="method"></section>
 
-  <!-- 07 · ABOUT NARINE — origin story, ATG credentials, photo -->
-  <section id="about"></section>
+    <!-- 06 · VIDEO TESTIMONIALS — built next -->
+    <section id="proof"></section>
 
-  <!-- 08 · OFFERS — in-person / online coaching, what's included -->
-  <section id="offers"></section>
+    <!-- 07 · ABOUT NARINE — built next -->
+    <section id="about"></section>
 
-  <!-- 09 · FINAL CTA — booking (GHL calendar embed or form) -->
-  <section id="cta"></section>
+    <!-- 08 · OFFERS — built next -->
+    <section id="offers"></section>
 
-  <!-- 10 · FOOTER — location, socials, Google/Yelp review links -->
+    <!-- 09 · FINAL CTA — built next -->
+    <section id="cta"></section>
+
+  </main>
+
+  <!-- 10 · FOOTER — built next -->
   <footer id="footer"></footer>
 
   <script src="/assets/js/main.js" defer></script>
