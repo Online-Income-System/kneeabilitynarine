@@ -11,7 +11,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-5">
+            <div className="flex items-center gap-3 mb-5">
+              <img
+                src="/knee-ability-icon-white.png"
+                alt=""
+                className="h-10 w-auto"
+              />
               <span className="font-serif text-xl text-white">
                 Knee Ability <span className="text-green-brand-50">Narine</span>
               </span>
