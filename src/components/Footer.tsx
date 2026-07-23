@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import { GOOGLE, YELP } from "../data/reviews";
-import { SMS_LINK } from "./Navbar";
 
 export default function Footer() {
   return (
@@ -59,9 +58,9 @@ export default function Footer() {
             <ul className="space-y-3 text-slate-300">
               <li>Burbank / San Fernando Valley, CA</li>
               <li>
-                <a href={SMS_LINK} className="hover:text-white transition-colors">
-                  Text Narine to start
-                </a>
+                <Link to="/contact" className="hover:text-white transition-colors">
+                  Contact Narine
+                </Link>
               </li>
               <li>
                 <a

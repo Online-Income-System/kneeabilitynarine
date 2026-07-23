@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// TODO: real phone number for the sms: link (her converting "text me" feature)
-export const SMS_LINK = "sms:+18180000000";
-
+// NOTE: her "text me" SMS CTA returns once we have her real number.
 export default function Navbar() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
@@ -41,12 +39,12 @@ export default function Navbar() {
           >
             Services
           </Link>
-          <a
-            href={SMS_LINK}
+          <Link
+            to="/contact"
             className="px-5 py-2.5 rounded-full bg-green-brand text-white text-sm font-medium hover:bg-green-brand-dark transition-colors"
           >
-            Text Me
-          </a>
+            Contact
+          </Link>
         </nav>
       </div>
     </header>

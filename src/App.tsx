@@ -4,6 +4,7 @@ import Layout from "./Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import Contact from "./pages/Contact";
 
 export const routes: RouteRecord[] = [
   {
@@ -14,6 +15,7 @@ export const routes: RouteRecord[] = [
       { index: true, Component: Home },
       { path: "about", Component: About },
       { path: "services", Component: Services },
+      { path: "contact", Component: Contact },
     ],
   },
 ];

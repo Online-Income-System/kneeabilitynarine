@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Reviews from "../components/Reviews";
-import { SMS_LINK } from "../components/Navbar";
 
 /* ─────────────────────────────────────────────────────────────────────────
    HERO COPY — her VSL promise, verbatim. Variants live in the build notes.
@@ -11,8 +11,8 @@ const HERO_KICKER = "1:1 Rehab Training · Burbank, CA & Online";
 const HERO_HEADLINE = "Get out of knee and back pain.";
 const HERO_HEADLINE_ACCENT = "Without surgery, shots, or steroids."; // italic green
 const HERO_SUBHEADLINE =
-  "Hike again. Dance again. Sleep through the night again. Even if you've tried rest, PT, shots, and being told to just live with it.";
-const HERO_CTA_LABEL = "Text me to start";
+  "Hike again. Dance again. Sleep through the night again. No matter how long you've been in pain or how much you've already tried.";
+const HERO_CTA_LABEL = "Contact";
 
 export default function Home() {
   return (
@@ -70,13 +70,13 @@ export default function Home() {
             {HERO_SUBHEADLINE}
           </p>
           <div className="flex flex-col items-center gap-6">
-            <a
-              href={SMS_LINK}
-              className="group px-8 py-4 rounded-full bg-green-brand text-white text-lg font-medium hover:bg-green-brand-dark transition-all hover:scale-105 shadow-xl shadow-[#0e9384]/25 flex items-center gap-2"
+            <Link
+              to="/contact"
+              className="group px-8 py-4 rounded-full bg-green-brand text-white text-lg font-medium hover:bg-green-brand-dark transition-all hover:scale-105 shadow-xl shadow-[#16a07c]/25 flex items-center gap-2"
             >
               {HERO_CTA_LABEL}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
         </div>
       </motion.section>
