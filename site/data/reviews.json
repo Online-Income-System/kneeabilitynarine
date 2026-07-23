@@ -1,0 +1,25 @@
+{
+  "_comment": "Curated reviews powering the homepage carousel (pattern: ability-training.com, custom-built — no third-party widget). Populate from Narine's live Google Business Profile + Yelp listings. Keep client wording verbatim.",
+  "google": {
+    "rating": null,
+    "reviewCount": null,
+    "profileUrl": "TODO — Narine's Google Business Profile review link",
+    "reviews": []
+  },
+  "yelp": {
+    "rating": null,
+    "reviewCount": null,
+    "profileUrl": "https://www.yelp.com/biz/knee-ability-narine-san-fernando-valley",
+    "reviews": []
+  },
+  "_schema": {
+    "review": {
+      "source": "google | yelp",
+      "author": "First name + last initial",
+      "rating": 5,
+      "date": "YYYY-MM",
+      "text": "Verbatim review text (trim with … if long)",
+      "url": "link to the individual review if available"
+    }
+  }
+}

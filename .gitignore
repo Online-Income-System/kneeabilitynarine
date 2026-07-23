@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+*.log
+.netlify/
+# large raw source material stays out of git — lives in content/source locally / Drive
+content/source/*
+!content/source/.gitkeep
