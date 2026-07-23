@@ -11,7 +11,7 @@ const HERO_KICKER = "1:1 Rehab Training · Burbank, CA & Online";
 const HERO_HEADLINE = "Get out of knee and back pain.";
 const HERO_HEADLINE_ACCENT = "Without surgery, shots, or steroids."; // italic green
 const HERO_SUBHEADLINE =
-  "I'm Narine. I've helped 55+ people get out of pain by rebuilding them from the ground up. My one rule: we never push through pain.";
+  "You've tried rest, PT, maybe even the surgery, and the pain keeps coming back. I rebuild your body from the ground up until you're stronger, more mobile, and pain free. That's my guarantee.";
 const HERO_CTA_LABEL = "Text me to start";
 
 export default function Home() {
@@ -46,7 +46,7 @@ export default function Home() {
           aria-hidden="true"
         />
         <motion.div
-          className="absolute -z-10 top-8 -right-10 w-80 h-80 rounded-full bg-gold-brand/15 blur-3xl pointer-events-none"
+          className="absolute -z-10 top-8 -right-10 w-80 h-80 rounded-full bg-green-brand-50 blur-3xl pointer-events-none"
           animate={{ x: [0, -26, 0], y: [0, 20, 0] }}
           transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
           aria-hidden="true"
@@ -75,7 +75,7 @@ export default function Home() {
               className="group px-8 py-4 rounded-full bg-green-brand text-white text-lg font-medium hover:bg-green-brand-dark transition-all hover:scale-105 shadow-xl shadow-[#0e9384]/25 flex items-center gap-2"
             >
               {HERO_CTA_LABEL}
-              <ArrowRight className="w-5 h-5 text-gold-brand group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </div>
@@ -84,13 +84,28 @@ export default function Home() {
       {/* Credibility strip — auto-scrolling Google + Yelp review banner */}
       <Reviews />
 
-      {/* NEXT SECTIONS (built step-by-step with Josh):
-          - The real problem (pain-point section)
-          - How it works (her ground-up method)
-          - Video testimonials (John, Ruzanna, Mary, …)
-          - Meet Narine (origin story + photo)
-          - Offers (1:1 in-person / online)
-          - Final CTA (text + free consult) */}
+      {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
+          Built section by section with Josh:
+           1. Get attention        → Hero above (headline + subhead)
+           2. Identify the problem → problem-agitate: body-scanning before bed,
+              the injury loop, "temporary pain relief trials"
+           3. Provide the solution → the Ground-Up Method (belief → rebuild → capacity)
+           4. Credentials          → Meet Narine: her own rebuild story, ATG cert,
+              55+ out of pain, 5.0 on Google
+           5. Show the benefits    → life back: hike, dance, sleep, no Advil,
+              play with your kids without scanning your body first
+           6. Social proof         → review wall + video testimonials (carousel
+              above doubles as the early trust strip)
+           7. Make the offer       → free consult (sometimes complimentary first
+              session with felt relief — Isabella's review)
+           8. Inject scarcity      → REAL capacity: ~2-3 in-person spots,
+              online capped; prices rise at capacity
+           9. Guarantee            → her verbatim: "if you follow my program, you
+              will become stronger, more mobile and pain free"
+          10. Call to action       → text me / book the free consult
+          11. Warning              → cost of waiting: "What if this is just my
+              life now?"
+          12. Close with reminder  → P.S. block restating offer + capacity */}
     </div>
   );
 }

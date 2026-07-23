@@ -9,7 +9,7 @@ function Stars({ size = "w-4 h-4" }: { size?: string }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          className={`${size} fill-gold-brand text-gold-brand`}
+          className={`${size} fill-star-gold text-star-gold`}
           aria-hidden="true"
         />
       ))}

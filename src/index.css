@@ -14,12 +14,15 @@
      white base, touches of her green (she liked the wiki teal-green),
      navy/blue trust accents, gold in small doses. Never pink/brown/
      orange/red, no dark theme. */
-  --color-green-brand: #0e9384;
-  --color-green-brand-dark: #0a6e63;      /* hover/active */
-  --color-green-brand-50: #e6f4f2;        /* subtle tints / backgrounds */
-  --color-navy-brand: #16324f;
-  --color-gold-brand: #e0b64b;            /* stars */
-  --color-gold-brand-dark: #c9950c;
+  /* Her green is LIGHTER and fresher than Mason's dark teal ("His is,
+     like, a darker teal" / "I prefer the lighter green that I gave you").
+     TODO: match --color-green-brand exactly to her light-green logo file
+     when it lands in the Master folder. */
+  --color-green-brand: #16a07c;           /* fresh light green */
+  --color-green-brand-dark: #0e7a5e;      /* hover/active */
+  --color-green-brand-50: #e8f7f1;        /* subtle tints / backgrounds */
+  --color-navy-brand: #16324f;            /* her pairing: "green goes good with navy" */
+  --color-star-gold: #f0b429;             /* review stars only, not a brand accent */
 }
 
 @layer base {

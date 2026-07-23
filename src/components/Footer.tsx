@@ -69,7 +69,7 @@ export default function Footer() {
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star
                         key={i}
-                        className="w-3.5 h-3.5 fill-gold-brand text-gold-brand"
+                        className="w-3.5 h-3.5 fill-star-gold text-star-gold"
                         aria-hidden="true"
                       />
                     ))}

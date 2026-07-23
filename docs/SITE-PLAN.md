@@ -15,7 +15,7 @@ Status: **Infrastructure laid — nothing built yet.** Working step-by-step with
 ## 2. Design direction
 
 - Structural model: scienceofselling.co — single-column, generous whitespace, modular sections, hero → proof → problem → method → testimonials → bio → CTA rhythm.
-- Palette: **Narine's brand, not Joshua's** — her existing green/white identity (logos already in Drive: `Knee Ability Logo.png`, `White Logo.png`). Decide light vs. dark treatment together.
+- Palette (corrected 2026-07-23): **her LIGHTER green, not Mason's dark teal** ("His is, like, a darker teal" / "I prefer the lighter green that I gave you"). Current: #16a07c, to be matched exactly to her light-green logo when the file lands. White base, navy only as her trust pairing, gold reserved for review stars.
 - Review carousel model: ability-training.com — custom-implemented looping carousel (no third-party widget), Google rating badge (stars + count) anchored in the hero. Narine's version: dual badges (Google + Yelp), one carousel mixing both sources with a source icon per card.
 
 ## 3. Site map (v1 launch)
@@ -28,8 +28,7 @@ Single strong homepage + minimal supporting pages, blog/article engine added in 
 4. Articles hub — later, powers the content engine (Phase 4)
 5. `robots.txt`, `sitemap.xml`, 404 — pre-launch
 
-Homepage section order (mirrors the shell in `site/index.html`):
-nav → hero (+ rating badges) → review carousel → the real problem → how it works / method → video testimonials → about Narine → offers → final CTA (GHL booking) → footer.
+Homepage structure (2026-07-23): **Joshua's 12-Step Sales Letter Template** — 1 get attention (hero) → 2 identify the problem → 3 provide the solution (Ground-Up Method) → 4 credentials (Meet Narine) → 5 benefits → 6 social proof (reviews + video testimonials; carousel also sits under the hero as an early trust strip) → 7 the offer (free consult) → 8 real scarcity (capacity) → 9 her verbatim guarantee → 10 CTA (text me) → 11 warning (cost of waiting) → 12 P.S. close. Full map lives as comments in `src/pages/Home.tsx`.
 
 ## 4. Reviews infrastructure (Google + Yelp)
 
