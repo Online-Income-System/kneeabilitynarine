@@ -8,7 +8,8 @@ Status: **Infrastructure laid — nothing built yet.** Working step-by-step with
 
 - Current site: Squarespace ("Unleash Your Best Self", green/white, Home / About / Services / Blog / Contact). Solid social proof already (13+ written testimonials on-page) but generic template feel.
 - New site: complete custom rebuild, launched on the same domain via DNS update. Premium standard, optimised for SEO and AI search (GEO).
-- Pipeline: **local code → GitHub → Netlify** (auto-deploy from `main`). GoHighLevel is CRM only — booking, forms, email sequences.
+- Pipeline: **local code → GitHub → Netlify** (auto-deploy from `main`; deploys are batched to conserve Netlify build credits). GoHighLevel is CRM only — booking, forms, email sequences.
+- Stack (2026-07-23): **Vite + React + Tailwind 4 + vite-react-ssg + motion — a direct clone of the Mason/SOS site architecture** at Joshua's direction. Pages in `src/pages/`, components in `src/components/`, reviews data in `src/data/reviews.ts`, static build to `dist/`.
 - Narine liked the look of scienceofselling.co (structure, premium single-column feel) and specifically the **Google review carousel** on ability-training.com (Mason's site — same ATG world, so the pattern fits her market). Hers gets **Google + Yelp** side by side.
 
 ## 2. Design direction
@@ -33,8 +34,8 @@ nav → hero (+ rating badges) → review carousel → the real problem → how 
 ## 4. Reviews infrastructure (Google + Yelp)
 
 - **Approach: curated JSON, custom carousel** — same as Mason's (his is custom-built, not an embed). No paid APIs, no third-party widget branding, full design control, zero external JS weight.
-- `site/data/reviews.json` holds both sources: overall rating + count per platform, plus individual reviews (verbatim text, author, date, per-review link where possible).
-- `assets/js/reviews.js` renders badges + carousel from that JSON.
+- `src/data/reviews.ts` holds both sources: overall rating + count per platform, plus verbatim reviews with outcome labels.
+- `src/components/Reviews.tsx` renders the badge row + auto-scrolling mixed-source carousel (adapted from Mason's GoogleReviews component).
 - Refresh workflow: when a new review lands, add it to the JSON and push — Netlify redeploys. (Fits the contract's "new testimonial goes up same day".)
 - Source links (from Narine's docs):
   - Yelp: https://www.yelp.com/biz/knee-ability-narine-san-fernando-valley
@@ -64,7 +65,8 @@ nav → hero (+ rating badges) → review carousel → the real problem → how 
 
 ## 7. Build phases (step-by-step, together)
 
-1. ✅ Infrastructure: repo scaffold, Netlify config, section architecture, reviews data schema, this plan
+1. ✅ Infrastructure: repo scaffold on the Mason-site stack, GitHub repo live, Netlify connected, reviews data, this plan
+1b. ✅ Homepage hero + navbar + dual review carousel + footer (v2, committed; deploy batched)
 2. Get Master folder access → full content inventory → build Brand Wiki
 3. Push repo to GitHub, connect Netlify (deploy previews on a netlify.app subdomain — Squarespace stays live until cutover)
 4. Design system: css variables (her palette), type scale, buttons, section shells
