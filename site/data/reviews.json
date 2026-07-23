@@ -1,25 +1,143 @@
 {
-  "_comment": "Curated reviews powering the homepage carousel (pattern: ability-training.com, custom-built — no third-party widget). Populate from Narine's live Google Business Profile + Yelp listings. Keep client wording verbatim.",
+  "_notes": "Verbatim reviews from Narine's live Google Business Profile (complete pull, 2026-07-08) and Yelp (10 captured). Feeds the hero badges + review carousel. 'featured' marks carousel candidates — curate with Joshua. Duplicate people across platforms (Michele, Darren, Kathrin/K I., Aram/Aramos, Ruzanna, Lola) must never show twice in one carousel loop.",
   "google": {
-    "rating": null,
-    "reviewCount": null,
-    "profileUrl": "TODO — Narine's Google Business Profile review link",
-    "reviews": []
+    "rating": 5.0,
+    "reviewCount": 20,
+    "profileUrl": "https://maps.app.goo.gl/zUVS28wV8JxydBJK9",
+    "topicTags": ["knee pain relief", "tailored training", "strength training", "flexibility", "knowledgeable trainer", "injury rehab"]
   },
   "yelp": {
     "rating": null,
     "reviewCount": null,
-    "profileUrl": "https://www.yelp.com/biz/knee-ability-narine-san-fernando-valley",
-    "reviews": []
+    "_todo": "Overall rating + total review count from the Yelp page for the badge (10 captured reviews are all 5★).",
+    "profileUrl": "https://www.yelp.com/biz/knee-ability-narine-san-fernando-valley"
   },
-  "_schema": {
-    "review": {
-      "source": "google | yelp",
-      "author": "First name + last initial",
+  "reviews": [
+    {
+      "source": "google",
+      "author": "Mary G.",
       "rating": 5,
-      "date": "YYYY-MM",
-      "text": "Verbatim review text (trim with … if long)",
-      "url": "link to the individual review if available"
+      "date": "2026-02",
+      "featured": true,
+      "outcome": "Knee surgery recovery — back to regular hikes, best shape in years",
+      "text": "I had knee surgery almost 2 years ago and my recovery was very slow and 7 months after my surgery I found Narine through Instagram and I thank God I did. From the start she knew what to do, where and how to start my recovery and now a year later not only my recovery is great that I'm able to do my regular hikes and be more active without knee pain, another great factor is I've been in the best shape that I haven't been in a long long time. THANK YOU MY DEAR NARINE!!! I can't wait for what's next to come."
+    },
+    {
+      "source": "google",
+      "author": "Luiza B.",
+      "rating": 5,
+      "date": "2025-09",
+      "featured": true,
+      "outcome": "2 years of hip & back pain — pain-free in 4 months, no more Advil",
+      "text": "I started working with Narine about 4 months ago for my hip and lower back pain. This annoying and lingering pain limited my activity with my kids, and kept me up at night for almost two years. I found myself reaching for Advil most nights to help me sleep. I randomly found Narine on social media and decided to message her. Best decision ever! From day one, she took the time to assess my injury and help me understand the root problem. Here I am 4 months later, enjoying my day with no hip or back pain...and no Advil! I trusted her so much with my own recovery that I also took my teenage son to see her after a really bad soccer injury. She helped him get back on the field stronger and faster than expected."
+    },
+    {
+      "source": "google",
+      "author": "Caroline Y.",
+      "rating": 5,
+      "date": "2025-09",
+      "featured": true,
+      "outcome": "Knee & ankle pain from hiking — pain-free, tackling harder hikes",
+      "text": "Her training has been a game changer for me. I was experiencing knee and ankle pain from hiking in both legs. After working with Narine, I am pain free! I am also much stronger and more flexible. I can tackle much more difficult hikes than I ever could before - now without pain. She is super knowledgeable, kind, fun and will be your best cheerleader in whatever you wish to accomplish. Once physical therapy is done, you need to see Narine for continuous rehab and strength building."
+    },
+    {
+      "source": "google",
+      "author": "John E.",
+      "rating": 5,
+      "date": "2025",
+      "featured": true,
+      "outcome": "3 knee surgeries, 13+ years of pain — out of pain in months",
+      "text": "The walking backwards was the baseline protocol, and that immediately removed pain as I started to engage muscle groups I hadn't used in years, stabilizers around the knee, etc. From there, I was able to actually build strength in my upper quad, which was always a challenge as my range of motion was limited. She found other muscle groups that were being affected by my compensation, and we started to address those."
+    },
+    {
+      "source": "google",
+      "author": "Isabella S.",
+      "rating": 5,
+      "date": "2026-02",
+      "featured": true,
+      "outcome": "2 years of knee pain — walking 20-25k steps a day on vacation",
+      "text": "I've been struggling with knee pain for the past two years (thank you menopause), and nothing seemed to help. She offered me a complimentary session which I quickly accepted. I went with absolutely no expectations, but at the end of that session noticed my knees felt less tight and lighter. I went on a week long trip and was able to keep up with walking 20-25k steps per day. Narine is super knowledgable in what she does. She adjusts exercises according to your needs, always making safety and healing a priority. Highly recommend for anyone with knee issues."
+    },
+    {
+      "source": "google",
+      "author": "Lola C.",
+      "rating": 5,
+      "date": "2025-09",
+      "featured": true,
+      "outcome": "Knee pain gone fast — 1.5 years in, strongest she's ever been",
+      "text": "Narine has been such a gift! I was having knee pains and I really liked the theory and wanted to train with one of their trainers. We instantly clicked and found a lot of laughter and joy together. Best of all she was kind and patient with me as I was not your typical gym gal. I've been with her for 1.5 years now!! and it blows me away to feel the difference. First of all my knee pains are gone. That happened pretty fast with her. Then gradually as I'm getting stronger we're unlocking fitness, flexibility and strength that I've never had. She's a gem of a human and a top notch trainer."
+    },
+    {
+      "source": "google",
+      "author": "Aram M.",
+      "rating": 5,
+      "date": "2025-11",
+      "featured": true,
+      "outcome": "Son's knee injury — sparring again in 2 weeks, back to wrestling",
+      "text": "She helped my son get his knee back and continue competing in his wrestling. In just 2 weeks, my son was able to start sparring again. Worth every penny."
+    },
+    {
+      "source": "google",
+      "author": "Perry A.",
+      "rating": 5,
+      "date": "2025-09",
+      "featured": false,
+      "outcome": "Elite, individualized coaching",
+      "text": "Narine is a wonderful trainer, but an even better person! She was incredibly quick in recognizing my weaknesses and decided to focus on those areas the most. You'll pay a premium price for sessions, but you're getting an elite experience - and you get what you pay for in life! 10/10 recommend."
+    },
+    {
+      "source": "google",
+      "author": "Sendy P.",
+      "rating": 5,
+      "date": "2024",
+      "featured": false,
+      "outcome": "Great for pain or gym anxiety",
+      "text": "Narine is the best. She is patient and kind regardless of your skill level. She will work with you and help you grow from the bottom up. If you have any pain or gym anxiety, Narine is a great trainer to trust."
+    },
+    {
+      "source": "google",
+      "author": "Steve R.",
+      "rating": 5,
+      "date": "2024",
+      "featured": false,
+      "outcome": "Individualized, results-oriented programming",
+      "text": "Narine knows her stuff and will definitely get you to perform better. Her workouts are awesome, not cookie cutter, rather she caters to the individual needs of each client. If you're looking for someone who's passionate and results oriented, call Narine!!"
+    },
+    {
+      "source": "yelp",
+      "author": "Darren H.",
+      "rating": 5,
+      "date": "2024-11",
+      "featured": true,
+      "outcome": "Golf swing +5-10 yards per shot via mobility & strength",
+      "text": "I came to her looking to be more flexible and mobile to help me out with my golf swing. I started with her back in June and I noticed a significant improvement in my swing a month later. My distances improved by 5-10 yards per shot and most importantly, my accuracy improved because I was able to get to certain places in my swing that I could not prior. Narine does not have a 'one-size-fits-all' program. She will custom tailor a training regimen based on your goals."
+    },
+    {
+      "source": "yelp",
+      "author": "K I.",
+      "rating": 5,
+      "date": "2025-12",
+      "featured": true,
+      "outcome": "Training safely past 40 after years of martial arts",
+      "text": "Narine is incredible! After years of martial arts, my body has taken a beating, and after 40, recovery is not what it used to be. Thanks to Narine's deep knowledge of the human body at every stage of life and her ability to modify exercises, I have been able to continue training safely and consistently."
+    },
+    {
+      "source": "yelp",
+      "author": "Michele D.",
+      "rating": 5,
+      "date": "2026-02",
+      "featured": true,
+      "outcome": "Listens to what your body is telling her",
+      "text": "I can not recommend Narine highly enough. Not only is she passionate about what she does, she is also very knowledgeable. She explains things very well and not only does she listen to you, she listens to what your body is telling her and adjusts accordingly. If you're rehabing or want to improve your strength, she's awesome and she's fun! 5 stars!"
+    },
+    {
+      "source": "yelp",
+      "author": "Justin W.",
+      "rating": 5,
+      "date": "2023-12",
+      "featured": false,
+      "outcome": "First reviewer — infectious energy, great for gym-intimidated beginners",
+      "text": "Narine is an incredible trainer. Her enthusiasm and passion for what she does makes working out with her more joy than exhausting. If you are genuinely intimidated by working out or going to the gym Narine is a great option for you to learn. If you are injured or have any kind of nagging pain, she is an awesome resource to help you strengthen those weak areas to recover and keep from injuring yourself again. I dare you to do one workout with her and not walk away feeling amazing and encouraged to exercise more."
     }
-  }
+  ]
 }

@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Knee Ability Narine — Design Tokens
+   Source: wiki/identity/brand-visual-identity.md (her own words, kickoff call)
+   North star: white, airy, simple · touches of her green · navy trust accents
+   · elevated legible type · bold, never busy · NO dark theme, no pink/brown/
+   orange/red, cursive never.
+   ========================================================================== */
+
+:root {
+  /* ---- Color: base -------------------------------------------------- */
+  --bg:            #ffffff;   /* white is the base — her words */
+  --bg-soft:       #f4faf8;   /* whisper of green for alternating sections */
+  --text:          #172a2e;   /* near-black with a green undertone */
+  --text-soft:     #4b6167;   /* secondary copy */
+
+  /* ---- Color: brand green (the teal-green she liked in the wiki) ---- */
+  --green:         #0e9384;   /* primary brand — buttons, links, accents */
+  --green-deep:    #0a6e63;   /* hover / emphasis */
+  --green-tint:    #d9f0ec;   /* chips, soft backgrounds */
+
+  /* ---- Color: trust + warmth accents -------------------------------- */
+  --navy:          #16324f;   /* headings-accent, footer — "you trust blue" */
+  --gold:          #c9950c;   /* stars, sparing highlights (she uses gold) */
+
+  /* ---- Type ---------------------------------------------------------- */
+  /* Font is an OPEN DECISION (she delegated: "more elevated, elite",
+     highly legible, never cursive/cartoony). Placeholder stacks below —
+     swap --font-display/--font-body once chosen with Joshua. */
+  --font-display:  "Inter", -apple-system, "Segoe UI", sans-serif;
+  --font-body:     "Inter", -apple-system, "Segoe UI", sans-serif;
+
+  /* Fluid type scale */
+  --fs-900: clamp(2.2rem, 5vw, 3.4rem);   /* h1 hero */
+  --fs-800: clamp(1.8rem, 4vw, 2.5rem);   /* h2 section */
+  --fs-700: clamp(1.35rem, 2.5vw, 1.6rem);/* h3 */
+  --fs-500: 1.125rem;                     /* lead copy */
+  --fs-400: 1rem;                         /* body */
+  --fs-300: 0.875rem;                     /* meta, captions */
+
+  /* ---- Spacing / layout --------------------------------------------- */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6.5rem;   /* between-section rhythm — airy like scienceofselling */
+  --container: 68rem;
+  --container-text: 44rem;
+  --radius: 14px;
+  --shadow-card: 0 6px 24px rgba(22, 50, 79, 0.08);
+}
+
+/* ---- Minimal base (real component styles come with each section) ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-400);
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+img, video { max-width: 100%; height: auto; display: block; }
