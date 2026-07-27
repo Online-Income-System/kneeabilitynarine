@@ -68,8 +68,11 @@ const METHOD_CARD_THEMES: { bg: string; light: boolean }[] = [
   { bg: "#93d8c0", light: false },
   { bg: "#16a07c", light: true },
 ];
-const METHOD_CLOSER =
-  "And one rule never bends, no matter the step: you never push through pain. It's never too late to start.";
+// The one rule that never bends — her session rule #1, verbatim. Gets its
+// own callout treatment, not a plain closing line, per Josh's request.
+const METHOD_RULE = "You never push through pain.";
+const METHOD_RULE_SUB = "Not on day one. Not on day ninety. No exceptions.";
+const METHOD_CLOSER = "It's never too late to start.";
 
 export default function Home() {
   return (
@@ -252,7 +255,29 @@ export default function Home() {
             })}
           </div>
 
-          <p className="mt-10 text-lg md:text-xl text-slate-900 font-medium max-w-2xl">
+          {/* The one rule that never bends — called out on its own, not buried in a sentence */}
+          <motion.div
+            className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 rounded-2xl border-2 border-green-brand-50 bg-green-brand-50/60 px-7 py-6 max-w-3xl"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <span
+              className="shrink-0 w-11 h-11 rounded-full bg-green-brand text-white flex items-center justify-center text-lg font-serif font-semibold"
+              aria-hidden="true"
+            >
+              !
+            </span>
+            <div>
+              <p className="text-2xl md:text-3xl font-serif font-semibold text-green-brand-dark leading-snug">
+                {METHOD_RULE}
+              </p>
+              <p className="text-slate-600 mt-1">{METHOD_RULE_SUB}</p>
+            </div>
+          </motion.div>
+
+          <p className="mt-6 text-lg md:text-xl text-slate-900 font-medium max-w-2xl">
             {METHOD_CLOSER}
           </p>
         </div>
