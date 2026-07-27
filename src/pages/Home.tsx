@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "motion/react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   ArrowRight,
   Brain,
@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   Play,
   Instagram,
+  X,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reviews from "../components/Reviews";
@@ -159,7 +160,13 @@ const PROOF_KICKER = "Real stories";
 const PROOF_HEADLINE = "Hear it from people who were";
 const PROOF_HEADLINE_ACCENT = "exactly where you are."; // italic green
 const PROOF_SUBHEAD =
-  "Every video below is a real client, unscripted. Tap one to watch it on Instagram.";
+  "Every video below is a real client, unscripted. Tap one to watch it right here.";
+// Turns a public Instagram post URL into its embeddable player URL, so the
+// video plays inline in a modal — visitors never leave the site.
+function instagramEmbedUrl(url: string): string {
+  const clean = url.endsWith("/") ? url : `${url}/`;
+  return `${clean}embed/captioned`;
+}
 const VIDEO_TESTIMONIALS: { name: string; outcome: string; url: string }[] = [
   {
     name: "Ruzanna",
@@ -211,6 +218,8 @@ const PROOF_CARD_THEMES = [
 ];
 
 export default function Home() {
+  const [activeVideo, setActiveVideo] = useState<{ name: string; url: string } | null>(null);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero — white background, centered serif headline, green italic accent */}
@@ -544,12 +553,11 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {VIDEO_TESTIMONIALS.map(({ name, outcome, url }, i) => (
-              <motion.a
+              <motion.button
                 key={name}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block aspect-[4/5] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300"
+                type="button"
+                onClick={() => setActiveVideo({ name, url })}
+                className="group relative block w-full text-left aspect-[4/5] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300"
                 style={{ backgroundImage: PROOF_CARD_THEMES[i % PROOF_CARD_THEMES.length] }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -570,10 +578,55 @@ export default function Home() {
                   <p className="text-white font-serif text-lg mb-1">{name}</p>
                   <p className="text-white/85 text-sm leading-snug">{outcome}</p>
                 </div>
-              </motion.a>
+              </motion.button>
             ))}
           </div>
         </div>
+
+        {/* Inline video modal — plays right on the page, no navigation away */}
+        <AnimatePresence>
+          {activeVideo && (
+            <motion.div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 py-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setActiveVideo(null)}
+              role="dialog"
+              aria-modal="true"
+              aria-label={`${activeVideo.name} testimonial video`}
+            >
+              <motion.div
+                className="relative w-full max-w-sm bg-black rounded-2xl overflow-hidden shadow-2xl"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.25 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  onClick={() => setActiveVideo(null)}
+                  className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/80 transition-colors"
+                  aria-label="Close video"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+                <iframe
+                  key={activeVideo.url}
+                  src={instagramEmbedUrl(activeVideo.url)}
+                  className="w-full aspect-[9/16] max-h-[80vh] bg-black"
+                  frameBorder={0}
+                  scrolling="no"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  title={`${activeVideo.name} testimonial`}
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
