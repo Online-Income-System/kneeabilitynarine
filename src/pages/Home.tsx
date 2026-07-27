@@ -13,6 +13,8 @@ import {
   Footprints,
   Dumbbell,
   ShieldCheck,
+  Play,
+  Instagram,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reviews from "../components/Reviews";
@@ -145,6 +147,67 @@ const BENEFITS: { Icon: typeof Mountain; title: string; text: string }[] = [
     title: "Trust your body again",
     text: "No surgery, no shots, no steroids. Just a body that finally holds up.",
   },
+];
+
+/* ─── STEP 6 · SOCIAL PROOF (video testimonials) ──────────────────────────
+   The Google/Yelp carousel under the hero is the early trust strip; this is
+   the deeper proof layer — real clients telling their own story, unscripted.
+   Sourced verbatim (names + outcome lines) from "Testimonials & reviews
+   links.docx" in Narine's Drive. Each links out to the real Instagram post —
+   no video is rehosted, no outcome is invented. */
+const PROOF_KICKER = "Real stories";
+const PROOF_HEADLINE = "Hear it from people who were";
+const PROOF_HEADLINE_ACCENT = "exactly where you are."; // italic green
+const PROOF_SUBHEAD =
+  "Every video below is a real client, unscripted. Tap one to watch it on Instagram.";
+const VIDEO_TESTIMONIALS: { name: string; outcome: string; url: string }[] = [
+  {
+    name: "Ruzanna",
+    outcome: "18 years of knee pain from a bad surgery, meniscus tear — rehabbed in 5 months.",
+    url: "https://www.instagram.com/p/DE1XWxQRqdW/",
+  },
+  {
+    name: "Haley",
+    outcome: "Hamstring & calf strain — rehabbed and running marathons in 1 month.",
+    url: "https://www.instagram.com/p/C6PmADNvvVG/",
+  },
+  {
+    name: "Arghist",
+    outcome: "Over a year of knee pain — rehabbed in 2 months, back on the mats and winning competitions.",
+    url: "https://www.instagram.com/p/DQpZ8QQEuv5/",
+  },
+  {
+    name: "Luiza",
+    outcome: "Over 2 years of hip, back & groin pain — rehabbed in 6–7 months.",
+    url: "https://www.instagram.com/p/DPxrKbukVUu/",
+  },
+  {
+    name: "Anoushka",
+    outcome: "Bad knee pain after surgery — back to dancing after 9 months.",
+    url: "https://www.instagram.com/p/DN4n0GiES9m/",
+  },
+  {
+    name: "John",
+    outcome: "3 knee surgeries, 13+ years of pain — out of pain in months, now running 5–10Ks and Spartan races.",
+    url: "https://www.instagram.com/p/DYDHyEBvyMG/",
+  },
+  {
+    name: "Mary",
+    outcome: "Couldn't hike or travel after knee surgery — back to steep hikes, pain free.",
+    url: "https://www.instagram.com/p/DYiA6tyPmJt/",
+  },
+  {
+    name: "Christine",
+    outcome: "Bad back pain, scoliosis, and knee pain — pain free.",
+    url: "https://www.instagram.com/p/DJKFGnvveZA/",
+  },
+];
+// Cycling background ramp for the video cards — her green + navy palette.
+const PROOF_CARD_THEMES = [
+  "linear-gradient(135deg, #16a07c 0%, #0e7a5e 100%)",
+  "linear-gradient(135deg, #16324f 0%, #0d1f33 100%)",
+  "linear-gradient(135deg, #2fbf94 0%, #16a07c 100%)",
+  "linear-gradient(135deg, #0e7a5e 0%, #16324f 100%)",
 ];
 
 export default function Home() {
@@ -463,6 +526,56 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* STEP 6 · Social proof — video testimonials, real clients, real names */}
+      <section className="bg-white py-24 md:py-32 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-2xl mb-16">
+            <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+              {PROOF_KICKER}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900 mb-6">
+              {PROOF_HEADLINE}{" "}
+              <span className="italic text-green-brand">{PROOF_HEADLINE_ACCENT}</span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-700 font-normal leading-relaxed">
+              {PROOF_SUBHEAD}
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {VIDEO_TESTIMONIALS.map(({ name, outcome, url }, i) => (
+              <motion.a
+                key={name}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block aspect-[4/5] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300"
+                style={{ backgroundImage: PROOF_CARD_THEMES[i % PROOF_CARD_THEMES.length] }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.06 }}
+              >
+                <Instagram
+                  className="absolute top-4 right-4 w-5 h-5 text-white/70"
+                  strokeWidth={1.75}
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 group-hover:bg-white transition-transform duration-300">
+                    <Play className="w-5 h-5 text-green-brand-dark ml-0.5" fill="currentColor" />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-black/75 via-black/20 to-transparent">
+                  <p className="text-white font-serif text-lg mb-1">{name}</p>
+                  <p className="text-white/85 text-sm leading-snug">{outcome}</p>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
           Built section by section with Josh:
            1. Get attention        → Hero above (headline + subhead)
@@ -470,8 +583,7 @@ export default function Home() {
            3. ✅ built above
            4. ✅ built above
            5. ✅ built above
-           6. Social proof         → review wall + video testimonials (carousel
-              above doubles as the early trust strip)
+           6. ✅ built above
            7. Make the offer       → free consult (sometimes complimentary first
               session with felt relief — Isabella's review)
            8. Inject scarcity      → REAL capacity: ~2-3 in-person spots,
