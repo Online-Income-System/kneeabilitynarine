@@ -300,7 +300,7 @@ const GUARANTEE_FINE_PRINT =
 const CTA_HEADLINE = "Your knee doesn't have to feel like this forever.";
 const CTA_HEADLINE_ACCENT = "Let's find out what's actually possible."; // italic green
 const CTA_SUBHEAD =
-  "One free consult. No pressure, no obligation — just a real conversation about what's next.";
+  "One free consult. No pressure, no obligation. Just a real conversation about what's next.";
 const CTA_BUTTON_LABEL = "Book Your Free Consult";
 
 export default function Home() {
