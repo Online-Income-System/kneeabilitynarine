@@ -312,9 +312,9 @@ const CTA_BUTTON_LABEL = "Book Your Free Consult";
    stay in her established slate/green range. No kicker label on this one —
    Josh's call. */
 const WARNING_HEADLINE = "Waiting doesn't make this easier.";
-const WARNING_HEADLINE_ACCENT = "It just makes it harder to undo."; // italic green
+const WARNING_HEADLINE_ACCENT = "It makes it harder to undo."; // italic green
 const WARNING_BODY: string[] = [
-  "The muscles that never got strong stay weak. The load keeps landing on a knee that was never built to carry it. Nothing about that changes on its own. It just keeps happening, week after week.",
+  "Nothing about your situation changes on its own. It just keeps happening, week after week.",
   "The longer that pattern runs, the more work it takes to unwind it.",
 ];
 const WARNING_CLOSER =
