@@ -11,8 +11,9 @@ import { ArrowRight, Brain, Users } from "lucide-react";
    entirely third person throughout, per her house rule: bio/credentials
    content about Narine herself uses "she/her," never first-person "I/my"
    the way the rest of the site never uses "I/my" from her either.
-   Photo reuses the homepage's full-body Meet Narine image at Joshua's
-   explicit instruction that any photo of her stay uncropped, full body. */
+   Uses a different full-body photo than the homepage (that one's the bicep-flex
+   shot; this is her front-facing deadlift setup), per Joshua's request not to
+   reuse the same image twice. Still uncropped, full body, per her house rule. */
 
 // Reusable section label — icon in a soft green badge, label beside it.
 function SectionLabel({
@@ -116,7 +117,7 @@ export default function About() {
               KA
             </span>
             <img
-              src="/narine-meet-photo.jpg"
+              src="/narine-about-photo.jpg"
               alt="Narine, founder of Knee Ability Narine, at her Burbank gym"
               className="absolute inset-0 w-full h-full object-cover"
               onError={(e) => {
