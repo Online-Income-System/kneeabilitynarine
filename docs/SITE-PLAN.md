@@ -2,7 +2,7 @@
 
 Client: Narine Ashnalikyan · Knee Ability Narine · kneeabilitynarine.com
 Engagement: 90-day done-for-you build (contract signed July 2, 2026)
-Status: **Homepage v1 complete.** All 12 sections of the sales-letter template are built and screenshot-confirmed with Joshua, committed and pushed to `origin/dev` as a backup. Nothing has been pushed to `origin/main`/deployed to Netlify yet — that only happens on Joshua's explicit "deploy."
+Status: **Site v1 complete (2026-07-27).** Homepage (all 12 sales-letter sections), `/about`, `/services`, and `/contact` are all built and screenshot-confirmed with Joshua. Homepage, Services, and About are deployed live to `origin/main`/Netlify; Contact is committed and pushed to `origin/dev` as a backup, pending Joshua's explicit "deploy" go-ahead. DNS still points at Squarespace, so nothing is publicly visible on kneeabilitynarine.com yet regardless of deploy status — only on the Netlify subdomain until the cutover happens.
 
 ## 1. Context
 
@@ -43,7 +43,7 @@ Homepage structure: **Joshua's 12-Step Sales Letter Template — all 12 built (2
 11. ✅ Warning — cost of waiting, grounded in her own stated mechanism, rewritten once for tone (cut AI-sounding phrasing, "quiet," em-dashes)
 12. ✅ P.S. close — restates offer + capacity, echoes the hero's cadence, final CTA
 
-Full section code lives in `src/pages/Home.tsx`. `/about`, `/services`, `/contact` are still placeholder pages (Phase 7 below).
+Full section code lives in `src/pages/Home.tsx`. `/about`, `/services`, `/contact` are all built now (Phase 7 below) — none are placeholders anymore.
 
 ## 4. Reviews infrastructure (Google + Yelp)
 
@@ -83,12 +83,13 @@ Full section code lives in `src/pages/Home.tsx`. `/about`, `/services`, `/contac
 2. ✅ Homepage hero + navbar + dual review carousel + footer, real KA logo
 3. ✅ Homepage sections 2–12, all built and confirmed section-by-section (see structure above) — currently on `dev` only, not deployed
 4. Get Master folder access → full content inventory → build Brand Wiki (still open; local Master folder access was never granted)
-5. Supporting pages: `/about`, `/services`, `/contact` — currently placeholders, need real content
-6. Schema, sitemap, robots.txt, GHL booking/form embeds
-7. QA (mobile, speed, SEO audit) → DNS cutover from Squarespace → launch email campaign → **first deploy to `main` happens on Joshua's explicit go-ahead**
+5. ✅ Supporting pages: `/about` (origin story, stats, approach, mission, CTA — real full-body photo swapped so it's not a duplicate of the homepage's), `/services` (online/in-person/hybrid), `/contact` (free-consult form + "what to expect" cards) — all built and confirmed
+6. Schema, sitemap, robots.txt, GHL booking/form embeds — **open:** Contact page's form is a real working local form (validates, shows a confirmation state) but isn't wired to anything yet; needs Narine's real GHL webhook/embed link before it can actually deliver leads
+7. QA (mobile, speed, SEO audit) → DNS cutover from Squarespace → launch email campaign → **first deploy to `main` happens on Joshua's explicit go-ahead** (homepage, Services, and About are live as of 2026-07-27; Contact is staged on `dev` pending deploy)
 
 ## 8. Open decisions
 
+- **Contact form → GHL:** the `/contact` page form (name, email, phone, message) works locally — validates and shows a confirmation screen — but doesn't send anywhere yet. Needs Narine's real GHL calendar embed or form webhook URL to actually deliver leads instead of just showing "Request sent."
 - **Her guarantee (Section 9):** built from her verbatim VSL line, but Joshua flagged he's not certain this is the guarantee she currently wants live — needs her direct confirmation before deploy.
 - **Video testimonial hosting (Section 6):** the 7 raw client video files in Drive (36–178MB each) exceed the Google Drive MCP tool's 10MB download cap, and there's no local copy in Joshua's connected Narine folder either. Currently using an in-page modal that plays the video via Instagram's public embed frame (no redirect off-site) — reliable but dependent on Instagram staying up and not blocked by browser tracking protection. Native self-hosting is the more bulletproof option if Joshua can get the files to this session (drag into chat or drop in the connected folder) for compression + hosting.
 - Narine's real phone number — needed to reintroduce a text/SMS CTA (currently all CTAs route to `/contact`).
