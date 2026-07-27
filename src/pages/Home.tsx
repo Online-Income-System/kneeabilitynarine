@@ -1,6 +1,19 @@
 import React from "react";
 import { motion } from "motion/react";
-import { ArrowRight, Brain, Crosshair, TrendingUp, Award, Users, MapPin } from "lucide-react";
+import {
+  ArrowRight,
+  Brain,
+  Crosshair,
+  TrendingUp,
+  Award,
+  Users,
+  MapPin,
+  Mountain,
+  Moon,
+  Footprints,
+  Dumbbell,
+  ShieldCheck,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import Reviews from "../components/Reviews";
 
@@ -90,6 +103,48 @@ const MEET_STATS: { Icon: typeof Award; label: string }[] = [
   { Icon: Award, label: "ATG Certified Coach" },
   { Icon: Users, label: "55+ people out of pain" },
   { Icon: MapPin, label: "Burbank, CA & online" },
+];
+
+/* ─── STEP 5 · SHOW THE BENEFITS (future-state payoff) ────────────────────
+   Zero I/me/my — every line addressed straight to the reader. Pulled from
+   real client outcomes in reviews.ts (hikes, no more Advil, 20k-step
+   vacation days, back to sport) so nothing here is invented. */
+const BENEFITS_KICKER = "What changes";
+const BENEFITS_HEADLINE = "This is what your life looks like";
+const BENEFITS_HEADLINE_ACCENT = "on the other side."; // italic green
+const BENEFITS_SUBHEAD =
+  "Not just less pain. The parts of your life you quietly stopped planning around, back on the calendar.";
+const BENEFITS: { Icon: typeof Mountain; title: string; text: string }[] = [
+  {
+    Icon: Mountain,
+    title: "Hike the trails you used to skip",
+    text: "The harder ones too. Not just the flat loop you settled for.",
+  },
+  {
+    Icon: Moon,
+    title: "Sleep through the night",
+    text: "No more reaching for Advil at 2 a.m. just to get a few hours.",
+  },
+  {
+    Icon: Users,
+    title: "Play with your kids without scanning your body first",
+    text: "No mental checklist of what your knee can handle before you say yes.",
+  },
+  {
+    Icon: Footprints,
+    title: "Keep up on your feet, all day",
+    text: "20,000 steps on vacation, and you feel good the next morning too.",
+  },
+  {
+    Icon: Dumbbell,
+    title: "Get back to the sport you love",
+    text: "Dancing, golf, martial arts, wrestling — whatever you had to quietly give up.",
+  },
+  {
+    Icon: ShieldCheck,
+    title: "Trust your body again",
+    text: "No surgery, no shots, no steroids. Just a body that finally holds up.",
+  },
 ];
 
 export default function Home() {
@@ -363,14 +418,58 @@ export default function Home() {
         </div>
       </section>
 
+      {/* STEP 5 · Show the benefits — future-state payoff, them-centric */}
+      <motion.section
+        className="bg-slate-50 border-y border-slate-100 py-24 md:py-32 px-6 md:px-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-2xl mb-16">
+            <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+              {BENEFITS_KICKER}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900 mb-6">
+              {BENEFITS_HEADLINE}{" "}
+              <span className="italic text-green-brand">{BENEFITS_HEADLINE_ACCENT}</span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-700 font-normal leading-relaxed">
+              {BENEFITS_SUBHEAD}
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {BENEFITS.map(({ Icon, title, text }, i) => (
+              <motion.div
+                key={title}
+                className="rounded-2xl bg-white border border-slate-100 p-7 shadow-sm hover:shadow-lg transition-shadow duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.06 }}
+              >
+                <div className="w-11 h-11 rounded-xl bg-green-brand-50 flex items-center justify-center mb-5">
+                  <Icon className="w-5 h-5 text-green-brand" strokeWidth={1.75} />
+                </div>
+                <h3 className="text-lg font-serif text-slate-900 mb-2 leading-snug">
+                  {title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">{text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
           Built section by section with Josh:
            1. Get attention        → Hero above (headline + subhead)
            2. ✅ built above
            3. ✅ built above
            4. ✅ built above
-           5. Show the benefits    → life back: hike, dance, sleep, no Advil,
-              play with your kids without scanning your body first
+           5. ✅ built above
            6. Social proof         → review wall + video testimonials (carousel
               above doubles as the early trust strip)
            7. Make the offer       → free consult (sometimes complimentary first
