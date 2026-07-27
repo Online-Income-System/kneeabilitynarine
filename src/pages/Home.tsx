@@ -277,6 +277,20 @@ const SCARCITY_ITEMS: { Icon: typeof MapPin; title: string; text: string }[] = [
 const SCARCITY_CLOSER =
   "When a tier fills up, the price for the next person goes up. Reaching out now costs less than waiting until it does.";
 
+/* ─── STEP 9 · THE GUARANTEE ───────────────────────────────────────────────
+   Her verbatim guarantee: "My guarantee is that if you follow my program,
+   you will become stronger, more mobile and pain free." Reframed them-
+   centric (zero I/me/my) — third-person attribution in the kicker only,
+   same pattern as the Meet Narine bio section. Echoes the hero's closing
+   line for a full-circle callback. */
+const GUARANTEE_KICKER = "Her Guarantee";
+const GUARANTEE_HEADLINE = "Follow the program,";
+const GUARANTEE_HEADLINE_ACCENT = "and you will get stronger, more mobile, and pain free."; // italic green
+const GUARANTEE_SUBHEAD =
+  "No matter how long you've been in pain or how much you've already tried.";
+const GUARANTEE_FINE_PRINT =
+  "The same standard she holds herself to with every client, in-person or online.";
+
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState<{ name: string; url: string } | null>(null);
 
@@ -800,6 +814,54 @@ export default function Home() {
         </div>
       </section>
 
+      {/* STEP 9 · The guarantee — her verbatim promise, reframed them-centric */}
+      <motion.section
+        className="relative bg-navy-brand py-24 md:py-32 px-6 md:px-12 overflow-hidden"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(55%_50%_at_50%_0%,rgba(22,160,124,0.18)_0%,transparent_70%)]" />
+        <div
+          className="absolute inset-0 -z-10 opacity-40 pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            maskImage:
+              "radial-gradient(60% 55% at 50% 30%, black 0%, transparent 78%)",
+            WebkitMaskImage:
+              "radial-gradient(60% 55% at 50% 30%, black 0%, transparent 78%)",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            className="inline-flex w-14 h-14 rounded-full bg-white/10 items-center justify-center mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <ShieldCheck className="w-7 h-7 text-green-brand" strokeWidth={1.75} />
+          </motion.div>
+
+          <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+            {GUARANTEE_KICKER}
+          </p>
+          <h2 className="text-4xl md:text-5xl font-serif leading-tight text-white mb-6">
+            {GUARANTEE_HEADLINE}{" "}
+            <span className="italic text-green-brand">{GUARANTEE_HEADLINE_ACCENT}</span>
+          </h2>
+          <p className="text-lg md:text-xl text-white/80 font-normal leading-relaxed mb-8">
+            {GUARANTEE_SUBHEAD}
+          </p>
+          <p className="text-sm text-white/50">{GUARANTEE_FINE_PRINT}</p>
+        </div>
+      </motion.section>
+
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
           Built section by section with Josh:
            1. Get attention        → Hero above (headline + subhead)
@@ -810,8 +872,7 @@ export default function Home() {
            6. ✅ built above
            7. ✅ built above
            8. ✅ built above
-           9. Guarantee            → her verbatim: "if you follow my program, you
-              will become stronger, more mobile and pain free"
+           9. ✅ built above
           10. Call to action       → text me / book the free consult
           11. Warning              → cost of waiting: "What if this is just my
               life now?"
