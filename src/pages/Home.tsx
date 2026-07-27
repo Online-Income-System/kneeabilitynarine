@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Brain, Crosshair, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reviews from "../components/Reviews";
 
@@ -28,6 +28,48 @@ const PROBLEM_QUIET_QUESTION =
   "And on the bad days, the quiet question shows up: what if this is just life now?";
 const PROBLEM_CLOSER =
   "It isn't. Your knee was never doomed. It was underprepared, and underprepared is fixable.";
+
+/* ─── STEP 3 · PROVIDE THE SOLUTION (the Ground-Up Method) ───────────────
+   Her own 3-step process, verbatim framing from the VSL, made them-centric.
+   Pays off the "underprepared" open loop from Step 2. */
+const METHOD_KICKER = "The Ground-Up Method";
+const METHOD_HEADLINE = "Pain was never the enemy.";
+const METHOD_HEADLINE_ACCENT = "Low capacity was."; // italic green
+const METHOD_SUBHEAD =
+  "When the chain below your knee is weak, the knee absorbs load it was never designed to handle. Creams and adjustments chase relief. Rebuilding capacity, from the ground up, is what makes pain leave and stay gone.";
+const METHOD_STEPS: {
+  num: string;
+  Icon: typeof Brain;
+  title: string;
+  text: string;
+}[] = [
+  {
+    num: "01",
+    Icon: Brain,
+    title: "Believe it first",
+    text: "Your body follows what your brain believes. Before a single exercise, you learn to envision yourself pain free. It sounds soft. It decides who gets results.",
+  },
+  {
+    num: "02",
+    Icon: Crosshair,
+    title: "Find your imbalances",
+    text: "Quad dominant? Weak hips? Glutes that stopped showing up? Until the real imbalances are found, nothing else can move forward. Every plan starts here.",
+  },
+  {
+    num: "03",
+    Icon: TrendingUp,
+    title: "Rebuild from the ground up",
+    text: "Feet, ankles, calves, hamstrings, glutes. Strengthened at a pain-free level and progressed only when you're ready, until your knee stops carrying load it was never built to carry.",
+  },
+];
+// Progressive ramp across the 3 steps in her green (light -> dark).
+const METHOD_CARD_THEMES: { bg: string; light: boolean }[] = [
+  { bg: "#e3f5ee", light: false },
+  { bg: "#93d8c0", light: false },
+  { bg: "#16a07c", light: true },
+];
+const METHOD_CLOSER =
+  "And one rule never bends, no matter the step: you never push through pain. It's never too late to start.";
 
 export default function Home() {
   return (
@@ -125,11 +167,102 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* STEP 3 · Provide the solution — the Ground-Up Method */}
+      <section className="relative py-24 md:py-32 px-6 md:px-12 overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(50%_50%_at_50%_0%,rgba(22,160,124,0.06)_0%,transparent_70%)]" />
+        <div
+          className="absolute inset-0 -z-10 opacity-[0.5] pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(15,23,42,0.05) 1px, transparent 1px)",
+            backgroundSize: "26px 26px",
+            maskImage:
+              "radial-gradient(70% 60% at 50% 40%, black 0%, transparent 80%)",
+            WebkitMaskImage:
+              "radial-gradient(70% 60% at 50% 40%, black 0%, transparent 80%)",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-2xl mb-16">
+            <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+              {METHOD_KICKER}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900 mb-6">
+              {METHOD_HEADLINE}{" "}
+              <span className="italic text-green-brand">
+                {METHOD_HEADLINE_ACCENT}
+              </span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-700 font-normal leading-relaxed">
+              {METHOD_SUBHEAD}
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-6">
+            {METHOD_STEPS.map(({ num, Icon, title, text }, i) => {
+              const theme = METHOD_CARD_THEMES[i];
+              return (
+                <motion.div
+                  key={num}
+                  className="group relative rounded-2xl p-8 shadow-md overflow-hidden cursor-default hover:shadow-2xl hover:brightness-[1.04] transition-[box-shadow,filter] duration-300"
+                  style={{ backgroundColor: theme.bg }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.035, y: -6 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+                >
+                  <span
+                    className={`absolute top-4 right-5 text-6xl leading-none font-serif font-semibold select-none ${
+                      theme.light ? "text-white/30" : "text-green-brand/30"
+                    }`}
+                  >
+                    {num}
+                  </span>
+                  <div
+                    className={`relative w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 ${
+                      theme.light ? "bg-white/15" : "bg-white/70"
+                    }`}
+                  >
+                    <Icon
+                      className={`w-6 h-6 ${
+                        theme.light ? "text-white" : "text-green-brand"
+                      }`}
+                      strokeWidth={1.75}
+                    />
+                  </div>
+                  <h3
+                    className={`relative text-xl font-serif mb-3 ${
+                      theme.light ? "text-white" : "text-slate-900"
+                    }`}
+                  >
+                    {title}
+                  </h3>
+                  <p
+                    className={`relative font-normal leading-relaxed ${
+                      theme.light ? "text-white/85" : "text-slate-700"
+                    }`}
+                  >
+                    {text}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <p className="mt-10 text-lg md:text-xl text-slate-900 font-medium max-w-2xl">
+            {METHOD_CLOSER}
+          </p>
+        </div>
+      </section>
+
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
           Built section by section with Josh:
            1. Get attention        → Hero above (headline + subhead)
            2. ✅ built above
-           3. Provide the solution → the Ground-Up Method (belief → rebuild → capacity)
+           3. ✅ built above
            4. Credentials          → Meet Narine: her own rebuild story, ATG cert,
               55+ out of pain, 5.0 on Google
            5. Show the benefits    → life back: hike, dance, sleep, no Advil,
