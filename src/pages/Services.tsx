@@ -181,6 +181,7 @@ export default function Services() {
           <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-center gap-3 text-center text-slate-500">
             <p>
               Pricing depends on your program and how much support you need.
+              <br />
               That's covered on the free consult.
             </p>
             <span className="hidden sm:inline text-slate-300">·</span>
