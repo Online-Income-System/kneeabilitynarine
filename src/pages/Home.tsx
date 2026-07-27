@@ -305,7 +305,7 @@ export default function Home() {
       <section className="bg-white py-24 md:py-32 px-6 md:px-12">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <motion.div
-            className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-green-brand/10 bg-gradient-to-br from-green-brand to-green-brand-dark"
+            className="relative w-full aspect-[46/75] max-w-sm mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-green-brand/10 bg-gradient-to-br from-green-brand to-green-brand-dark"
             initial={{ opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-80px" }}
