@@ -320,6 +320,17 @@ const WARNING_BODY: string[] = [
 const WARNING_CLOSER =
   "It's not too late to start. But every week you wait is a week you don't get back.";
 
+/* ─── STEP 12 · CLOSE WITH A REMINDER (P.S.) ───────────────────────────────
+   Restates the offer + real capacity in one short, skimmable block for
+   anyone who jumped straight to the bottom. Them-centric, no new claims —
+   just a compact echo of what's already been said, plus a final CTA. */
+const PS_BODY: string[] = [
+  "If you skimmed straight to the bottom: it starts with one free consult, no pressure, no obligation.",
+  "In-person spots are limited to a couple at a time, and online fills up too. Follow the program, and you'll get stronger, more mobile, and pain free.",
+  "Hike again. Dance again. Sleep through the night again. That's what's actually possible from here.",
+];
+const PS_CTA_LABEL = "Book Your Free Consult";
+
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState<{ name: string; url: string } | null>(null);
 
@@ -955,20 +966,38 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* STEP 12 · Close with a reminder — a short P.S. block before the footer */}
+      <motion.section
+        className="bg-white py-20 md:py-28 px-6 md:px-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="max-w-2xl mx-auto border-l-4 border-green-brand pl-7 md:pl-9">
+          <p className="font-serif italic text-xl md:text-2xl text-slate-900 leading-relaxed mb-3">
+            P.S.
+          </p>
+          <div className="space-y-4 text-base md:text-lg text-slate-700 leading-relaxed mb-8">
+            {PS_BODY.map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          </div>
+          <Link
+            to="/contact"
+            className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-green-brand text-white text-base font-medium hover:bg-green-brand-dark transition-all hover:scale-105 shadow-lg shadow-green-brand/20"
+          >
+            {PS_CTA_LABEL}
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </motion.section>
+
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
-          Built section by section with Josh:
-           1. Get attention        → Hero above (headline + subhead)
-           2. ✅ built above
-           3. ✅ built above
-           4. ✅ built above
-           5. ✅ built above
-           6. ✅ built above
-           7. ✅ built above
-           8. ✅ built above
-           9. ✅ built above
-          10. ✅ built above
-          11. ✅ built above
-          12. Close with reminder  → P.S. block restating offer + capacity */}
+          All 12 steps built section by section with Josh, v1 complete:
+          1. Hero  2. Problem  3. Ground-Up Method  4. Meet Narine
+          5. Benefits  6. Video testimonials  7. The offer  8. Scarcity
+          9. Guarantee  10. CTA  11. Warning  12. P.S. close (above). */}
     </div>
   );
 }
