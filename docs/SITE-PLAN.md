@@ -2,7 +2,7 @@
 
 Client: Narine Ashnalikyan · Knee Ability Narine · kneeabilitynarine.com
 Engagement: 90-day done-for-you build (contract signed July 2, 2026)
-Status: **Infrastructure laid — nothing built yet.** Working step-by-step with Joshua.
+Status: **Homepage v1 complete.** All 12 sections of the sales-letter template are built and screenshot-confirmed with Joshua, committed and pushed to `origin/dev` as a backup. Nothing has been pushed to `origin/main`/deployed to Netlify yet — that only happens on Joshua's explicit "deploy."
 
 ## 1. Context
 
@@ -28,7 +28,22 @@ Single strong homepage + minimal supporting pages, blog/article engine added in 
 4. Articles hub — later, powers the content engine (Phase 4)
 5. `robots.txt`, `sitemap.xml`, 404 — pre-launch
 
-Homepage structure (2026-07-23): **Joshua's 12-Step Sales Letter Template** — 1 get attention (hero) → 2 identify the problem → 3 provide the solution (Ground-Up Method) → 4 credentials (Meet Narine) → 5 benefits → 6 social proof (reviews + video testimonials; carousel also sits under the hero as an early trust strip) → 7 the offer (free consult) → 8 real scarcity (capacity) → 9 her verbatim guarantee → 10 CTA (text me) → 11 warning (cost of waiting) → 12 P.S. close. Full map lives as comments in `src/pages/Home.tsx`.
+Homepage structure: **Joshua's 12-Step Sales Letter Template — all 12 built (2026-07-27):**
+
+1. ✅ Hero — headline/subhead (hike again, dance again, sleep through the night again), real logo, Contact CTA
+2. ✅ Identify the problem — problem-agitate, them-centric
+3. ✅ Provide the solution — the Ground-Up Method, 3-step card grid + standalone "never push through pain" callout
+4. ✅ Present credentials — Meet Narine, real full-body photo from Drive (re-cropped after an early knee-crop miss)
+5. ✅ Show the benefits — future-state payoff cards, pulled from real client outcomes in `reviews.ts`
+6. ✅ Social proof — 8 real video testimonials (names + outcome lines sourced from her Drive "Testimonials & reviews links.docx"), played inline via a modal using Instagram's embed frame (not a redirect — see open decisions)
+7. ✅ Make the offer — free consult → body assessment → personalised plan, no prices (hers are in flux)
+8. ✅ Inject scarcity — real capacity only (2-3 in-person spots, capped online), no fake countdowns
+9. ✅ The guarantee — her verbatim promise reframed them-centric; **flagged by Joshua as unconfirmed, pending her review**
+10. ✅ Call to action — direct ask + Google rating glance
+11. ✅ Warning — cost of waiting, grounded in her own stated mechanism, rewritten once for tone (cut AI-sounding phrasing, "quiet," em-dashes)
+12. ✅ P.S. close — restates offer + capacity, echoes the hero's cadence, final CTA
+
+Full section code lives in `src/pages/Home.tsx`. `/about`, `/services`, `/contact` are still placeholder pages (Phase 7 below).
 
 ## 4. Reviews infrastructure (Google + Yelp)
 
@@ -65,18 +80,21 @@ Homepage structure (2026-07-23): **Joshua's 12-Step Sales Letter Template** — 
 ## 7. Build phases (step-by-step, together)
 
 1. ✅ Infrastructure: repo scaffold on the Mason-site stack, GitHub repo live, Netlify connected, reviews data, this plan
-1b. ✅ Homepage hero + navbar + dual review carousel + footer, real KA logo
-1c. ✅ Section 2 (problem-agitate) + Section 3 (Ground-Up Method + "never push through pain" callout) + Section 4 (Meet Narine, real photo from Drive) — all on `dev`, batched for next deploy
-2. Get Master folder access → full content inventory → build Brand Wiki
-3. Push repo to GitHub, connect Netlify (deploy previews on a netlify.app subdomain — Squarespace stays live until cutover)
-4. Design system: css variables (her palette), type scale, buttons, section shells
-5. Populate reviews.json from live Google + Yelp; build badges + carousel
-6. Section-by-section build with copy (hero first), Joshua approves each
-7. Supporting pages, schema, sitemap; GHL booking/form embeds
-8. QA (mobile, speed, SEO audit) → DNS cutover from Squarespace → launch email campaign
+2. ✅ Homepage hero + navbar + dual review carousel + footer, real KA logo
+3. ✅ Homepage sections 2–12, all built and confirmed section-by-section (see structure above) — currently on `dev` only, not deployed
+4. Get Master folder access → full content inventory → build Brand Wiki (still open; local Master folder access was never granted)
+5. Supporting pages: `/about`, `/services`, `/contact` — currently placeholders, need real content
+6. Schema, sitemap, robots.txt, GHL booking/form embeds
+7. QA (mobile, speed, SEO audit) → DNS cutover from Squarespace → launch email campaign → **first deploy to `main` happens on Joshua's explicit go-ahead**
 
 ## 8. Open decisions
 
+- **Her guarantee (Section 9):** built from her verbatim VSL line, but Joshua flagged he's not certain this is the guarantee she currently wants live — needs her direct confirmation before deploy.
+- **Video testimonial hosting (Section 6):** the 7 raw client video files in Drive (36–178MB each) exceed the Google Drive MCP tool's 10MB download cap, and there's no local copy in Joshua's connected Narine folder either. Currently using an in-page modal that plays the video via Instagram's public embed frame (no redirect off-site) — reliable but dependent on Instagram staying up and not blocked by browser tracking protection. Native self-hosting is the more bulletproof option if Joshua can get the files to this session (drag into chat or drop in the connected folder) for compression + hosting.
+- Narine's real phone number — needed to reintroduce a text/SMS CTA (currently all CTAs route to `/contact`).
+- Yelp's overall star rating + review count — currently only Google's (5.0, 20 reviews) shows a number; Yelp badge has no count yet.
+- Google Reviews canonical link — the one saved in her testimonial-links doc is a device-specific search results URL, not a stable public link; need her actual Google Business Profile review link.
+- Font pairing (currently Source Serif 4 / Manrope) — still an open decision delegated to Joshua.
 - Light vs. dark treatment of her green/white brand
 - www vs. apex as canonical (netlify.toml currently forces www — flip if she prefers apex)
 - Whether v1 ships `/about` + `/reviews` or homepage-only
