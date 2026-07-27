@@ -20,9 +20,11 @@ import {
   ClipboardCheck,
   Sparkles,
   Globe,
+  Star,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reviews from "../components/Reviews";
+import { GOOGLE } from "../data/reviews";
 
 /* ─────────────────────────────────────────────────────────────────────────
    HERO COPY — her VSL promise, verbatim. Variants live in the build notes.
@@ -290,6 +292,16 @@ const GUARANTEE_SUBHEAD =
   "No matter how long you've been in pain or how much you've already tried.";
 const GUARANTEE_FINE_PRINT =
   "The same standard she holds herself to with every client, in-person or online.";
+
+/* ─── STEP 10 · CALL TO ACTION ─────────────────────────────────────────────
+   The direct ask, after every trust element is stacked up. No more
+   explaining — just the invitation and one more proof glance. Routes to
+   /contact (no SMS link yet — her real number is still an open item). */
+const CTA_HEADLINE = "Your knee doesn't have to feel like this forever.";
+const CTA_HEADLINE_ACCENT = "Let's find out what's actually possible."; // italic green
+const CTA_SUBHEAD =
+  "One free consult. No pressure, no obligation — just a real conversation about what's next.";
+const CTA_BUTTON_LABEL = "Book Your Free Consult";
 
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState<{ name: string; url: string } | null>(null);
@@ -862,6 +874,43 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* STEP 10 · Call to action — the direct ask */}
+      <motion.section
+        className="bg-white py-24 md:py-32 px-6 md:px-12 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-serif leading-tight text-slate-900 mb-6">
+            {CTA_HEADLINE}{" "}
+            <span className="italic text-green-brand">{CTA_HEADLINE_ACCENT}</span>
+          </h2>
+          <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-10">
+            {CTA_SUBHEAD}
+          </p>
+          <Link
+            to="/contact"
+            className="group inline-flex items-center justify-center gap-2 px-9 py-4.5 rounded-full bg-green-brand text-white text-lg font-medium hover:bg-green-brand-dark transition-all hover:scale-105 shadow-xl shadow-green-brand/25"
+          >
+            {CTA_BUTTON_LABEL}
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+
+          <div className="mt-8 flex items-center justify-center gap-2 text-slate-600 text-sm">
+            <div className="flex" aria-hidden="true">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="w-4 h-4 text-star-gold" fill="currentColor" strokeWidth={0} />
+              ))}
+            </div>
+            <span>
+              {GOOGLE.rating.toFixed(1)} stars · {GOOGLE.reviewCount} Google reviews
+            </span>
+          </div>
+        </div>
+      </motion.section>
+
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
           Built section by section with Josh:
            1. Get attention        → Hero above (headline + subhead)
@@ -873,7 +922,7 @@ export default function Home() {
            7. ✅ built above
            8. ✅ built above
            9. ✅ built above
-          10. Call to action       → text me / book the free consult
+          10. ✅ built above
           11. Warning              → cost of waiting: "What if this is just my
               life now?"
           12. Close with reminder  → P.S. block restating offer + capacity */}
