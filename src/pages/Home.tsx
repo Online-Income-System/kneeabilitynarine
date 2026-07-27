@@ -16,6 +16,9 @@ import {
   Play,
   Instagram,
   X,
+  Calendar,
+  ClipboardCheck,
+  Sparkles,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reviews from "../components/Reviews";
@@ -216,6 +219,37 @@ const PROOF_CARD_THEMES = [
   "linear-gradient(135deg, #2fbf94 0%, #16a07c 100%)",
   "linear-gradient(135deg, #0e7a5e 0%, #16324f 100%)",
 ];
+
+/* ─── STEP 7 · MAKE THE OFFER (free consult) ──────────────────────────────
+   Sourced from wiki/offers/offer-architecture.md — the confirmed entry
+   funnel (free consult → body assessment → personalised plan). No prices
+   here: her packages vary and are due to change, so the offer step stays
+   about what happens, not dollar figures. */
+const OFFER_KICKER = "How it starts";
+const OFFER_HEADLINE = "It starts with one free consult.";
+const OFFER_HEADLINE_ACCENT = "No pressure, no obligation."; // italic green
+const OFFER_SUBHEAD =
+  "You don't need a diagnosis or a plan before you reach out. You just need to be done guessing.";
+const OFFER_STEPS: { Icon: typeof Calendar; title: string; text: string }[] = [
+  {
+    Icon: Calendar,
+    title: "A free consult",
+    text: "A real conversation about what's going on with your knee and what's actually possible from here.",
+  },
+  {
+    Icon: ClipboardCheck,
+    title: "A full body assessment",
+    text: "Where your imbalances are, what's really driving the pain, and what your plan needs to include.",
+  },
+  {
+    Icon: Sparkles,
+    title: "A plan built around you",
+    text: "1:1 training, mobility work, and nutrition guidance — plus weekly check-ins and text support between sessions.",
+  },
+];
+const OFFER_CLOSER =
+  "Most people feel a difference by the end of the very first session.";
+const OFFER_CTA_LABEL = "Book Your Free Consult";
 
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState<{ name: string; url: string } | null>(null);
@@ -629,6 +663,70 @@ export default function Home() {
         </AnimatePresence>
       </section>
 
+      {/* STEP 7 · Make the offer — free consult, them-centric, no prices */}
+      <motion.section
+        className="relative bg-slate-50 border-y border-slate-100 py-24 md:py-32 px-6 md:px-12 overflow-hidden"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(50%_50%_at_50%_100%,rgba(22,160,124,0.07)_0%,transparent_70%)]" />
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-2xl mb-16">
+            <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+              {OFFER_KICKER}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900 mb-6">
+              {OFFER_HEADLINE}{" "}
+              <span className="italic text-green-brand">{OFFER_HEADLINE_ACCENT}</span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-700 font-normal leading-relaxed">
+              {OFFER_SUBHEAD}
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-6 mb-12">
+            {OFFER_STEPS.map(({ Icon, title, text }, i) => (
+              <motion.div
+                key={title}
+                className="relative rounded-2xl bg-white p-8 shadow-md"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+              >
+                <span className="absolute top-5 right-6 text-4xl font-serif font-semibold text-green-brand/20 select-none">
+                  {i + 1}
+                </span>
+                <div className="w-12 h-12 rounded-xl bg-green-brand-50 flex items-center justify-center mb-5">
+                  <Icon className="w-6 h-6 text-green-brand" strokeWidth={1.75} />
+                </div>
+                <h3 className="text-xl font-serif text-slate-900 mb-3">{title}</h3>
+                <p className="text-slate-700 leading-relaxed">{text}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+          >
+            <Link
+              to="/contact"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-green-brand text-white text-lg font-medium hover:bg-green-brand-dark transition-all hover:scale-105 shadow-xl shadow-green-brand/20"
+            >
+              {OFFER_CTA_LABEL}
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <p className="text-slate-700 font-medium max-w-sm">{OFFER_CLOSER}</p>
+          </motion.div>
+        </div>
+      </motion.section>
+
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
           Built section by section with Josh:
            1. Get attention        → Hero above (headline + subhead)
@@ -637,8 +735,7 @@ export default function Home() {
            4. ✅ built above
            5. ✅ built above
            6. ✅ built above
-           7. Make the offer       → free consult (sometimes complimentary first
-              session with felt relief — Isabella's review)
+           7. ✅ built above
            8. Inject scarcity      → REAL capacity: ~2-3 in-person spots,
               online capped; prices rise at capacity
            9. Guarantee            → her verbatim: "if you follow my program, you
