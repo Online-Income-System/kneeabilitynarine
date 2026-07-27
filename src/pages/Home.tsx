@@ -47,8 +47,8 @@ const PROBLEM_BODY: string[] = [
   "It starts before you're even out of bed. You scan your body to check what hurts today and calculate what you can get away with. Stairs get planned around. Hikes get declined. Sleep gets interrupted. Somewhere along the way, you stopped trusting your own body.",
   "So you did the responsible things. You rested it. You finished physical therapy and got handed back \u201cbasic function.\u201d You tried the creams, the cortisone, maybe even the surgery. Each one promised relief and delivered a countdown to the next flare-up. That is not healing. That is an injury loop.",
 ];
-const PROBLEM_QUIET_QUESTION =
-  "And on the bad days, the quiet question shows up: what if this is just life now?";
+const PROBLEM_HARD_QUESTION =
+  "And on the bad days, one question keeps coming back: what if this is just life now?";
 const PROBLEM_CLOSER =
   "It isn't. Your knee was never doomed. It was underprepared, and underprepared is fixable.";
 
@@ -123,7 +123,7 @@ const BENEFITS_KICKER = "What changes";
 const BENEFITS_HEADLINE = "This is what your life looks like";
 const BENEFITS_HEADLINE_ACCENT = "on the other side."; // italic green
 const BENEFITS_SUBHEAD =
-  "Not just less pain. The parts of your life you quietly stopped planning around, back on the calendar.";
+  "Not just less pain. The parts of your life you stopped planning around, back on the calendar.";
 const BENEFITS: { Icon: typeof Mountain; title: string; text: string }[] = [
   {
     Icon: Mountain,
@@ -148,7 +148,7 @@ const BENEFITS: { Icon: typeof Mountain; title: string; text: string }[] = [
   {
     Icon: Dumbbell,
     title: "Get back to the sport you love",
-    text: "Dancing, golf, martial arts, wrestling — whatever you had to quietly give up.",
+    text: "Dancing, golf, martial arts, wrestling — whatever you had to give up.",
   },
   {
     Icon: ShieldCheck,
@@ -305,20 +305,20 @@ const CTA_SUBHEAD =
 const CTA_BUTTON_LABEL = "Book Your Free Consult";
 
 /* ─── STEP 11 · WARNING (cost of waiting) ─────────────────────────────────
-   Answers the quiet question opened in Step 2 ("what if this is just life
-   now?"). Grounded in her own stated mechanism (ground-up-method.md: weak
-   capacity below the knee means load keeps landing somewhere it was never
-   built to land) — not invented fear, the same physiological logic already
-   used in Step 3. No red/alarm styling per her brand rules; the icon and
-   palette stay in her established slate/green range. */
-const WARNING_KICKER = "Worth saying plainly";
+   Grounded in her own stated mechanism (ground-up-method.md: weak capacity
+   below the knee means load keeps landing somewhere it was never built to
+   land) — not invented fear, the same physiological logic already used in
+   Step 3. No red/alarm styling per her brand rules; the icon and palette
+   stay in her established slate/green range. No kicker label on this one —
+   Josh's call. */
 const WARNING_HEADLINE = "Waiting doesn't make this easier.";
-const WARNING_HEADLINE_ACCENT = "It makes it more familiar."; // italic green
+const WARNING_HEADLINE_ACCENT = "It just makes it harder to undo."; // italic green
 const WARNING_BODY: string[] = [
-  "Every week without a plan is a week your body keeps compensating the same way it already has. The muscles that never got strong stay weak, and the load keeps landing somewhere your knee was never built to carry it.",
-  "That quiet question from earlier — what if this is just life now — doesn't answer itself. It gets answered by what you do next: something, or nothing.",
+  "The muscles that never got strong stay weak. The load keeps landing on a knee that was never built to carry it. Nothing about that changes on its own. It just keeps happening, week after week.",
+  "The longer that pattern runs, the more work it takes to unwind it.",
 ];
-const WARNING_CLOSER = "It's never too late to start. It just doesn't get easier by waiting.";
+const WARNING_CLOSER =
+  "It's not too late to start. But every week you wait is a week you don't get back.";
 
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState<{ name: string; url: string } | null>(null);
@@ -412,7 +412,7 @@ export default function Home() {
             {PROBLEM_BODY.map((para, i) => (
               <p key={i}>{para}</p>
             ))}
-            <p className="font-serif italic text-slate-900">{PROBLEM_QUIET_QUESTION}</p>
+            <p className="font-serif italic text-slate-900">{PROBLEM_HARD_QUESTION}</p>
             <p className="text-slate-900 font-medium">{PROBLEM_CLOSER}</p>
           </div>
         </div>
@@ -928,7 +928,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* STEP 11 · Warning — the cost of waiting, answers Step 2's quiet question */}
+      {/* STEP 11 · Warning — the cost of waiting */}
       <motion.section
         className="bg-slate-50 border-y border-slate-100 py-24 md:py-32 px-6 md:px-12"
         initial={{ opacity: 0, y: 20 }}
@@ -940,9 +940,6 @@ export default function Home() {
           <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-8">
             <AlertTriangle className="w-6 h-6 text-slate-700" strokeWidth={1.75} />
           </div>
-          <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
-            {WARNING_KICKER}
-          </p>
           <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900 mb-8">
             {WARNING_HEADLINE}{" "}
             <span className="italic text-green-brand">{WARNING_HEADLINE_ACCENT}</span>
