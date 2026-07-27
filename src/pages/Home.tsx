@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
-import { ArrowRight, Brain, Crosshair, TrendingUp } from "lucide-react";
+import { ArrowRight, Brain, Crosshair, TrendingUp, Award, Users, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reviews from "../components/Reviews";
 
@@ -73,6 +73,24 @@ const METHOD_CARD_THEMES: { bg: string; light: boolean }[] = [
 const METHOD_RULE = "You never push through pain.";
 const METHOD_RULE_SUB = "Not on day one. Not on day ninety. No exceptions.";
 const METHOD_CLOSER = "It's never too late to start.";
+
+/* ─── STEP 4 · PRESENT CREDENTIALS (Meet Narine) ──────────────────────────
+   Sources: wiki/identity/founder-profile.md + origin-story.md. Third person
+   here (bio section, not benefit copy) — mirrors Mason's "Meet Mason" block.
+   Photo: P1955242 from the "Pics for website" Drive folder, cropped 4:5. */
+const MEET_KICKER = "Meet Narine";
+const MEET_HEADLINE = "She's been exactly where you are.";
+const MEET_HEADLINE_ACCENT = "And she got out."; // italic green
+const MEET_BODY: string[] = [
+  "Before any of this, Narine spent a year in chronic knee pain that chiropractors, creams, and rest couldn't fix. She lost her job in the same stretch. Some mornings the only question was how bad today would be.",
+  "The turning point was the same insight this method is built on: her body wasn't broken, it was underprepared. She rebuilt it from the ground up and got back to Judo and Muay Thai, pain free, at 31. She's been running that same rebuild for her clients ever since.",
+];
+const MEET_PHOTO = "/narine-meet-photo.jpg";
+const MEET_STATS: { Icon: typeof Award; label: string }[] = [
+  { Icon: Award, label: "ATG Certified Coach" },
+  { Icon: Users, label: "55+ people out of pain" },
+  { Icon: MapPin, label: "Burbank, CA & online" },
+];
 
 export default function Home() {
   return (
@@ -283,13 +301,74 @@ export default function Home() {
         </div>
       </section>
 
+      {/* STEP 4 · Present credentials — Meet Narine */}
+      <section className="bg-white py-24 md:py-32 px-6 md:px-12">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <motion.div
+            className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-green-brand/10 bg-gradient-to-br from-green-brand to-green-brand-dark"
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <span className="absolute inset-0 flex items-center justify-center text-white/25 font-serif text-7xl select-none">
+              KA
+            </span>
+            <img
+              src={MEET_PHOTO}
+              alt="Narine, founder of Knee Ability Narine, at her Burbank gym"
+              className="absolute inset-0 w-full h-full object-cover"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).style.display = "none";
+              }}
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          >
+            <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+              {MEET_KICKER}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900 mb-8">
+              {MEET_HEADLINE}{" "}
+              <span className="italic text-green-brand">{MEET_HEADLINE_ACCENT}</span>
+            </h2>
+            <div className="space-y-5 text-lg text-slate-700 font-normal leading-relaxed">
+              {MEET_BODY.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+              {MEET_STATS.map(({ Icon, label }) => (
+                <div key={label} className="flex items-center gap-2 text-slate-700">
+                  <Icon className="w-5 h-5 text-green-brand" strokeWidth={1.75} />
+                  <span className="text-sm font-medium">{label}</span>
+                </div>
+              ))}
+            </div>
+
+            <Link
+              to="/about"
+              className="group mt-8 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-green-brand text-white text-base font-medium hover:bg-green-brand-dark transition-all hover:scale-105 shadow-lg shadow-green-brand/20"
+            >
+              Read her full story
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
           Built section by section with Josh:
            1. Get attention        → Hero above (headline + subhead)
            2. ✅ built above
            3. ✅ built above
-           4. Credentials          → Meet Narine: her own rebuild story, ATG cert,
-              55+ out of pain, 5.0 on Google
+           4. ✅ built above
            5. Show the benefits    → life back: hike, dance, sleep, no Advil,
               play with your kids without scanning your body first
            6. Social proof         → review wall + video testimonials (carousel

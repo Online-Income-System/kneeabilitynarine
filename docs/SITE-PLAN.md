@@ -65,7 +65,8 @@ Homepage structure (2026-07-23): **Joshua's 12-Step Sales Letter Template** — 
 ## 7. Build phases (step-by-step, together)
 
 1. ✅ Infrastructure: repo scaffold on the Mason-site stack, GitHub repo live, Netlify connected, reviews data, this plan
-1b. ✅ Homepage hero + navbar + dual review carousel + footer (v2, committed; deploy batched)
+1b. ✅ Homepage hero + navbar + dual review carousel + footer, real KA logo
+1c. ✅ Section 2 (problem-agitate) + Section 3 (Ground-Up Method + "never push through pain" callout) + Section 4 (Meet Narine, real photo from Drive) — all on `dev`, batched for next deploy
 2. Get Master folder access → full content inventory → build Brand Wiki
 3. Push repo to GitHub, connect Netlify (deploy previews on a netlify.app subdomain — Squarespace stays live until cutover)
 4. Design system: css variables (her palette), type scale, buttons, section shells
