@@ -21,6 +21,7 @@ import {
   Sparkles,
   Globe,
   Star,
+  AlertTriangle,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reviews from "../components/Reviews";
@@ -302,6 +303,22 @@ const CTA_HEADLINE_ACCENT = "Let's find out what's actually possible."; // itali
 const CTA_SUBHEAD =
   "One free consult. No pressure, no obligation. Just a real conversation about what's next.";
 const CTA_BUTTON_LABEL = "Book Your Free Consult";
+
+/* ─── STEP 11 · WARNING (cost of waiting) ─────────────────────────────────
+   Answers the quiet question opened in Step 2 ("what if this is just life
+   now?"). Grounded in her own stated mechanism (ground-up-method.md: weak
+   capacity below the knee means load keeps landing somewhere it was never
+   built to land) — not invented fear, the same physiological logic already
+   used in Step 3. No red/alarm styling per her brand rules; the icon and
+   palette stay in her established slate/green range. */
+const WARNING_KICKER = "Worth saying plainly";
+const WARNING_HEADLINE = "Waiting doesn't make this easier.";
+const WARNING_HEADLINE_ACCENT = "It makes it more familiar."; // italic green
+const WARNING_BODY: string[] = [
+  "Every week without a plan is a week your body keeps compensating the same way it already has. The muscles that never got strong stay weak, and the load keeps landing somewhere your knee was never built to carry it.",
+  "That quiet question from earlier — what if this is just life now — doesn't answer itself. It gets answered by what you do next: something, or nothing.",
+];
+const WARNING_CLOSER = "It's never too late to start. It just doesn't get easier by waiting.";
 
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState<{ name: string; url: string } | null>(null);
@@ -911,6 +928,36 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* STEP 11 · Warning — the cost of waiting, answers Step 2's quiet question */}
+      <motion.section
+        className="bg-slate-50 border-y border-slate-100 py-24 md:py-32 px-6 md:px-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="max-w-3xl mx-auto">
+          <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-8">
+            <AlertTriangle className="w-6 h-6 text-slate-700" strokeWidth={1.75} />
+          </div>
+          <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+            {WARNING_KICKER}
+          </p>
+          <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900 mb-8">
+            {WARNING_HEADLINE}{" "}
+            <span className="italic text-green-brand">{WARNING_HEADLINE_ACCENT}</span>
+          </h2>
+          <div className="space-y-6 text-lg md:text-xl text-slate-700 font-normal leading-relaxed mb-8">
+            {WARNING_BODY.map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          </div>
+          <p className="text-xl md:text-2xl font-serif text-slate-900 leading-snug">
+            {WARNING_CLOSER}
+          </p>
+        </div>
+      </motion.section>
+
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
           Built section by section with Josh:
            1. Get attention        → Hero above (headline + subhead)
@@ -923,8 +970,7 @@ export default function Home() {
            8. ✅ built above
            9. ✅ built above
           10. ✅ built above
-          11. Warning              → cost of waiting: "What if this is just my
-              life now?"
+          11. ✅ built above
           12. Close with reminder  → P.S. block restating offer + capacity */}
     </div>
   );
