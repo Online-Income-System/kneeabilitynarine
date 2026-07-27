@@ -14,6 +14,21 @@ const HERO_SUBHEADLINE =
   "Hike again. Dance again. Sleep through the night again. No matter how long you've been in pain or how much you've already tried.";
 const HERO_CTA_LABEL = "Contact";
 
+/* ─── STEP 2 · IDENTIFY THE PROBLEM (problem-agitate) ────────────────────
+   Sources: clients' verbatim pain language + her origin story mirrors.
+   Zero I/me/my. Sets up the mechanism reveal in Step 3. */
+const PROBLEM_KICKER = "Sound familiar?";
+const PROBLEM_HEADLINE = "The pain isn't just in your knee.";
+const PROBLEM_HEADLINE_ACCENT = "It's running your whole day."; // italic green
+const PROBLEM_BODY: string[] = [
+  "It starts before you're even out of bed. You scan your body to check what hurts today and calculate what you can get away with. Stairs get planned around. Hikes get declined. Sleep gets interrupted. Somewhere along the way, you stopped trusting your own body.",
+  "So you did the responsible things. You rested it. You finished physical therapy and got handed back \u201cbasic function.\u201d You tried the creams, the cortisone, maybe even the surgery. Each one promised relief and delivered a countdown to the next flare-up. That is not healing. That is an injury loop.",
+];
+const PROBLEM_QUIET_QUESTION =
+  "And on the bad days, the quiet question shows up: what if this is just life now?";
+const PROBLEM_CLOSER =
+  "It isn't. Your knee was never doomed. It was underprepared, and underprepared is fixable.";
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
@@ -84,11 +99,36 @@ export default function Home() {
       {/* Credibility strip — auto-scrolling Google + Yelp review banner */}
       <Reviews />
 
+      {/* STEP 2 · Identify the problem — problem-agitate */}
+      <motion.section
+        className="bg-slate-50 border-y border-slate-100 py-24 md:py-32 px-6 md:px-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="max-w-3xl mx-auto">
+          <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+            {PROBLEM_KICKER}
+          </p>
+          <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900 mb-8">
+            {PROBLEM_HEADLINE}{" "}
+            <span className="italic text-green-brand">{PROBLEM_HEADLINE_ACCENT}</span>
+          </h2>
+          <div className="space-y-6 text-lg md:text-xl text-slate-700 font-normal leading-relaxed">
+            {PROBLEM_BODY.map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+            <p className="font-serif italic text-slate-900">{PROBLEM_QUIET_QUESTION}</p>
+            <p className="text-slate-900 font-medium">{PROBLEM_CLOSER}</p>
+          </div>
+        </div>
+      </motion.section>
+
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
           Built section by section with Josh:
            1. Get attention        → Hero above (headline + subhead)
-           2. Identify the problem → problem-agitate: body-scanning before bed,
-              the injury loop, "temporary pain relief trials"
+           2. ✅ built above
            3. Provide the solution → the Ground-Up Method (belief → rebuild → capacity)
            4. Credentials          → Meet Narine: her own rebuild story, ATG cert,
               55+ out of pain, 5.0 on Google
