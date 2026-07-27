@@ -19,6 +19,7 @@ import {
   Calendar,
   ClipboardCheck,
   Sparkles,
+  Globe,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reviews from "../components/Reviews";
@@ -250,6 +251,31 @@ const OFFER_STEPS: { Icon: typeof Calendar; title: string; text: string }[] = [
 const OFFER_CLOSER =
   "Most people feel a difference by the end of the very first session.";
 const OFFER_CTA_LABEL = "Book Your Free Consult";
+
+/* ─── STEP 8 · INJECT SCARCITY (real capacity, not a countdown) ───────────
+   Sourced from wiki/offers/offer-architecture.md: in-person capacity is
+   +2-3 spots, online +5-10; her stated pricing philosophy is to raise
+   prices once a tier hits capacity. Deliberately no invented numbers or
+   fake timers — the constraint is 1:1 attention itself. */
+const SCARCITY_KICKER = "Why now";
+const SCARCITY_HEADLINE = "1:1 attention doesn't scale.";
+const SCARCITY_HEADLINE_ACCENT = "That's on purpose."; // italic green
+const SCARCITY_SUBHEAD =
+  "Every plan is built around one person at a time, which means there's a real limit to how many people can be on it.";
+const SCARCITY_ITEMS: { Icon: typeof MapPin; title: string; text: string }[] = [
+  {
+    Icon: MapPin,
+    title: "In-person, Burbank",
+    text: "Only a couple of new spots open at a time. When they're full, they're full until someone completes their program.",
+  },
+  {
+    Icon: Globe,
+    title: "Online, anywhere",
+    text: "More room here, but it's still capped — not an open enrollment.",
+  },
+];
+const SCARCITY_CLOSER =
+  "When a tier fills up, the price for the next person goes up. Reaching out now costs less than waiting until it does.";
 
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState<{ name: string; url: string } | null>(null);
@@ -727,6 +753,53 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* STEP 8 · Inject scarcity — real capacity, not a fake countdown */}
+      <section className="bg-white py-24 md:py-32 px-6 md:px-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="max-w-2xl mb-14">
+            <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+              {SCARCITY_KICKER}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900 mb-6">
+              {SCARCITY_HEADLINE}{" "}
+              <span className="italic text-green-brand">{SCARCITY_HEADLINE_ACCENT}</span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-700 font-normal leading-relaxed">
+              {SCARCITY_SUBHEAD}
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-6 mb-10">
+            {SCARCITY_ITEMS.map(({ Icon, title, text }, i) => (
+              <motion.div
+                key={title}
+                className="rounded-2xl border-2 border-navy-brand/10 p-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
+              >
+                <div className="w-12 h-12 rounded-xl bg-navy-brand flex items-center justify-center mb-5">
+                  <Icon className="w-6 h-6 text-white" strokeWidth={1.75} />
+                </div>
+                <h3 className="text-xl font-serif text-slate-900 mb-3">{title}</h3>
+                <p className="text-slate-700 leading-relaxed">{text}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.p
+            className="text-xl md:text-2xl font-serif text-navy-brand leading-snug max-w-2xl"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.15 }}
+          >
+            {SCARCITY_CLOSER}
+          </motion.p>
+        </div>
+      </section>
+
       {/* HOMEPAGE = 12-STEP SALES LETTER (Joshua's template, 2026-07-23).
           Built section by section with Josh:
            1. Get attention        → Hero above (headline + subhead)
@@ -736,8 +809,7 @@ export default function Home() {
            5. ✅ built above
            6. ✅ built above
            7. ✅ built above
-           8. Inject scarcity      → REAL capacity: ~2-3 in-person spots,
-              online capped; prices rise at capacity
+           8. ✅ built above
            9. Guarantee            → her verbatim: "if you follow my program, you
               will become stronger, more mobile and pain free"
           10. Call to action       → text me / book the free consult
