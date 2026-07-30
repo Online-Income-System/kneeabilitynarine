@@ -23,35 +23,28 @@ import { GOOGLE } from "../data/reviews";
    along with the form itself — OPEN ITEM for Joshua from that build is now
    moot, nothing left to turn on in the Netlify dashboard for this page.
 
-   Photo gallery below: her explicit request was a fun collage/montage on
-   this page "so it's not empty," ideally group/teaching shots with other
-   people in frame. Her "Pics for website" Drive folder has 17 total photos;
-   9 of them (the real group/teaching shots with other people in frame) are
-   10-21MB, over the same 10MB download cap that blocked the testimonial
-   videos — reconfirmed this cap directly against a borderline ~10.4MB file
-   right before building this, still fails. The other 8 are all downloadable
-   and are used here (including the 2 that also appear as the featured photo
-   on Home and About, reused here to make this as full a collage as the real
-   material allows) — narine-contact-1 and narine-contact-6 (both the same
-   client) are the only two of the 8 with another person in frame; visually
-   re-verified all 8 individually to confirm this count rather than trusting
-   an earlier pass, which had mislabeled narine-contact-6 as solo. Laid out
-   as a varied-size collage (a couple of taller
-   tiles via CSS grid row-span) rather than a uniform grid, so it reads more
-   like a montage. Flagged to Joshua as a v2 upgrade if she can get
-   smaller/compressed copies of the real group photos over. */
+   Photo gallery below: per Joshua's direct instruction, this must be about
+   her clients and Narine working with them, not Narine solo — so the solo
+   shots that filled out the earlier version of this collage are gone. He
+   named 9 specific files from her "Pics for website" Drive folder that
+   show her with clients: P1965856.JPEG, P1976606.JPG, P2355455.JPG,
+   P2365990.JPG, P2366084.JPG, P2366255.JPG, P2366397.JPG, P2366632.JPG,
+   PFF01527.JPG. Only the first two (narine-contact-1 and narine-contact-6
+   below) are downloadable — the other 7 are all 14-19MB, freshly retested
+   individually against the live Drive tool right when this was built, and
+   every one still fails with the same "over limit of 10 MB" error. There is
+   no workaround available from here (no raw Drive-API access, just this
+   MCP tool). Until compressed copies of those 7 are supplied directly
+   (attaching them to the chat bypasses this cap entirely, since it's a
+   limit of the Drive download tool specifically, not of image size in
+   general), this section only has the 2 real client photos to show —
+   laid out big and deliberate rather than padded out with solo shots. */
 const CALENDLY_URL = "https://calendly.com/knee-ability-narine/30min";
 const PHONE_DISPLAY = "(818) 351-6191";
 const PHONE_SMS = "sms:8183516191";
 
-const GALLERY_PHOTOS: { src: string; tall?: boolean }[] = [
-  { src: "/narine-contact-1.jpg", tall: true },
-  { src: "/narine-contact-2.jpg" },
-  { src: "/narine-contact-3.jpg" },
-  { src: "/narine-contact-7.jpg", tall: true },
-  { src: "/narine-contact-4.jpg" },
-  { src: "/narine-contact-5.jpg" },
-  { src: "/narine-contact-8.jpg", tall: true },
+const GALLERY_PHOTOS: { src: string }[] = [
+  { src: "/narine-contact-1.jpg" },
   { src: "/narine-contact-6.jpg" },
 ];
 
@@ -244,22 +237,22 @@ export default function Contact() {
               In the gym
             </p>
             <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900">
-              A peek at what training with her looks like.
+              Narine, working with her clients.
             </h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-5 auto-rows-[140px] sm:auto-rows-[170px] md:auto-rows-[200px] [grid-auto-flow:dense]">
-            {GALLERY_PHOTOS.map(({ src, tall }, i) => (
+          <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
+            {GALLERY_PHOTOS.map(({ src }, i) => (
               <motion.div
                 key={src}
-                className={`relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 ${tall ? "row-span-2" : "row-span-1"}`}
+                className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg shadow-slate-900/5 bg-slate-100"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.05 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
               >
                 <img
                   src={src}
-                  alt="Narine training a client at her gym in Burbank, CA"
+                  alt="Narine coaching a client at her gym in Burbank, CA"
                   className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   onError={(e) => {
