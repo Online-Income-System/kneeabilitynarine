@@ -327,6 +327,12 @@ const WARNING_CLOSER =
 const PS_BODY: string[] = [
   "If you skimmed straight to the bottom: it starts with one free call, no pressure, no obligation.",
   "In-person spots are limited to a couple at a time, and online fills up too. Follow the program, and you'll get stronger, more mobile, and pain free.",
+  "Training with Narine is not only about following a cookie-cutter program. She gets real results helping people get out of pain because of what she does beyond the program she creates.",
+  "She knows when to help people scale forward and progress in training and when to have them regress.",
+  "When one injury leads to multiple other injuries, she knows how to help her clients rehab the second and third injuries. She knows how injuries work together and how all pain points must be worked on in order to fully get out of pain.",
+  "She also emphasizes honesty, transparency, and humility, because clients won't get results if they're not honest with what they're feeling.",
+  "With Narine, you're not getting a trainer who knows how to create a generic rehab program.",
+  "You're getting an experienced coach who knows how to help people actually get out of pain safely.",
   "Hike again. Dance again. Sleep through the night again. That's what's actually possible from here.",
 ];
 const PS_CTA_LABEL = "Book Your Free Call";
