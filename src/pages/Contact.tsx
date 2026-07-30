@@ -40,15 +40,19 @@ import { GOOGLE } from "../data/reviews";
    viewed before use to confirm each one genuinely shows her with a client
    or class, not just described from a filename.
 
-   Layout (updated 2026-07-30 per Joshua's explicit request for a more
-   symmetrical arrangement): on sm+ screens, the 3 portrait shots
-   (narine-contact-1, 7, 4) sit in one row across the top — 7 was
-   previously bottom-left and got moved to the middle slot per his
-   instruction. Below that, a second row runs 2 squares, the 2 wide
-   group/class shots (narine-contact-8, 9), then 2 more squares, so the
-   landscape pair is flanked evenly on both sides. Below sm, this precise
-   arrangement gets too cramped, so mobile falls back to a plain
-   2-column stack with the two landscape shots spanning both columns. */
+   Layout (updated 2026-07-30, twice, per Joshua): on sm+ screens, the 3
+   portrait shots (narine-contact-1, 7, 4) sit in one row across the top —
+   7 was previously bottom-left and got moved to the middle slot. Below
+   that, two more rows, each square-landscape-square: row two is
+   narine-contact-2, 8 (wide), 3; row three is narine-contact-5, 9 (wide),
+   6. This started as a single row of all 6 non-portrait photos, but with
+   6 photos crammed into one row the two wide group/class shots — the
+   ones with the most faces in them, and per Joshua the most impactful
+   photos in the whole set — were too small to read clearly. Splitting
+   into two rows of 3 gives every photo here noticeably more height.
+   Below sm, this precise arrangement gets too cramped, so mobile falls
+   back to a plain 2-column stack with the two landscape shots spanning
+   both columns. */
 const CALENDLY_URL = "https://calendly.com/knee-ability-narine/30min";
 const PHONE_DISPLAY = "(818) 351-6191";
 const PHONE_SMS = "sms:8183516191";
@@ -59,12 +63,22 @@ const TOP_ROW: string[] = [
   "/narine-contact-4.jpg",
 ];
 
-const MIDDLE_ROW: { src: string; wide?: boolean }[] = [
+// Each row is square-landscape-square: one of the two wide group/class
+// shots per row, flanked by a square on each side. Split into two rows
+// (2026-07-30, per Joshua) instead of cramming all 6 into one row — with
+// 6 photos across a single row the group shots (the ones with the most
+// faces in them, and the ones he singled out as the most impactful) were
+// too small to read clearly. Two rows of 3 gives every photo here roughly
+// 50% more height than the single-row version did.
+const ROW_TWO: { src: string; wide?: boolean }[] = [
   { src: "/narine-contact-2.jpg" },
-  { src: "/narine-contact-3.jpg" },
   { src: "/narine-contact-8.jpg", wide: true },
-  { src: "/narine-contact-9.jpg", wide: true },
+  { src: "/narine-contact-3.jpg" },
+];
+
+const ROW_THREE: { src: string; wide?: boolean }[] = [
   { src: "/narine-contact-5.jpg" },
+  { src: "/narine-contact-9.jpg", wide: true },
   { src: "/narine-contact-6.jpg" },
 ];
 
@@ -310,8 +324,8 @@ export default function Contact() {
                 </motion.div>
               ))}
             </div>
-            <div className="flex gap-4 md:gap-5 h-44 md:h-60">
-              {MIDDLE_ROW.map(({ src, wide }, i) => (
+            <div className="flex gap-4 md:gap-5 h-56 md:h-72">
+              {ROW_TWO.map(({ src, wide }, i) => (
                 <motion.div
                   key={src}
                   className={`relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 ${wide ? "flex-[2]" : "flex-1"}`}
@@ -319,6 +333,32 @@ export default function Contact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.5, ease: "easeOut", delay: (TOP_ROW.length + i) * 0.05 }}
+                >
+                  <img
+                    src={src}
+                    alt="Narine coaching a client at her gym in Burbank, CA"
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.currentTarget.closest("div") as HTMLElement).style.display = "none";
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+            <div className="flex gap-4 md:gap-5 h-56 md:h-72">
+              {ROW_THREE.map(({ src, wide }, i) => (
+                <motion.div
+                  key={src}
+                  className={`relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 ${wide ? "flex-[2]" : "flex-1"}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeOut",
+                    delay: (TOP_ROW.length + ROW_TWO.length + i) * 0.05,
+                  }}
                 >
                   <img
                     src={src}
