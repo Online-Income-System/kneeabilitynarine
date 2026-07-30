@@ -81,6 +81,18 @@ const EXPECT: { icon: React.ComponentType<{ className?: string; strokeWidth?: nu
 // Using the imperative API (rather than dropping a raw <script> tag in
 // JSX, which React won't execute) means this also re-initializes cleanly
 // if a visitor navigates away from /contact and back in this SPA.
+//
+// IMPORTANT: the container must NOT use the class "calendly-inline-widget".
+// That class name also makes widget.js's own auto-scan (which runs
+// independently of our imperative call) try to initialize this element by
+// reading its data-url attribute — which we deliberately don't set, since
+// we pass the url programmatically instead. That auto-scan then crashes
+// with "Cannot read properties of null (reading 'split')" in the widget's
+// minified parseOptions, which was silently breaking the live embed (found
+// via a live console/network check on kneeabilitynarine.netlify.app/contact
+// after Joshua reported the widget not loading). Renamed the container's
+// class to something Calendly's script won't recognize so only our
+// explicit initInlineWidget call runs.
 function CalendlyEmbed() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -124,7 +136,7 @@ function CalendlyEmbed() {
   return (
     <div
       ref={containerRef}
-      className="calendly-inline-widget"
+      className="narine-calendly-widget"
       style={{ minWidth: "280px", height: "700px" }}
     />
   );
