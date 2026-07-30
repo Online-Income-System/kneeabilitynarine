@@ -40,6 +40,12 @@ export default function Navbar() {
             Services
           </Link>
           <Link
+            to="/blog"
+            className="hidden sm:block text-sm font-medium text-slate-700 hover:text-green-brand transition-colors"
+          >
+            Blog
+          </Link>
+          <Link
             to="/contact"
             className="px-5 py-2.5 rounded-full bg-green-brand text-white text-sm font-medium hover:bg-green-brand-dark transition-colors"
           >
