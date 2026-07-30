@@ -38,24 +38,47 @@ import { GOOGLE } from "../data/reviews";
    P2366255.JPG, P2366397.JPG, P2366632.JPG, PFF01527.JPG, mapped in that
    order to narine-contact-1 through narine-contact-9. All 9 individually
    viewed before use to confirm each one genuinely shows her with a client
-   or class, not just described from a filename. narine-contact-9 (the
-   full-team group photo) and narine-contact-8 (a wide class shot) get the
-   "wide" 2-column treatment below since they're the group moments; a few
-   others get "tall" for rhythm in the collage. */
+   or class, not just described from a filename.
+
+   Layout (updated 2026-07-30 per Joshua's explicit request for a more
+   symmetrical arrangement): on sm+ screens, the 3 portrait shots
+   (narine-contact-1, 7, 4) sit in one row across the top — 7 was
+   previously bottom-left and got moved to the middle slot per his
+   instruction. Below that, a second row runs 2 squares, the 2 wide
+   group/class shots (narine-contact-8, 9), then 2 more squares, so the
+   landscape pair is flanked evenly on both sides. Below sm, this precise
+   arrangement gets too cramped, so mobile falls back to a plain
+   2-column stack with the two landscape shots spanning both columns. */
 const CALENDLY_URL = "https://calendly.com/knee-ability-narine/30min";
 const PHONE_DISPLAY = "(818) 351-6191";
 const PHONE_SMS = "sms:8183516191";
 
-const GALLERY_PHOTOS: { src: string; tall?: boolean; wide?: boolean }[] = [
-  { src: "/narine-contact-1.jpg", tall: true },
+const TOP_ROW: string[] = [
+  "/narine-contact-1.jpg",
+  "/narine-contact-7.jpg",
+  "/narine-contact-4.jpg",
+];
+
+const MIDDLE_ROW: { src: string; wide?: boolean }[] = [
   { src: "/narine-contact-2.jpg" },
   { src: "/narine-contact-3.jpg" },
-  { src: "/narine-contact-4.jpg", tall: true },
-  { src: "/narine-contact-5.jpg" },
-  { src: "/narine-contact-6.jpg" },
-  { src: "/narine-contact-7.jpg", tall: true },
   { src: "/narine-contact-8.jpg", wide: true },
   { src: "/narine-contact-9.jpg", wide: true },
+  { src: "/narine-contact-5.jpg" },
+  { src: "/narine-contact-6.jpg" },
+];
+
+// Same 9 photos, plain reading order, for the mobile fallback stack.
+const MOBILE_ORDER: { src: string; wide?: boolean }[] = [
+  { src: "/narine-contact-1.jpg" },
+  { src: "/narine-contact-7.jpg" },
+  { src: "/narine-contact-4.jpg" },
+  { src: "/narine-contact-2.jpg" },
+  { src: "/narine-contact-3.jpg" },
+  { src: "/narine-contact-8.jpg", wide: true },
+  { src: "/narine-contact-9.jpg", wide: true },
+  { src: "/narine-contact-5.jpg" },
+  { src: "/narine-contact-6.jpg" },
 ];
 
 const EXPECT: { icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; title: string; text: string }[] = [
@@ -262,11 +285,61 @@ export default function Contact() {
               Narine, working with her clients.
             </h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-5 auto-rows-[140px] sm:auto-rows-[170px] md:auto-rows-[200px] [grid-auto-flow:dense]">
-            {GALLERY_PHOTOS.map(({ src, tall, wide }, i) => (
+          {/* sm+: 3 portraits across the top, 2 squares flanking the 2
+              landscape shots underneath — see file-header comment. */}
+          <div className="hidden sm:block space-y-4 md:space-y-5">
+            <div className="grid grid-cols-3 gap-4 md:gap-5">
+              {TOP_ROW.map((src, i) => (
+                <motion.div
+                  key={src}
+                  className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm bg-slate-100"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.05 }}
+                >
+                  <img
+                    src={src}
+                    alt="Narine coaching a client at her gym in Burbank, CA"
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.currentTarget.closest("div") as HTMLElement).style.display = "none";
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+            <div className="flex gap-4 md:gap-5 h-44 md:h-60">
+              {MIDDLE_ROW.map(({ src, wide }, i) => (
+                <motion.div
+                  key={src}
+                  className={`relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 ${wide ? "flex-[2]" : "flex-1"}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: (TOP_ROW.length + i) * 0.05 }}
+                >
+                  <img
+                    src={src}
+                    alt="Narine coaching a client at her gym in Burbank, CA"
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.currentTarget.closest("div") as HTMLElement).style.display = "none";
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Below sm: plain 2-column stack, landscape shots span both columns */}
+          <div className="grid grid-cols-2 sm:hidden gap-4 auto-rows-[160px]">
+            {MOBILE_ORDER.map(({ src, wide }, i) => (
               <motion.div
                 key={src}
-                className={`relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 ${tall ? "row-span-2" : ""} ${wide ? "col-span-2" : ""}`}
+                className={`relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 ${wide ? "col-span-2" : ""}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
@@ -275,7 +348,7 @@ export default function Contact() {
                 <img
                   src={src}
                   alt="Narine coaching a client at her gym in Burbank, CA"
-                  className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
                   onError={(e) => {
                     (e.currentTarget.closest("div") as HTMLElement).style.display = "none";
