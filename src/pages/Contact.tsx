@@ -25,24 +25,31 @@ import { GOOGLE } from "../data/reviews";
 
    Photo gallery below: her explicit request was a fun collage/montage on
    this page "so it's not empty," ideally group/teaching shots with other
-   people in frame. Only one of the six available photos (narine-contact-1,
-   a coaching-a-client shot) actually has another person in it — the real
-   group-class photos in her Drive are all 10-21MB, over the same 10MB
-   download cap that blocked the testimonial videos. These six are all
-   that could be pulled for now; flagged to Joshua as a v2 upgrade if she
-   can get smaller/compressed group photos over. */
+   people in frame. Her "Pics for website" Drive folder has 17 total photos;
+   9 of them (the real group/teaching shots with other people in frame) are
+   10-21MB, over the same 10MB download cap that blocked the testimonial
+   videos — reconfirmed this cap directly against a borderline ~10.4MB file
+   right before building this, still fails. The other 8 are all downloadable
+   and are used here (including the 2 that also appear as the featured photo
+   on Home and About, reused here to make this as full a collage as the real
+   material allows) — narine-contact-1 is the only one of the 8 with another
+   person in frame. Laid out as a varied-size collage (a couple of taller
+   tiles via CSS grid row-span) rather than a uniform grid, so it reads more
+   like a montage. Flagged to Joshua as a v2 upgrade if she can get
+   smaller/compressed copies of the real group photos over. */
 const CALENDLY_URL = "https://calendly.com/knee-ability-narine/30min";
 const PHONE_DISPLAY = "(818) 351-6191";
 const PHONE_SMS = "sms:8183516191";
-const PHONE_TEL = "tel:+18183516191";
 
-const GALLERY_PHOTOS: string[] = [
-  "/narine-contact-1.jpg",
-  "/narine-contact-2.jpg",
-  "/narine-contact-3.jpg",
-  "/narine-contact-4.jpg",
-  "/narine-contact-5.jpg",
-  "/narine-contact-6.jpg",
+const GALLERY_PHOTOS: { src: string; tall?: boolean }[] = [
+  { src: "/narine-contact-1.jpg", tall: true },
+  { src: "/narine-contact-2.jpg" },
+  { src: "/narine-contact-3.jpg" },
+  { src: "/narine-contact-7.jpg", tall: true },
+  { src: "/narine-contact-4.jpg" },
+  { src: "/narine-contact-5.jpg" },
+  { src: "/narine-contact-8.jpg", tall: true },
+  { src: "/narine-contact-6.jpg" },
 ];
 
 const EXPECT: { icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; title: string; text: string }[] = [
@@ -186,15 +193,9 @@ export default function Contact() {
             </p>
             <a
               href={PHONE_SMS}
-              className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white text-green-brand-dark text-lg font-medium hover:bg-green-brand-50 transition-all hover:scale-[1.02] mb-4"
+              className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white text-green-brand-dark text-lg font-medium hover:bg-green-brand-50 transition-all hover:scale-[1.02]"
             >
               {PHONE_DISPLAY}
-            </a>
-            <a
-              href={PHONE_TEL}
-              className="text-sm text-white/75 hover:text-white transition-colors underline underline-offset-2"
-            >
-              Or call the same number
             </a>
           </div>
         </div>
@@ -243,11 +244,11 @@ export default function Contact() {
               A peek at what training with her looks like.
             </h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-5">
-            {GALLERY_PHOTOS.map((src, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-5 auto-rows-[140px] sm:auto-rows-[170px] md:auto-rows-[200px] [grid-auto-flow:dense]">
+            {GALLERY_PHOTOS.map(({ src, tall }, i) => (
               <motion.div
                 key={src}
-                className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm bg-slate-100"
+                className={`relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 ${tall ? "row-span-2" : "row-span-1"}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
