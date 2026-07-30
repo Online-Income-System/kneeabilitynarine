@@ -24,28 +24,38 @@ import { GOOGLE } from "../data/reviews";
    moot, nothing left to turn on in the Netlify dashboard for this page.
 
    Photo gallery below: per Joshua's direct instruction, this must be about
-   her clients and Narine working with them, not Narine solo — so the solo
-   shots that filled out the earlier version of this collage are gone. He
-   named 9 specific files from her "Pics for website" Drive folder that
-   show her with clients: P1965856.JPEG, P1976606.JPG, P2355455.JPG,
-   P2365990.JPG, P2366084.JPG, P2366255.JPG, P2366397.JPG, P2366632.JPG,
-   PFF01527.JPG. Only the first two (narine-contact-1 and narine-contact-6
-   below) are downloadable — the other 7 are all 14-19MB, freshly retested
-   individually against the live Drive tool right when this was built, and
-   every one still fails with the same "over limit of 10 MB" error. There is
-   no workaround available from here (no raw Drive-API access, just this
-   MCP tool). Until compressed copies of those 7 are supplied directly
-   (attaching them to the chat bypasses this cap entirely, since it's a
-   limit of the Drive download tool specifically, not of image size in
-   general), this section only has the 2 real client photos to show —
-   laid out big and deliberate rather than padded out with solo shots. */
+   her clients and Narine working with them, not Narine solo. He named 9
+   specific files from her "Pics for website" Drive folder showing her with
+   clients — 7 of them (P2355455, P2365990, P2366084, P2366255, P2366397,
+   P2366632, PFF01527) were all 14-19MB, over the Drive download tool's
+   10MB cap and confirmed unreachable through that tool by repeated direct
+   testing. Joshua then attached all 9 originals straight to the chat,
+   which bypasses that cap entirely since it's a limit of the Drive
+   download tool specifically, not of image size in general. Resized each
+   from its 14-19MB original down to a 1600px-max-edge, quality-82 JPEG
+   (each landed at 160-270KB) before adding here — full source list:
+   P1965856.JPEG, P1976606.JPG, P2355455.JPG, P2365990.JPG, P2366084.JPG,
+   P2366255.JPG, P2366397.JPG, P2366632.JPG, PFF01527.JPG, mapped in that
+   order to narine-contact-1 through narine-contact-9. All 9 individually
+   viewed before use to confirm each one genuinely shows her with a client
+   or class, not just described from a filename. narine-contact-9 (the
+   full-team group photo) and narine-contact-8 (a wide class shot) get the
+   "wide" 2-column treatment below since they're the group moments; a few
+   others get "tall" for rhythm in the collage. */
 const CALENDLY_URL = "https://calendly.com/knee-ability-narine/30min";
 const PHONE_DISPLAY = "(818) 351-6191";
 const PHONE_SMS = "sms:8183516191";
 
-const GALLERY_PHOTOS: { src: string }[] = [
-  { src: "/narine-contact-1.jpg" },
+const GALLERY_PHOTOS: { src: string; tall?: boolean; wide?: boolean }[] = [
+  { src: "/narine-contact-1.jpg", tall: true },
+  { src: "/narine-contact-2.jpg" },
+  { src: "/narine-contact-3.jpg" },
+  { src: "/narine-contact-4.jpg", tall: true },
+  { src: "/narine-contact-5.jpg" },
   { src: "/narine-contact-6.jpg" },
+  { src: "/narine-contact-7.jpg", tall: true },
+  { src: "/narine-contact-8.jpg", wide: true },
+  { src: "/narine-contact-9.jpg", wide: true },
 ];
 
 const EXPECT: { icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; title: string; text: string }[] = [
@@ -240,15 +250,15 @@ export default function Contact() {
               Narine, working with her clients.
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
-            {GALLERY_PHOTOS.map(({ src }, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-5 auto-rows-[140px] sm:auto-rows-[170px] md:auto-rows-[200px] [grid-auto-flow:dense]">
+            {GALLERY_PHOTOS.map(({ src, tall, wide }, i) => (
               <motion.div
                 key={src}
-                className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg shadow-slate-900/5 bg-slate-100"
+                className={`relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 ${tall ? "row-span-2" : ""} ${wide ? "col-span-2" : ""}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.05 }}
               >
                 <img
                   src={src}
