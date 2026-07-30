@@ -5,20 +5,23 @@ import { CalendarCheck, Search, ClipboardList, Send, Star } from "lucide-react";
 import { GOOGLE } from "../data/reviews";
 
 /* ─────────────────────────────────────────────────────────────────────────
-   CONTACT PAGE — the entry point for the free consult, sourced from the real
-   flow in wiki/offers/offer-architecture.md: free consult -> body assessment
+   CONTACT PAGE — the entry point for the free call, sourced from the real
+   flow in wiki/offers/offer-architecture.md: free call -> body assessment
    -> personalised 1:1 plan. No prices (hers are in flux, same call made on
    Home/Services). Zero I/me/my.
 
-   OPEN ITEM, flagged for Joshua: there is no confirmed GHL calendar/form
-   embed link or Narine's real phone number yet (both tracked in
-   docs/SITE-PLAN.md "Open decisions"). The form below is a real, working
-   local form (validates, shows a confirmation state) but does NOT send
-   anywhere yet — it needs to be wired to her GHL webhook/embed once Joshua
-   has that link. Swap the onSubmit handler for the real GHL integration
-   then. Structure/pattern cloned from Mason's Contact.tsx (hero + scheduler
-   + "what to expect" cards), scheduler swapped for a form since there's no
-   Calendly/GHL link for her yet. */
+   Form -> email: wired to Netlify Forms (native to the hosting stack, no
+   GHL/CRM needed) per Narine's request to just get an email whenever
+   someone submits. The <form> below carries data-netlify="true" plus a
+   matching hidden form-name input and honeypot field, and the built HTML
+   is prerendered (vite-react-ssg), so Netlify's build-time form scanner can
+   detect it. Submission itself is done via fetch() to "/" since this is a
+   client-rendered React form, not a native HTML POST.
+   OPEN ITEM for Joshua: turn on the email notification in the Netlify
+   dashboard (Site settings -> Forms -> Form notifications -> Email
+   notification) pointed at Narine's inbox — that last step is account
+   config, not code, and can't be done from here.
+   Calendly link/embed still pending from Narine (see docs/SITE-PLAN.md). */
 
 const EXPECT: { icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; title: string; text: string }[] = [
   {
@@ -29,36 +32,52 @@ const EXPECT: { icon: React.ComponentType<{ className?: string; strokeWidth?: nu
   {
     icon: ClipboardList,
     title: "A real assessment",
-    text: "What's actually behind the pain, not just where it shows up. That's what the plan gets built around.",
+    text: "What's actually behind the pain, beyond where it shows up. That's what the plan gets built around.",
   },
   {
     icon: CalendarCheck,
-    title: "A plan, not a pitch",
-    text: "You leave knowing what to work on first and what training together would actually look like.",
+    title: "A custom plan",
+    text: "You follow a plan built specifically for you and your injuries, with a roadmap to actually get out of pain.",
   },
 ];
+
+function encodeFormData(data: Record<string, string>): string {
+  return Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
+}
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // TODO(Joshua): wire this to her real GHL form/webhook once the link exists.
-    setSubmitted(true);
+    setError(false);
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeFormData({ "form-name": "contact", ...form }),
+      });
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    }
   }
 
   return (
     <div className="min-h-screen bg-white">
       <Head>
-        <title>Book Your Free Consult | Knee Ability Narine</title>
+        <title>Book Your Free Call | Knee Ability Narine</title>
         <meta
           name="description"
-          content="Book a free consult with Narine: a real conversation about your pain, a body assessment, and a personalised plan to get you moving again. Burbank, CA and online."
+          content="Book a free call with Narine: a real conversation about your pain, a body assessment, and a personalised plan to get you moving again. Burbank, CA and online."
         />
       </Head>
 
@@ -72,15 +91,16 @@ export default function Contact() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_10%,rgba(22,160,124,0.08)_0%,transparent_100%)]" />
         <div className="max-w-3xl mx-auto text-center mb-6">
           <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
-            Book your free consult
+            Book your free call
           </p>
           <h1 className="text-5xl md:text-6xl font-serif font-medium leading-[1.1] text-slate-900 mb-6">
             Start with{" "}
             <span className="italic text-green-brand">a conversation.</span>
           </h1>
           <p className="text-xl text-slate-700 font-normal leading-relaxed max-w-2xl mx-auto mb-4">
-            One free call. What's going on, what you want back, and what the
-            path there actually looks like. No pressure, no obligation.
+            One free call. What you're feeling, what you want to be able to
+            do, and what the path there actually looks like. No pressure, no
+            obligation.
           </p>
           <div className="flex items-center justify-center gap-1.5 text-sm text-slate-500">
             <div className="flex text-star-gold">
@@ -109,7 +129,20 @@ export default function Contact() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form
+              onSubmit={handleSubmit}
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              className="space-y-5"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <p className="hidden">
+                <label>
+                  Don't fill this out if you're human: <input name="bot-field" />
+                </label>
+              </p>
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
@@ -170,11 +203,17 @@ export default function Contact() {
                   placeholder="Tell her a little about the pain or injury, and what you're hoping to get back to."
                 />
               </div>
+              {error && (
+                <p className="text-sm text-red-600">
+                  Something went wrong sending that. Please try again, or text
+                  or email Narine directly in the meantime.
+                </p>
+              )}
               <button
                 type="submit"
                 className="group w-full inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-green-brand text-white text-base font-medium hover:bg-green-brand-dark transition-all hover:scale-[1.02] shadow-lg shadow-green-brand/25"
               >
-                Book Your Free Consult
+                Book Your Free Call
                 <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </form>
@@ -190,7 +229,7 @@ export default function Contact() {
               What to expect
             </p>
             <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900">
-              No pressure. Just a real conversation.
+              No pressure. A real conversation.
             </h2>
           </div>
           <div className="grid sm:grid-cols-3 gap-6">

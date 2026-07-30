@@ -7,7 +7,7 @@ import { Check, ArrowRight, MapPin } from "lucide-react";
 /* ─────────────────────────────────────────────────────────────────────────
    SERVICES PAGE — her three real offers from wiki/offers/offer-architecture.md:
    1:1 online (includes meal planning, the growth/scale product), 1:1
-   in-person (Burbank, limited by real capacity), and hybrid. No prices —
+   in-person (Burbank, CA, limited by real capacity), and hybrid. No prices —
    her packages are still in flux, same call made on the homepage's offer
    section. Structure cloned from Mason's Services.tsx (same stack, same
    hero-card + premium-grid pattern), recolored to her green/navy palette
@@ -24,10 +24,10 @@ const PREMIUM = [
   {
     name: "In-Person",
     tag: "Limited",
-    tagline: "One-on-one, in her Burbank gym.",
+    tagline: "One-on-one, in her Burbank, CA gym.",
     desc: "Hands-on coaching every session, adjusted in real time. The most direct access to Narine, and the most limited by design.",
     features: [
-      "Sessions in her Burbank gym, built around your schedule",
+      "Sessions in her Burbank, CA gym, built around your schedule",
       "Real-time form correction, hands-on",
       "Only a couple of new spots open at a time",
     ],
@@ -38,7 +38,7 @@ const PREMIUM = [
     tagline: "In-person sessions, plus online support between visits.",
     desc: "For people who want hands-on coaching in the room and a plan that keeps working on the days you're not there.",
     features: [
-      "Regular in-person sessions in Burbank",
+      "Regular in-person sessions in Burbank, CA",
       "The full online programming and support between visits",
       "One plan that follows you between the gym and home",
     ],
@@ -52,7 +52,7 @@ export default function Services() {
         <title>Services | Knee Ability Narine</title>
         <meta
           name="description"
-          content="Ways to train with Narine: 1:1 online coaching with weekly support and done-for-you nutrition, plus in-person and hybrid options in Burbank, CA. Every plan starts with a free consult."
+          content="Ways to train with Narine: 1:1 online coaching with weekly support and done-for-you nutrition, plus in-person and hybrid options in Burbank, CA. Every plan starts with a free call."
         />
       </Head>
 
@@ -73,7 +73,7 @@ export default function Services() {
             <span className="italic text-green-brand">wherever you train.</span>
           </h1>
           <p className="text-xl text-slate-700 font-normal leading-relaxed max-w-2xl mx-auto">
-            Every plan starts with a free consult and the same rule: you never
+            Every plan starts with a free call and the same rule: you never
             push through pain.
           </p>
         </div>
@@ -98,14 +98,14 @@ export default function Services() {
               </h2>
               <p className="text-white/85 font-normal leading-relaxed mb-8 max-w-md">
                 The same 1:1 coaching, from wherever you are. Built for people
-                who can't get to Burbank but still want a real program, not a
+                who can't get to Burbank, CA but still want a real program, not a
                 PDF you open once and forget.
               </p>
               <Link
                 to="/contact"
                 className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-green-brand-dark text-base font-medium hover:bg-green-brand-50 transition-all hover:scale-105"
               >
-                Book Your Free Consult
+                Book Your Free Call
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -170,7 +170,7 @@ export default function Services() {
                   to="/contact"
                   className="group inline-flex items-center gap-2 text-green-brand font-medium hover:text-green-brand-dark transition-colors"
                 >
-                  Book Your Free Consult
+                  Book Your Free Call
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>
@@ -182,7 +182,7 @@ export default function Services() {
             <p>
               Pricing depends on your program and how much support you need.
               <br />
-              That's covered on the free consult.
+              That's covered on the free call.
             </p>
             <span className="hidden sm:inline text-slate-300">·</span>
             <p className="inline-flex items-center gap-1.5">

@@ -41,14 +41,14 @@ const HERO_CTA_LABEL = "Contact";
    Sources: clients' verbatim pain language + her origin story mirrors.
    Zero I/me/my. Sets up the mechanism reveal in Step 3. */
 const PROBLEM_KICKER = "Sound familiar?";
-const PROBLEM_HEADLINE = "The pain isn't just in your knee.";
+const PROBLEM_HEADLINE = "The pain isn't only in your knee.";
 const PROBLEM_HEADLINE_ACCENT = "It's running your whole day."; // italic green
 const PROBLEM_BODY: string[] = [
   "It starts before you're even out of bed. You scan your body to check what hurts today and calculate what you can get away with. Stairs get planned around. Hikes get declined. Sleep gets interrupted. Somewhere along the way, you stopped trusting your own body.",
   "So you did the responsible things. You rested it. You finished physical therapy and got handed back \u201cbasic function.\u201d You tried the creams, the cortisone, maybe even the surgery. Each one promised relief and delivered a countdown to the next flare-up. That is not healing. That is an injury loop.",
 ];
 const PROBLEM_HARD_QUESTION =
-  "And on the bad days, one question keeps coming back: what if this is just life now?";
+  "And on the bad days, one question keeps coming back: what if this is life now?";
 const PROBLEM_CLOSER =
   "It isn't. Your knee was never doomed. It was underprepared, and underprepared is fixable.";
 
@@ -105,13 +105,13 @@ const MEET_KICKER = "Meet Narine";
 const MEET_HEADLINE = "She's been exactly where you are.";
 const MEET_HEADLINE_ACCENT = "And she got out."; // italic green
 const MEET_BODY: string[] = [
-  "Before any of this, Narine spent a year in chronic knee pain that chiropractors, creams, and rest couldn't fix. She lost her job in the same stretch. Some mornings the only question was how bad today would be.",
-  "The turning point was the same insight this method is built on: her body wasn't broken, it was underprepared. She rebuilt it from the ground up and got back to Judo and Muay Thai, pain free, at 31. She's been running that same rebuild for her clients ever since.",
+  "At 30, a knee injury during jiu jitsu turned into chronic pain. She lost her job at the same time. Some mornings the only question was how bad today would be.",
+  "The turning point was the same insight this method is built on: her body wasn't broken, it was underprepared. She rebuilt it from the ground up, and by 31 she was training pain free again, Judo first, then Muay Thai the year after. She's been running that same rebuild for her clients ever since.",
 ];
 const MEET_PHOTO = "/narine-meet-photo.jpg";
 const MEET_STATS: { Icon: typeof Award; label: string }[] = [
   { Icon: Award, label: "ATG Certified Coach" },
-  { Icon: Users, label: "55+ people out of pain" },
+  { Icon: Users, label: "75+ people out of pain" },
   { Icon: MapPin, label: "Burbank, CA & online" },
 ];
 
@@ -123,37 +123,37 @@ const BENEFITS_KICKER = "What changes";
 const BENEFITS_HEADLINE = "This is what your life looks like";
 const BENEFITS_HEADLINE_ACCENT = "on the other side."; // italic green
 const BENEFITS_SUBHEAD =
-  "Not just less pain. The parts of your life you stopped planning around, back on the calendar.";
+  "Not only less pain. The hobbies and activities you avoided, back on the calendar.";
 const BENEFITS: { Icon: typeof Mountain; title: string; text: string }[] = [
-  {
-    Icon: Mountain,
-    title: "Hike the trails you used to skip",
-    text: "The harder ones too. Not just the flat loop you settled for.",
-  },
-  {
-    Icon: Moon,
-    title: "Sleep through the night",
-    text: "No more reaching for Advil at 2 a.m. just to get a few hours.",
-  },
-  {
-    Icon: Users,
-    title: "Play with your kids without scanning your body first",
-    text: "No mental checklist of what your knee can handle before you say yes.",
-  },
-  {
-    Icon: Footprints,
-    title: "Keep up on your feet, all day",
-    text: "20,000 steps on vacation, and you feel good the next morning too.",
-  },
   {
     Icon: Dumbbell,
     title: "Get back to the sport you love",
     text: "Dancing, golf, martial arts, wrestling — whatever you had to give up.",
   },
   {
+    Icon: Mountain,
+    title: "Hike the trails you used to skip",
+    text: "The harder ones too. Not the flat loop you settled for.",
+  },
+  {
+    Icon: Moon,
+    title: "Sleep through the night",
+    text: "No more reaching for Advil at 2 a.m. to get a few hours.",
+  },
+  {
+    Icon: Users,
+    title: "Play with your kids without scanning your body first",
+    text: "No mental checklist of what your knee or back can handle before you say yes.",
+  },
+  {
+    Icon: Footprints,
+    title: "Stay on your feet all day, without pain",
+    text: "20,000 steps on vacation, and you feel good the next morning too.",
+  },
+  {
     Icon: ShieldCheck,
     title: "Trust your body again",
-    text: "No surgery, no shots, no steroids. Just a body that finally holds up.",
+    text: "No surgery, no shots, no steroids. A body that finally holds up.",
   },
 ];
 
@@ -181,6 +181,11 @@ const VIDEO_TESTIMONIALS: { name: string; outcome: string; url: string }[] = [
     url: "https://www.instagram.com/p/DE1XWxQRqdW/",
   },
   {
+    name: "John",
+    outcome: "3 knee surgeries, 13+ years of pain — out of pain in months, now running 5–10Ks and Spartan races.",
+    url: "https://www.instagram.com/p/DYDHyEBvyMG/",
+  },
+  {
     name: "Haley",
     outcome: "Hamstring & calf strain — rehabbed and running marathons in 1 month.",
     url: "https://www.instagram.com/p/C6PmADNvvVG/",
@@ -201,11 +206,6 @@ const VIDEO_TESTIMONIALS: { name: string; outcome: string; url: string }[] = [
     url: "https://www.instagram.com/p/DN4n0GiES9m/",
   },
   {
-    name: "John",
-    outcome: "3 knee surgeries, 13+ years of pain — out of pain in months, now running 5–10Ks and Spartan races.",
-    url: "https://www.instagram.com/p/DYDHyEBvyMG/",
-  },
-  {
     name: "Mary",
     outcome: "Couldn't hike or travel after knee surgery — back to steep hikes, pain free.",
     url: "https://www.instagram.com/p/DYiA6tyPmJt/",
@@ -224,21 +224,21 @@ const PROOF_CARD_THEMES = [
   "linear-gradient(135deg, #0e7a5e 0%, #16324f 100%)",
 ];
 
-/* ─── STEP 7 · MAKE THE OFFER (free consult) ──────────────────────────────
+/* ─── STEP 7 · MAKE THE OFFER (free call) ──────────────────────────────
    Sourced from wiki/offers/offer-architecture.md — the confirmed entry
-   funnel (free consult → body assessment → personalised plan). No prices
+   funnel (free call → body assessment → personalised plan). No prices
    here: her packages vary and are due to change, so the offer step stays
    about what happens, not dollar figures. */
 const OFFER_KICKER = "How it starts";
-const OFFER_HEADLINE = "It starts with one free consult.";
+const OFFER_HEADLINE = "It starts with one free call.";
 const OFFER_HEADLINE_ACCENT = "No pressure, no obligation."; // italic green
 const OFFER_SUBHEAD =
-  "You don't need a diagnosis or a plan before you reach out. You just need to be done guessing.";
+  "You don't need a diagnosis or a plan before you reach out. Start with a conversation.";
 const OFFER_STEPS: { Icon: typeof Calendar; title: string; text: string }[] = [
   {
     Icon: Calendar,
-    title: "A free consult",
-    text: "A real conversation about what's going on with your knee and what's actually possible from here.",
+    title: "A free call",
+    text: "A transparent conversation about the pain you're feeling and what's actually possible.",
   },
   {
     Icon: ClipboardCheck,
@@ -253,7 +253,7 @@ const OFFER_STEPS: { Icon: typeof Calendar; title: string; text: string }[] = [
 ];
 const OFFER_CLOSER =
   "Most people feel a difference by the end of the very first session.";
-const OFFER_CTA_LABEL = "Book Your Free Consult";
+const OFFER_CTA_LABEL = "Book Your Free Call";
 
 /* ─── STEP 8 · INJECT SCARCITY (real capacity, not a countdown) ───────────
    Sourced from wiki/offers/offer-architecture.md: in-person capacity is
@@ -268,7 +268,7 @@ const SCARCITY_SUBHEAD =
 const SCARCITY_ITEMS: { Icon: typeof MapPin; title: string; text: string }[] = [
   {
     Icon: MapPin,
-    title: "In-person, Burbank",
+    title: "In-person, Burbank, CA",
     text: "Only a couple of new spots open at a time. When they're full, they're full until someone completes their program.",
   },
   {
@@ -301,8 +301,8 @@ const GUARANTEE_FINE_PRINT =
 const CTA_HEADLINE = "Your knee doesn't have to feel like this forever.";
 const CTA_HEADLINE_ACCENT = "Let's find out what's actually possible."; // italic green
 const CTA_SUBHEAD =
-  "One free consult. No pressure, no obligation. Just a real conversation about what's next.";
-const CTA_BUTTON_LABEL = "Book Your Free Consult";
+  "One free call. No pressure, no obligation. A real conversation about what's next.";
+const CTA_BUTTON_LABEL = "Book Your Free Call";
 
 /* ─── STEP 11 · WARNING (cost of waiting) ─────────────────────────────────
    Grounded in her own stated mechanism (ground-up-method.md: weak capacity
@@ -314,7 +314,7 @@ const CTA_BUTTON_LABEL = "Book Your Free Consult";
 const WARNING_HEADLINE = "Waiting doesn't make this easier.";
 const WARNING_HEADLINE_ACCENT = "It makes it harder to undo."; // italic green
 const WARNING_BODY: string[] = [
-  "Nothing about your situation changes on its own. It just keeps happening, week after week.",
+  "Nothing about your situation changes on its own. It keeps happening, week after week.",
   "The longer that pattern runs, the more work it takes to unwind it.",
 ];
 const WARNING_CLOSER =
@@ -325,11 +325,11 @@ const WARNING_CLOSER =
    anyone who jumped straight to the bottom. Them-centric, no new claims —
    just a compact echo of what's already been said, plus a final CTA. */
 const PS_BODY: string[] = [
-  "If you skimmed straight to the bottom: it starts with one free consult, no pressure, no obligation.",
+  "If you skimmed straight to the bottom: it starts with one free call, no pressure, no obligation.",
   "In-person spots are limited to a couple at a time, and online fills up too. Follow the program, and you'll get stronger, more mobile, and pain free.",
   "Hike again. Dance again. Sleep through the night again. That's what's actually possible from here.",
 ];
-const PS_CTA_LABEL = "Book Your Free Consult";
+const PS_CTA_LABEL = "Book Your Free Call";
 
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState<{ name: string; url: string } | null>(null);
@@ -557,7 +557,7 @@ export default function Home() {
             </span>
             <img
               src={MEET_PHOTO}
-              alt="Narine, founder of Knee Ability Narine, at her Burbank gym"
+              alt="Narine, founder of Knee Ability Narine, at her gym in Burbank, CA"
               className="absolute inset-0 w-full h-full object-cover"
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).style.display = "none";
@@ -743,7 +743,7 @@ export default function Home() {
         </AnimatePresence>
       </section>
 
-      {/* STEP 7 · Make the offer — free consult, them-centric, no prices */}
+      {/* STEP 7 · Make the offer — free call, them-centric, no prices */}
       <motion.section
         className="relative bg-slate-50 border-y border-slate-100 py-24 md:py-32 px-6 md:px-12 overflow-hidden"
         initial={{ opacity: 0, y: 20 }}

@@ -2,7 +2,7 @@
 
 Client: Narine Ashnalikyan · Knee Ability Narine · kneeabilitynarine.com
 Engagement: 90-day done-for-you build (contract signed July 2, 2026)
-Status: **Site v1 complete (2026-07-27).** Homepage (all 12 sales-letter sections), `/about`, `/services`, and `/contact` are all built and screenshot-confirmed with Joshua. Homepage, Services, and About are deployed live to `origin/main`/Netlify; Contact is committed and pushed to `origin/dev` as a backup, pending Joshua's explicit "deploy" go-ahead. DNS still points at Squarespace, so nothing is publicly visible on kneeabilitynarine.com yet regardless of deploy status — only on the Netlify subdomain until the cutover happens.
+Status: **Round 2 (Narine's feedback) applied, 2026-07-30.** All four pages built and live-deployed as of Contact going live 2026-07-27. Narine sent her first round of written feedback (Google Doc "My story" notes) the night of 2026-07-27/28; all confirmed corrections have been applied and committed to `origin/dev` as a backup — NOT yet pushed to `origin/main`/deployed, pending Joshua's go-ahead. See "Round 2 feedback" section below for the full list of what changed and what's still open (missing client email, Calendly link, photo collage, blog).
 
 ## 1. Context
 
@@ -87,9 +87,29 @@ Full section code lives in `src/pages/Home.tsx`. `/about`, `/services`, `/contac
 6. Schema, sitemap, robots.txt, GHL booking/form embeds — **open:** Contact page's form is a real working local form (validates, shows a confirmation state) but isn't wired to anything yet; needs Narine's real GHL webhook/embed link before it can actually deliver leads
 7. QA (mobile, speed, SEO audit) → DNS cutover from Squarespace → launch email campaign → **first deploy to `main` happens on Joshua's explicit go-ahead** (homepage, Services, and About are live as of 2026-07-27; Contact is staged on `dev` pending deploy)
 
-## 8. Open decisions
+## 8. Round 2 feedback (Narine, 2026-07-27/28) — applied 2026-07-30
 
-- **Contact form → GHL:** the `/contact` page form (name, email, phone, message) works locally — validates and shows a confirmation screen — but doesn't send anywhere yet. Needs Narine's real GHL calendar embed or form webhook URL to actually deliver leads instead of just showing "Request sent."
+Narine reviewed the private link and sent a full round of notes via a shared Google Doc, plus two client-email-list emails. Everything confirmed below is committed to `origin/dev`, not yet deployed to `main`.
+
+**Applied:**
+- Origin story corrected sitewide (Home "Meet Narine" + About "My story"): the injury was from jiu jitsu at 30, not from Judo/Muay Thai after a COVID-era pivot. Timeline: 8 months to get out of chronic pain, a full year to return to training, Judo at 31, Muay Thai at 32. Job loss reworded from "in the same stretch" to "at the same time."
+- People-helped stat updated everywhere: 55+ → 75+ (Home Meet Narine stat, About stat block, About meta description, About mission line).
+- Video testimonial order: John moved to 2nd (after Ruzanna), per her request.
+- "Book Your Free Consult" → "Book Your Free Call" sitewide (every CTA button, headline, page title, and meta description across Home, Services, About, Contact) — "consult" reads as an in-person paid session to her, "call" is the free one.
+- The word "just" removed or rephrased everywhere in site copy (kept only in one verbatim client review quote in `reviews.ts`, since that's someone else's actual words, not ours to edit).
+- "Burbank" standalone → "Burbank, CA" everywhere it appeared without the state.
+- Several exact copy swaps from her doc: benefits subhead, the "play with your kids" and "keep up on your feet" lines (renamed "stay on your feet all day, without pain"), "get back to the sport you love" moved to the first benefit card, the offer subhead and first offer-step text, the CTA/contact hero subhead, and the Contact page's third "what to expect" card (now "A custom plan").
+- New messaging worked into the About page's "Her approach" section: it's not a cookie-cutter program, she knows when to progress vs. regress a client, she knows how to rehab a second/third injury when one leads to another, closing with "you're not getting someone running a generic rehab program, you're getting an experienced coach."
+- **Contact form now wired to Netlify Forms** (real email delivery instead of the old local-only stub) — `data-netlify="true"` + hidden `form-name` + honeypot field, submitted via `fetch()` since it's a client-rendered form. **Still needed from Joshua:** turn on the email notification in the Netlify dashboard (Site settings → Forms → Form notifications → Email notification) pointed at Narine's inbox — that's account config, not code.
+
+**Not yet done — blocked or waiting on something:**
+- **Photo collage/montage (her Contact-page request):** she wants a fun collage of her teaching, especially group photos with other people in them. The Google Drive connection dropped mid-session before this could be pulled together, and the actual group-class photos in her "Pics for website" folder are all 10–21MB, same size problem as the testimonial videos. Needs either a reconnect + a way to get smaller versions, or Joshua dropping the group photos directly into the connected Narine folder or the chat.
+- **Calendly link/embed:** she mentioned sending it but it wasn't in either of the two emails Joshua forwarded. Still needed to embed a real scheduler on `/contact`.
+- **Blog articles:** she asked for these to be added with their photos. This is a bigger content migration (Phase 5), not done as part of this feedback round.
+- **The last missing client email** (1 of the 6 originally missing) — she's still waiting on that client to respond.
+
+## 9. Open decisions
+
 - **Her guarantee (Section 9):** built from her verbatim VSL line, but Joshua flagged he's not certain this is the guarantee she currently wants live — needs her direct confirmation before deploy.
 - **Video testimonial hosting (Section 6):** the 7 raw client video files in Drive (36–178MB each) exceed the Google Drive MCP tool's 10MB download cap, and there's no local copy in Joshua's connected Narine folder either. Currently using an in-page modal that plays the video via Instagram's public embed frame (no redirect off-site) — reliable but dependent on Instagram staying up and not blocked by browser tracking protection. Native self-hosting is the more bulletproof option if Joshua can get the files to this session (drag into chat or drop in the connected folder) for compression + hosting.
 - Narine's real phone number — needed to reintroduce a text/SMS CTA (currently all CTAs route to `/contact`).
@@ -98,5 +118,5 @@ Full section code lives in `src/pages/Home.tsx`. `/about`, `/services`, `/contac
 - Font pairing (currently Source Serif 4 / Manrope) — still an open decision delegated to Joshua.
 - Light vs. dark treatment of her green/white brand
 - www vs. apex as canonical (netlify.toml currently forces www — flip if she prefers apex)
-- Whether v1 ships `/about` + `/reviews` or homepage-only
-- GHL booking: embedded calendar vs. form → email sequence
+- Whether v1 ships a standalone `/reviews` wall page, or the homepage carousel stays the only place reviews live
+- Booking: decided on Netlify Forms for the contact form itself (see Section 8); still need her Calendly link/embed for direct scheduling
