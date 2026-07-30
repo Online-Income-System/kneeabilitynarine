@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Head } from "vite-react-ssg";
 import { motion } from "motion/react";
-import { CalendarCheck, Search, ClipboardList, Send, Star } from "lucide-react";
+import { CalendarCheck, MessageCircle, Search, ClipboardList, Star } from "lucide-react";
 import { GOOGLE } from "../data/reviews";
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -10,18 +10,18 @@ import { GOOGLE } from "../data/reviews";
    -> personalised 1:1 plan. No prices (hers are in flux, same call made on
    Home/Services). Zero I/me/my.
 
-   Form -> email: wired to Netlify Forms (native to the hosting stack, no
-   GHL/CRM needed) per Narine's request to just get an email whenever
-   someone submits. The <form> below carries data-netlify="true" plus a
-   matching hidden form-name input and honeypot field, and the built HTML
-   is prerendered (vite-react-ssg), so Netlify's build-time form scanner can
-   detect it. Submission itself is done via fetch() to "/" since this is a
-   client-rendered React form, not a native HTML POST.
-   OPEN ITEM for Joshua: turn on the email notification in the Netlify
-   dashboard (Site settings -> Forms -> Form notifications -> Email
-   notification) pointed at Narine's inbox — that last step is account
-   config, not code, and can't be done from here.
-   Calendly link/embed still pending from Narine (see docs/SITE-PLAN.md).
+   Booking, replacing the old contact form (per Narine's direct instruction):
+   two cards side by side — a live Calendly embed, and a "text Narine
+   directly" card. The Calendly link is hers (calendly.com/knee-ability-narine
+   /30min). Her phone number (818-351-6191) is sourced from two independent
+   places in her own material: the CTA in her original Squarespace site copy
+   ("Text me the word 'consult' to schedule..." -> sms:8183516191) and the
+   GoHighLevel setup note in wiki/strategy/open-questions.md referencing the
+   same number as the one to connect. Not fabricated, not guessed.
+
+   The old Netlify Forms wiring (data-netlify, fetch() submission) is gone
+   along with the form itself — OPEN ITEM for Joshua from that build is now
+   moot, nothing left to turn on in the Netlify dashboard for this page.
 
    Photo gallery below: her explicit request was a fun collage/montage on
    this page "so it's not empty," ideally group/teaching shots with other
@@ -31,6 +31,11 @@ import { GOOGLE } from "../data/reviews";
    download cap that blocked the testimonial videos. These six are all
    that could be pulled for now; flagged to Joshua as a v2 upgrade if she
    can get smaller/compressed group photos over. */
+const CALENDLY_URL = "https://calendly.com/knee-ability-narine/30min";
+const PHONE_DISPLAY = "(818) 351-6191";
+const PHONE_SMS = "sms:8183516191";
+const PHONE_TEL = "tel:+18183516191";
+
 const GALLERY_PHOTOS: string[] = [
   "/narine-contact-1.jpg",
   "/narine-contact-2.jpg",
@@ -58,36 +63,61 @@ const EXPECT: { icon: React.ComponentType<{ className?: string; strokeWidth?: nu
   },
 ];
 
-function encodeFormData(data: Record<string, string>): string {
-  return Object.keys(data)
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join("&");
+// Loads Calendly's widget script once, then uses the documented
+// initInlineWidget API to render into this component's own container.
+// Using the imperative API (rather than dropping a raw <script> tag in
+// JSX, which React won't execute) means this also re-initializes cleanly
+// if a visitor navigates away from /contact and back in this SPA.
+function CalendlyEmbed() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scriptId = "calendly-widget-script";
+    let cancelled = false;
+
+    function init() {
+      if (cancelled || !containerRef.current) return;
+      const Calendly = (window as any).Calendly;
+      if (!Calendly) return;
+      containerRef.current.innerHTML = "";
+      Calendly.initInlineWidget({
+        url: CALENDLY_URL,
+        parentElement: containerRef.current,
+      });
+    }
+
+    const existing = document.getElementById(scriptId) as HTMLScriptElement | null;
+    if (existing) {
+      if ((window as any).Calendly) {
+        init();
+      } else {
+        existing.addEventListener("load", init);
+      }
+    } else {
+      const script = document.createElement("script");
+      script.id = scriptId;
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      script.addEventListener("load", init);
+      document.body.appendChild(script);
+    }
+
+    return () => {
+      cancelled = true;
+      existing?.removeEventListener("load", init);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="calendly-inline-widget"
+      style={{ minWidth: "280px", height: "700px" }}
+    />
+  );
 }
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-  }
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError(false);
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encodeFormData({ "form-name": "contact", ...form }),
-      });
-      setSubmitted(true);
-    } catch {
-      setError(true);
-    }
-  }
-
   return (
     <div className="min-h-screen bg-white">
       <Head>
@@ -98,7 +128,7 @@ export default function Contact() {
         />
       </Head>
 
-      {/* Hero + form */}
+      {/* Hero */}
       <motion.section
         className="relative pt-40 pb-16 px-6 md:px-12 overflow-hidden"
         initial={{ opacity: 0, y: 20 }}
@@ -106,7 +136,7 @@ export default function Contact() {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_10%,rgba(22,160,124,0.08)_0%,transparent_100%)]" />
-        <div className="max-w-3xl mx-auto text-center mb-6">
+        <div className="max-w-3xl mx-auto text-center mb-14">
           <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
             Book your free call
           </p>
@@ -131,110 +161,42 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="max-w-xl mx-auto rounded-3xl border border-slate-100 shadow-2xl shadow-green-brand/10 bg-white p-8 md:p-10">
-          {submitted ? (
-            <div className="text-center py-10">
-              <div className="w-14 h-14 rounded-2xl bg-green-brand-50 border border-green-brand/10 flex items-center justify-center mx-auto mb-6">
-                <CalendarCheck className="w-7 h-7 text-green-brand" strokeWidth={1.75} />
+        {/* Book directly — Calendly embed + text-Narine, side by side */}
+        <div className="max-w-5xl mx-auto grid sm:grid-cols-2 gap-6 items-stretch">
+          <div className="rounded-3xl border border-slate-100 shadow-2xl shadow-green-brand/10 bg-white p-6 md:p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-11 h-11 rounded-xl bg-green-brand-50 flex items-center justify-center shrink-0">
+                <CalendarCheck className="w-6 h-6 text-green-brand" strokeWidth={2} />
               </div>
-              <h2 className="text-2xl font-serif text-slate-900 mb-3">
-                Request sent.
+              <h2 className="text-xl font-serif text-slate-900">
+                Pick a time that works
               </h2>
-              <p className="text-slate-700 leading-relaxed">
-                Narine's team will reach out shortly to find a time. Keep an
-                eye on your inbox and phone.
-              </p>
             </div>
-          ) : (
-            <form
-              onSubmit={handleSubmit}
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
-              className="space-y-5"
+            <CalendlyEmbed />
+          </div>
+
+          <div className="rounded-3xl bg-green-brand p-8 md:p-10 text-white flex flex-col justify-center">
+            <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center mb-6">
+              <MessageCircle className="w-6 h-6 text-white" strokeWidth={2} />
+            </div>
+            <h2 className="text-xl font-serif mb-3">Prefer to text?</h2>
+            <p className="text-white/85 font-normal leading-relaxed mb-8">
+              Reach Narine directly, no form to fill out. Send a text and
+              she'll get back to you.
+            </p>
+            <a
+              href={PHONE_SMS}
+              className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white text-green-brand-dark text-lg font-medium hover:bg-green-brand-50 transition-all hover:scale-[1.02] mb-4"
             >
-              <input type="hidden" name="form-name" value="contact" />
-              <p className="hidden">
-                <label>
-                  Don't fill this out if you're human: <input name="bot-field" />
-                </label>
-              </p>
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-brand/30 focus:border-green-brand transition-shadow"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">
-                    Phone
-                  </label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={form.phone}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-brand/30 focus:border-green-brand transition-shadow"
-                    placeholder="(555) 555-5555"
-                  />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={handleChange}
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-brand/30 focus:border-green-brand transition-shadow"
-                  placeholder="you@example.com"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
-                  What's going on?
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  value={form.message}
-                  onChange={handleChange}
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-brand/30 focus:border-green-brand transition-shadow resize-none"
-                  placeholder="Tell her a little about the pain or injury, and what you're hoping to get back to."
-                />
-              </div>
-              {error && (
-                <p className="text-sm text-red-600">
-                  Something went wrong sending that. Please try again, or text
-                  or email Narine directly in the meantime.
-                </p>
-              )}
-              <button
-                type="submit"
-                className="group w-full inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-green-brand text-white text-base font-medium hover:bg-green-brand-dark transition-all hover:scale-[1.02] shadow-lg shadow-green-brand/25"
-              >
-                Book Your Free Call
-                <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </button>
-            </form>
-          )}
+              {PHONE_DISPLAY}
+            </a>
+            <a
+              href={PHONE_TEL}
+              className="text-sm text-white/75 hover:text-white transition-colors underline underline-offset-2"
+            >
+              Or call the same number
+            </a>
+          </div>
         </div>
       </motion.section>
 
