@@ -32,8 +32,11 @@ import { GOOGLE } from "../data/reviews";
    right before building this, still fails. The other 8 are all downloadable
    and are used here (including the 2 that also appear as the featured photo
    on Home and About, reused here to make this as full a collage as the real
-   material allows) — narine-contact-1 is the only one of the 8 with another
-   person in frame. Laid out as a varied-size collage (a couple of taller
+   material allows) — narine-contact-1 and narine-contact-6 (both the same
+   client) are the only two of the 8 with another person in frame; visually
+   re-verified all 8 individually to confirm this count rather than trusting
+   an earlier pass, which had mislabeled narine-contact-6 as solo. Laid out
+   as a varied-size collage (a couple of taller
    tiles via CSS grid row-span) rather than a uniform grid, so it reads more
    like a montage. Flagged to Joshua as a v2 upgrade if she can get
    smaller/compressed copies of the real group photos over. */
