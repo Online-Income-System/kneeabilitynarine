@@ -21,7 +21,24 @@ import { GOOGLE } from "../data/reviews";
    dashboard (Site settings -> Forms -> Form notifications -> Email
    notification) pointed at Narine's inbox — that last step is account
    config, not code, and can't be done from here.
-   Calendly link/embed still pending from Narine (see docs/SITE-PLAN.md). */
+   Calendly link/embed still pending from Narine (see docs/SITE-PLAN.md).
+
+   Photo gallery below: her explicit request was a fun collage/montage on
+   this page "so it's not empty," ideally group/teaching shots with other
+   people in frame. Only one of the six available photos (narine-contact-1,
+   a coaching-a-client shot) actually has another person in it — the real
+   group-class photos in her Drive are all 10-21MB, over the same 10MB
+   download cap that blocked the testimonial videos. These six are all
+   that could be pulled for now; flagged to Joshua as a v2 upgrade if she
+   can get smaller/compressed group photos over. */
+const GALLERY_PHOTOS: string[] = [
+  "/narine-contact-1.jpg",
+  "/narine-contact-2.jpg",
+  "/narine-contact-3.jpg",
+  "/narine-contact-4.jpg",
+  "/narine-contact-5.jpg",
+  "/narine-contact-6.jpg",
+];
 
 const EXPECT: { icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; title: string; text: string }[] = [
   {
@@ -248,6 +265,42 @@ export default function Contact() {
                   {text}
                 </p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Photo gallery — a peek inside the gym, keeps this page from feeling empty */}
+      <section className="py-24 md:py-28 px-6 md:px-12">
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-2xl mb-14 text-center mx-auto">
+            <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+              In the gym
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900">
+              A peek at what training with her looks like.
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-5">
+            {GALLERY_PHOTOS.map((src, i) => (
+              <motion.div
+                key={src}
+                className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm bg-slate-100"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.05 }}
+              >
+                <img
+                  src={src}
+                  alt="Narine training a client at her gym in Burbank, CA"
+                  className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  onError={(e) => {
+                    (e.currentTarget.closest("div") as HTMLElement).style.display = "none";
+                  }}
+                />
+              </motion.div>
             ))}
           </div>
         </div>
