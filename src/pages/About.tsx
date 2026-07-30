@@ -57,12 +57,12 @@ const STATS: { value: string; label: string; sub: string }[] = [
 
 const APPROACH_BODY: string[] = [
   "Every session runs on one rule that doesn't bend: never push through pain. If something hurts, that's information, not something to work through.",
-  "It's never a cookie-cutter program. She knows when to push a client forward and when to have them regress, and when one injury leads to another, she knows how to rehab the second and third injury too, because every pain point in the body is connected.",
-  "She also asks for honesty in return. The more honest a client is about what they're feeling, the faster she can adjust the plan around it, not the other way around.",
+  "Training with her isn't only about following a cookie-cutter program. The real results come from what she does beyond the program itself: knowing when to push a client forward and when to have them regress, and when one injury leads to another, knowing how to rehab the second and third injury too, because every pain point in the body is connected.",
+  "She also asks for honesty, transparency, and humility in return, because clients don't get results if they aren't honest about what they're feeling. The more honest a client is, the faster she can adjust the plan around it, not the other way around.",
   "Clients who are scared or in pain for the first time get met at whatever pace they need, sometimes starting with nothing more than a conversation before any exercise begins.",
 ];
 const APPROACH_CLOSER =
-  "With her, you're not getting someone running a generic rehab program. You're getting an experienced coach who knows how to help people actually get out of pain safely.";
+  "With her, you're not getting a trainer who knows how to create a generic rehab program. You're getting an experienced coach who knows how to help people actually get out of pain safely.";
 
 const MISSION_BODY: string[] = [
   "When she started, there weren't other women doing rehab training in her market. She built her practice to fill that gap, and many of her clients, especially women, say they feel safer and better understood working with her.",
