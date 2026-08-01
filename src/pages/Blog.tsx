@@ -47,7 +47,7 @@ export default function Blog() {
           </p>
           <h1 className="text-5xl md:text-6xl font-serif font-medium leading-[1.1] text-slate-900 mb-6">
             Real answers,{" "}
-            <span className="italic text-green-brand">not guesswork.</span>
+            <span className="italic text-green-brand">from real experience.</span>
           </h1>
           <p className="text-xl text-slate-700 font-normal leading-relaxed max-w-2xl mx-auto">
             Injury recovery, mobility, and training smarter, straight from her

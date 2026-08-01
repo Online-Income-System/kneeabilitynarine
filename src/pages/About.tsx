@@ -37,7 +37,7 @@ function SectionLabel({
 
 const ORIGIN_BODY: string[] = [
   "Tango dancing was her identity before any of this. It was stress relief, community, the thing that made her feel like herself. Then at 30, a knee injury during jiu jitsu turned into patellar tendinitis, and it hit at the same time she lost her job.",
-  "No income, no training, and pain that scanned her body awake every morning before she was even out of bed. She tried chiropractors, creams, rest, and a trainer who understood fitness but not pain. It took eight months to get out of chronic pain, and a full year before she was back to training.",
+  "No income, no training, and a burning pain that consistently woke her up in the middle of the night. She tried chiropractors, creams, rest. Nothing worked. She finally found a trainer who specialized in rehabbing injuries and was inspired to get the same certification after she was out of pain. It took eight months to get out of chronic pain, and a full year before she was back to martial arts training.",
   "The turning point wasn't a new treatment. It was a different question. Her ligaments and tendons weren't weak because she was broken. They were weak because they'd never been properly strengthened. She rebuilt them on purpose, slowly, chasing adaptation instead of relief. At 31 she started Judo, pain free. The year after, Muay Thai.",
   "Friends and family had been watching her rebuild and started asking for help. She got certified, took her first client within a week, and built what's now Knee Ability Narine.",
 ];
@@ -57,17 +57,16 @@ const STATS: { value: string; label: string; sub: string }[] = [
 
 const APPROACH_BODY: string[] = [
   "Every session runs on one rule that doesn't bend: never push through pain. If something hurts, that's information, not something to work through.",
-  "Training with her isn't only about following a cookie-cutter program. The real results come from what she does beyond the program itself: knowing when to push a client forward and when to have them regress, and when one injury leads to another, knowing how to rehab the second and third injury too, because every pain point in the body is connected.",
-  "She also asks for honesty, transparency, and humility in return, because clients don't get results if they aren't honest about what they're feeling. The more honest a client is, the faster she can adjust the plan around it, not the other way around.",
-  "Clients who are scared or in pain for the first time get met at whatever pace they need, sometimes starting with nothing more than a conversation before any exercise begins.",
+  "Training with her isn't only about following a cookie-cutter program. The real results come from what she does beyond the program itself. She knows when to push a client forward and when to have them regress. And if you have more than one injury, she knows how to rehab the second and third injury too. Because every pain point in the body is connected.",
+  "She also asks for honesty, transparency, and humility in return, because you won't get results if you aren't honest about what you're feeling. The more honest you are, the faster she can adjust the plan.",
+  "If you're scared or in pain, you'll be met at whatever pace you need, sometimes starting with a conversation or a meditation before any exercise begins.",
 ];
 const APPROACH_CLOSER =
   "With her, you're not getting a trainer who knows how to create a generic rehab program. You're getting an experienced coach who knows how to help people actually get out of pain safely.";
 
 const MISSION_BODY: string[] = [
   "When she started, there weren't other women doing rehab training in her market. She built her practice to fill that gap, and many of her clients, especially women, say they feel safer and better understood working with her.",
-  "She's Armenian, and she's especially motivated to serve people in her own community: strong, mobile, and still able to work and play with their grandchildren without pain.",
-  "Her stated mission is to help 100 people a year get out of pain. She's already helped more than 75.",
+  "She's especially motivated to serve the people in her community, helping them become strong, mobile, return to their favorite sports, and live without pain.",
 ];
 
 export default function About() {

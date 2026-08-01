@@ -28,7 +28,7 @@ const PREMIUM = [
     desc: "Hands-on coaching every session, adjusted in real time. The most direct access to Narine, and the most limited by design.",
     features: [
       "Sessions in her Burbank, CA gym, built around your schedule",
-      "Real-time form correction, hands-on",
+      "Real-time form correction",
       "Only a couple of new spots open at a time",
     ],
   },
@@ -179,11 +179,7 @@ export default function Services() {
 
           {/* Pricing + location note */}
           <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-center gap-3 text-center text-slate-500">
-            <p>
-              Pricing depends on your program and how much support you need.
-              <br />
-              That's covered on the free call.
-            </p>
+            <p>Pricing depends on your program and how much support you need.</p>
             <span className="hidden sm:inline text-slate-300">·</span>
             <p className="inline-flex items-center gap-1.5">
               <MapPin className="w-4 h-4 text-green-brand" />

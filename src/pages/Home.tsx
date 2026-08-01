@@ -42,7 +42,7 @@ const HERO_CTA_LABEL = "Contact";
    Zero I/me/my. Sets up the mechanism reveal in Step 3. */
 const PROBLEM_KICKER = "Sound familiar?";
 const PROBLEM_HEADLINE = "The pain isn't only in your knee.";
-const PROBLEM_HEADLINE_ACCENT = "It's running your whole day."; // italic green
+const PROBLEM_HEADLINE_ACCENT = "It's controlling your whole day."; // italic green
 const PROBLEM_BODY: string[] = [
   "It starts before you're even out of bed. You scan your body to check what hurts today and calculate what you can get away with. Stairs get planned around. Hikes get declined. Sleep gets interrupted. Somewhere along the way, you stopped trusting your own body.",
   "So you did the responsible things. You rested it. You finished physical therapy and got handed back \u201cbasic function.\u201d You tried the creams, the cortisone, maybe even the surgery. Each one promised relief and delivered a countdown to the next flare-up. That is not healing. That is an injury loop.",
@@ -230,10 +230,10 @@ const PROOF_CARD_THEMES = [
    here: her packages vary and are due to change, so the offer step stays
    about what happens, not dollar figures. */
 const OFFER_KICKER = "How it starts";
-const OFFER_HEADLINE = "It starts with one free call.";
-const OFFER_HEADLINE_ACCENT = "No pressure, no obligation."; // italic green
+const OFFER_HEADLINE = "It starts with a conversation.";
+const OFFER_HEADLINE_ACCENT = ""; // no accent line needed for this shorter headline
 const OFFER_SUBHEAD =
-  "You don't need a diagnosis or a plan before you reach out. Start with a conversation.";
+  "You don't need a diagnosis or a plan before you reach out.";
 const OFFER_STEPS: { Icon: typeof Calendar; title: string; text: string }[] = [
   {
     Icon: Calendar,
@@ -248,7 +248,7 @@ const OFFER_STEPS: { Icon: typeof Calendar; title: string; text: string }[] = [
   {
     Icon: Sparkles,
     title: "A plan built around you",
-    text: "1:1 training, mobility work, and nutrition guidance — plus weekly check-ins and text support between sessions.",
+    text: "1:1 rehab and strength training, and mobility work; plus weekly check-ins and text support between sessions.",
   },
 ];
 const OFFER_CLOSER =
@@ -285,23 +285,32 @@ const SCARCITY_CLOSER =
    you will become stronger, more mobile and pain free." Reframed them-
    centric (zero I/me/my) — third-person attribution in the kicker only,
    same pattern as the Meet Narine bio section. Echoes the hero's closing
-   line for a full-circle callback. */
+   line for a full-circle callback.
+
+   Fine print reframed 2026-08-01 per Narine's own "anti-guarantee": she
+   doesn't offer refunds (it's in all her contracts), and when asked "what
+   if it doesn't work," her real answer is that results depend entirely on
+   following her coaching. Written here as an honest, confident policy
+   statement rather than a hedge — no refunds, because the only thing that
+   determines the outcome is the client's own follow-through, so she only
+   takes on people who are genuinely all in. Bumped up from the smallest
+   fine-print treatment to a slightly more readable size, since this is a
+   real trust signal, not legal boilerplate. */
 const GUARANTEE_KICKER = "Her Guarantee";
 const GUARANTEE_HEADLINE = "Follow the program,";
 const GUARANTEE_HEADLINE_ACCENT = "and you will get stronger, more mobile, and pain free."; // italic green
 const GUARANTEE_SUBHEAD =
   "No matter how long you've been in pain or how much you've already tried.";
 const GUARANTEE_FINE_PRINT =
-  "The same standard she holds herself to with every client, in-person or online.";
+  "There are no refunds. The only thing that determines the result is following the coaching, so she only takes on clients who are ready to be all in. The same standard she holds herself to with every one of them, in-person or online.";
 
 /* ─── STEP 10 · CALL TO ACTION ─────────────────────────────────────────────
    The direct ask, after every trust element is stacked up. No more
    explaining — just the invitation and one more proof glance. Routes to
    /contact (no SMS link yet — her real number is still an open item). */
-const CTA_HEADLINE = "Your knee doesn't have to feel like this forever.";
-const CTA_HEADLINE_ACCENT = "Let's find out what's actually possible."; // italic green
-const CTA_SUBHEAD =
-  "One free call. No pressure, no obligation. A real conversation about what's next.";
+const CTA_HEADLINE = "Your knee or back doesn't have to feel like this forever.";
+const CTA_HEADLINE_ACCENT = "Let's find out what's possible."; // italic green
+const CTA_SUBHEAD = "One conversation can change everything.";
 const CTA_BUTTON_LABEL = "Book Your Free Call";
 
 /* ─── STEP 11 · WARNING (cost of waiting) ─────────────────────────────────
@@ -323,17 +332,13 @@ const WARNING_CLOSER =
 /* ─── STEP 12 · CLOSE WITH A REMINDER (P.S.) ───────────────────────────────
    Restates the offer + real capacity in one short, skimmable block for
    anyone who jumped straight to the bottom. Them-centric, no new claims —
-   just a compact echo of what's already been said, plus a final CTA. */
+   just a compact echo of what's already been said, plus a final CTA.
+   Shortened 2026-08-01 per Narine: the original long version (below) was
+   meant to convey the heart of it to Josh, then get condensed for the
+   actual site — not ship at full length. Replaced with her own shortened
+   version, verbatim. */
 const PS_BODY: string[] = [
-  "If you skimmed straight to the bottom: it starts with one free call, no pressure, no obligation.",
-  "In-person spots are limited to a couple at a time, and online fills up too. Follow the program, and you'll get stronger, more mobile, and pain free.",
-  "Training with Narine is not only about following a cookie-cutter program. She gets real results helping people get out of pain because of what she does beyond the program she creates.",
-  "She knows when to help people scale forward and progress in training and when to have them regress.",
-  "When one injury leads to multiple other injuries, she knows how to help her clients rehab the second and third injuries. She knows how injuries work together and how all pain points must be worked on in order to fully get out of pain.",
-  "She also emphasizes honesty, transparency, and humility, because clients won't get results if they're not honest with what they're feeling.",
-  "With Narine, you're not getting a trainer who knows how to create a generic rehab program.",
-  "You're getting an experienced coach who knows how to help people actually get out of pain safely.",
-  "Hike again. Dance again. Sleep through the night again. That's what's actually possible from here.",
+  "If you skimmed straight to the bottom: it starts with one free call. In-person spots are limited, and online fills up too. Training with Narine isn't about following a cookie-cutter rehab program; she knows when to have you progress, when to regress, and how to rehab multiple injuries that work together so you can actually get out of pain safely. Hike again. Dance again. Sleep through the night again. That's what's actually possible from here.",
 ];
 const PS_CTA_LABEL = "Book Your Free Call";
 
@@ -764,8 +769,13 @@ export default function Home() {
               {OFFER_KICKER}
             </p>
             <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900 mb-6">
-              {OFFER_HEADLINE}{" "}
-              <span className="italic text-green-brand">{OFFER_HEADLINE_ACCENT}</span>
+              {OFFER_HEADLINE}
+              {OFFER_HEADLINE_ACCENT && (
+                <>
+                  {" "}
+                  <span className="italic text-green-brand">{OFFER_HEADLINE_ACCENT}</span>
+                </>
+              )}
             </h2>
             <p className="text-lg md:text-xl text-slate-700 font-normal leading-relaxed">
               {OFFER_SUBHEAD}
@@ -904,7 +914,9 @@ export default function Home() {
           <p className="text-lg md:text-xl text-white/80 font-normal leading-relaxed mb-8">
             {GUARANTEE_SUBHEAD}
           </p>
-          <p className="text-sm text-white/50">{GUARANTEE_FINE_PRINT}</p>
+          <p className="text-base text-white/70 max-w-xl mx-auto leading-relaxed">
+            {GUARANTEE_FINE_PRINT}
+          </p>
         </div>
       </motion.section>
 

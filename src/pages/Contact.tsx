@@ -54,7 +54,10 @@ import { GOOGLE } from "../data/reviews";
    back to a plain 2-column stack with the two landscape shots spanning
    both columns. */
 const CALENDLY_URL = "https://calendly.com/knee-ability-narine/30min";
-const PHONE_DISPLAY = "(818) 351-6191";
+// Button label updated 2026-08-01 per Narine: show "Text Narine" instead of
+// the raw phone number. The number itself still lives in PHONE_SMS below
+// (that's what the href actually dials into); this is display text only.
+const TEXT_BUTTON_LABEL = "Text Narine";
 const PHONE_SMS = "sms:8183516191";
 
 const TOP_ROW: string[] = [
@@ -208,8 +211,7 @@ export default function Contact() {
           </h1>
           <p className="text-xl text-slate-700 font-normal leading-relaxed max-w-2xl mx-auto mb-4">
             One free call. What you're feeling, what you want to be able to
-            do, and what the path there actually looks like. No pressure, no
-            obligation.
+            do, and what the path there looks like.
           </p>
           <div className="flex items-center justify-center gap-1.5 text-sm text-slate-500">
             <div className="flex text-star-gold">
@@ -243,14 +245,14 @@ export default function Contact() {
             </div>
             <h2 className="text-xl font-serif mb-3">Prefer to text?</h2>
             <p className="text-white/85 font-normal leading-relaxed mb-8">
-              Reach Narine directly, no form to fill out. Send a text and
-              she'll get back to you.
+              Reach Narine directly, no form to fill out. Text the word
+              "consult" to book a consult.
             </p>
             <a
               href={PHONE_SMS}
               className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white text-green-brand-dark text-lg font-medium hover:bg-green-brand-50 transition-all hover:scale-[1.02]"
             >
-              {PHONE_DISPLAY}
+              {TEXT_BUTTON_LABEL}
             </a>
           </div>
         </div>
@@ -264,7 +266,7 @@ export default function Contact() {
               What to expect
             </p>
             <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900">
-              No pressure. A real conversation.
+              One conversation could change everything.
             </h2>
           </div>
           <div className="grid sm:grid-cols-3 gap-6">
