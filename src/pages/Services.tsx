@@ -17,7 +17,7 @@ const ONLINE_FEATURES = [
   "A 1:1 program built around your exact injury, not a template",
   "A weekly support call to check in and adjust the plan",
   "24/7 text access to Narine between sessions",
-  "Done-for-you grocery lists and macro tracking, so you still eat what you love",
+  "Done-for-you grocery lists, meal plans, and macro tracking, so you still eat what you love",
 ];
 
 const PREMIUM = [
@@ -98,8 +98,8 @@ export default function Services() {
               </h2>
               <p className="text-white/85 font-normal leading-relaxed mb-8 max-w-md">
                 The same 1:1 coaching, from wherever you are. Built for people
-                who can't get to Burbank, CA but still want a real program, not a
-                PDF you open once and forget.
+                who can't get to Burbank, CA but still want Narine's expertise
+                and guidance.
               </p>
               <Link
                 to="/contact"
