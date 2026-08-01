@@ -280,31 +280,22 @@ const SCARCITY_ITEMS: { Icon: typeof MapPin; title: string; text: string }[] = [
 const SCARCITY_CLOSER =
   "When a tier fills up, the price for the next person goes up. Reaching out now costs less than waiting until it does.";
 
-/* ─── STEP 9 · THE GUARANTEE ───────────────────────────────────────────────
-   Her verbatim guarantee: "My guarantee is that if you follow my program,
-   you will become stronger, more mobile and pain free." Reframed them-
-   centric (zero I/me/my) — third-person attribution in the kicker only,
-   same pattern as the Meet Narine bio section. Echoes the hero's closing
-   line for a full-circle callback.
-
-   Fine print reframed 2026-08-01 per Narine's own "anti-guarantee": she
-   doesn't offer refunds (it's in all her contracts), and when asked "what
-   if it doesn't work," her real answer is that results depend entirely on
-   following her coaching. Written here as an honest, confident policy
-   statement rather than a hedge — no refunds, because the only thing that
-   determines the outcome is the client's own follow-through, so she only
-   takes on people who are genuinely all in. Bumped up from the smallest
-   fine-print treatment to a slightly more readable size, since this is a
-   real trust signal, not legal boilerplate. */
-const GUARANTEE_KICKER = "Her Guarantee";
-const GUARANTEE_HEADLINE = "Follow the program,";
-const GUARANTEE_HEADLINE_ACCENT = "and you will get stronger, more mobile, and pain free."; // italic green
-const GUARANTEE_SUBHEAD =
-  "No matter how long you've been in pain or how much you've already tried.";
-const GUARANTEE_FINE_PRINT =
-  "There are no refunds. The only thing that determines the result is following the coaching, so she only takes on clients who are ready to be all in. The same standard she holds herself to with every one of them, in-person or online.";
+/* ─── STEP 9 · THE GUARANTEE — REMOVED 2026-08-01 ─────────────────────────
+   Narine asked to pull this section for now (no replacement content given).
+   Her navy brand color lived here as the page's one real color break from
+   the otherwise white/light-gray page — per her direct feedback ("I do
+   like the blue... maybe we can incorporate that somewhere else"), that
+   navy treatment (background + radial-gradient glow + dot-grid texture)
+   was moved onto STEP 10 · Call To Action below instead of just deleting
+   it outright, so the page still gets that visual break at roughly the
+   same scroll position. If the guarantee section comes back later, this
+   is the exact spot it lived in. */
 
 /* ─── STEP 10 · CALL TO ACTION ─────────────────────────────────────────────
+   Given the navy treatment 2026-08-01 (see note above) — was a plain white
+   section, now reuses the Guarantee section's navy background + glow +
+   dot-grid pattern so the page keeps a color break here instead of losing
+   it when the Guarantee section was removed.
    The direct ask, after every trust element is stacked up. No more
    explaining — just the invitation and one more proof glance. Routes to
    /contact (no SMS link yet — her real number is still an open item). */
@@ -870,9 +861,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STEP 9 · The guarantee — her verbatim promise, reframed them-centric */}
+      {/* STEP 10 · Call to action — the direct ask. Navy treatment added
+          2026-08-01 (see note above STEP 10's data block) — reuses the
+          former Guarantee section's background glow + dot-grid pattern. */}
       <motion.section
-        className="relative bg-navy-brand py-24 md:py-32 px-6 md:px-12 overflow-hidden"
+        className="relative bg-navy-brand py-24 md:py-32 px-6 md:px-12 text-center overflow-hidden"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -893,47 +886,12 @@ export default function Home() {
           aria-hidden="true"
         />
 
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div
-            className="inline-flex w-14 h-14 rounded-full bg-white/10 items-center justify-center mb-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            <ShieldCheck className="w-7 h-7 text-green-brand" strokeWidth={1.75} />
-          </motion.div>
-
-          <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
-            {GUARANTEE_KICKER}
-          </p>
-          <h2 className="text-4xl md:text-5xl font-serif leading-tight text-white mb-6">
-            {GUARANTEE_HEADLINE}{" "}
-            <span className="italic text-green-brand">{GUARANTEE_HEADLINE_ACCENT}</span>
-          </h2>
-          <p className="text-lg md:text-xl text-white/80 font-normal leading-relaxed mb-8">
-            {GUARANTEE_SUBHEAD}
-          </p>
-          <p className="text-base text-white/70 max-w-xl mx-auto leading-relaxed">
-            {GUARANTEE_FINE_PRINT}
-          </p>
-        </div>
-      </motion.section>
-
-      {/* STEP 10 · Call to action — the direct ask */}
-      <motion.section
-        className="bg-white py-24 md:py-32 px-6 md:px-12 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-serif leading-tight text-slate-900 mb-6">
+          <h2 className="text-4xl md:text-6xl font-serif leading-tight text-white mb-6">
             {CTA_HEADLINE}{" "}
             <span className="italic text-green-brand">{CTA_HEADLINE_ACCENT}</span>
           </h2>
-          <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-10">
+          <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-10">
             {CTA_SUBHEAD}
           </p>
           <Link
@@ -944,7 +902,7 @@ export default function Home() {
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
 
-          <div className="mt-8 flex items-center justify-center gap-2 text-slate-600 text-sm">
+          <div className="mt-8 flex items-center justify-center gap-2 text-white/70 text-sm">
             <div className="flex" aria-hidden="true">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="w-4 h-4 text-star-gold" fill="currentColor" strokeWidth={0} />
