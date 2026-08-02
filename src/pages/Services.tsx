@@ -17,7 +17,7 @@ const ONLINE_FEATURES = [
   "A 1:1 program built around your exact injury, not a template",
   "A weekly support call to check in and adjust the plan",
   "24/7 text access to Narine between sessions",
-  "Done-for-you grocery lists, meal plans, and macro tracking, so you still eat what you love",
+  "Done-for-you grocery lists and meal plans, so you still eat what you love",
 ];
 
 const PREMIUM = [
