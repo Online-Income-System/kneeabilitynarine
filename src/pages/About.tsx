@@ -57,7 +57,7 @@ const STATS: { value: string; label: string; sub: string }[] = [
 
 const APPROACH_BODY: string[] = [
   "Every session runs on one rule that doesn't bend: never push through pain. If something hurts, that's information, not something to work through.",
-  "Training with her isn't only about following a cookie-cutter program. The real results come from what she does beyond the program itself. She knows when to push a client forward and when to have them regress. And if you have more than one injury, she knows how to rehab the second and third injury too. Because every pain point in the body is connected.",
+  "Training with her isn't only about following a cookie-cutter program. The real results come from what she does beyond the program itself. She knows when to push a client forward and when to have them regress. And if you have more than one injury, she knows how to rehab the second and third injury too. Because every pain point in the body is connected. Knee, back, hip, groin, ankle, shin splint, and shoulder injuries all get treated with the same method, for the same reason.",
   "She also asks for honesty, transparency, and humility in return, because you won't get results if you aren't honest about what you're feeling. The more honest you are, the faster she can adjust the plan.",
   "If you're scared or in pain, you'll be met at whatever pace you need, sometimes starting with a conversation or a meditation before any exercise begins.",
 ];

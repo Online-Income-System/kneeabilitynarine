@@ -76,6 +76,12 @@ export default function Services() {
             Every plan starts with a free call and the same rule: you never
             push through pain.
           </p>
+          <p className="text-base text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto mt-5">
+            Knee pain is where most people start. The same ground-up method
+            treats the whole chain: knee, back, hip, groin, ankle, shin
+            splint, and shoulder injuries, because those joints don't work in
+            isolation.
+          </p>
         </div>
       </motion.section>
 
