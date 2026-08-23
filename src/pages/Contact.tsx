@@ -220,7 +220,7 @@ export default function Contact() {
               ))}
             </div>
             <span>
-              {GOOGLE.rating.toFixed(1)} · {GOOGLE.count} Google reviews
+              {GOOGLE.rating.toFixed(1)} · {GOOGLE.reviewCount} Google reviews
             </span>
           </div>
         </div>

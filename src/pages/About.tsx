@@ -64,9 +64,14 @@ const APPROACH_BODY: string[] = [
 const APPROACH_CLOSER =
   "With her, you're not getting a trainer who knows how to create a generic rehab program. You're getting an experienced coach who knows how to help people actually get out of pain safely.";
 
+/* Restored 2026-08-23 at Narine's request: the Armenian line was cut in the
+   Round 2 edits, and she asked for it back — "I actually think niching like
+   this is important." Same round, she asked to add that she speaks Armenian
+   and can work with people in Armenian, so that's the third paragraph. */
 const MISSION_BODY: string[] = [
   "When she started, there weren't other women doing rehab training in her market. She built her practice to fill that gap, and many of her clients, especially women, say they feel safer and better understood working with her.",
-  "She's especially motivated to serve the people in her community, helping them become strong, mobile, return to their favorite sports, and live without pain.",
+  "She's Armenian, and she's especially motivated to serve people in her own community: strong, mobile, back to the sports they love, and still able to work and play with their grandchildren without pain.",
+  "She speaks Armenian too. If that's easier for you, the whole thing can be in Armenian, from the first call through every session.",
 ];
 
 export default function About() {
@@ -76,7 +81,7 @@ export default function About() {
         <title>About Narine | Knee Ability Narine</title>
         <meta
           name="description"
-          content="Narine Ashnalikyan rebuilt her own body from patellar tendinitis before building Knee Ability Narine. ATG certified, Burbank, CA and online, 75+ people out of knee and back pain."
+          content="Narine Ashnalikyan rebuilt her own body from patellar tendinitis before building Knee Ability Narine. ATG certified, Armenian speaking, Burbank, CA and online, 75+ people out of knee and back pain."
         />
       </Head>
 
