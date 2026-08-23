@@ -22,10 +22,8 @@ import {
   Globe,
   Star,
   AlertTriangle,
-  ChevronDown,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Head } from "vite-react-ssg";
 import Reviews from "../components/Reviews";
 import { GOOGLE } from "../data/reviews";
 
@@ -335,56 +333,11 @@ const PS_BODY: string[] = [
 ];
 const PS_CTA_LABEL = "Book Your Free Call";
 
-/* ─── STEP 9 (slot) · FAQs ─────────────────────────────────────────────────
-   Her five FAQs, verbatim from the doc she sent 2026-08-23. Not reworded —
-   she wrote these answers herself, and they clear her own no-advice rule
-   because they're general rather than prescriptive. Shipped on /services
-   first; moved here 2026-08-23 at Joshua's request. Note for the record:
-   Narine's original email asked for them "on the services page", so if she
-   queries it, that's why they moved. */
-const FAQS: { q: string; a: string }[] = [
-  {
-    q: "How can I get rid of knee pain?",
-    a: "Knee pain can improve when you address the underlying factors contributing to it rather than simply trying to mask the pain. A personalized rehabilitation program can help improve your strength, mobility, movement, and tolerance to activity so you can gradually return to the activities you enjoy.",
-  },
-  {
-    q: "What are the best exercises for knee pain?",
-    a: "The best exercises for knee pain depend on the individual and what is contributing to their symptoms. Strengthening the muscles around the knee, hips, and posterior chain while improving mobility and gradually increasing your knee's ability to handle load can be an important part of rehabilitation.",
-  },
-  {
-    q: "Can knee pain be fixed without surgery?",
-    a: "Many types of knee pain can improve with conservative treatment such as progressive strength training, mobility work, activity modification, and rehabilitation. Whether surgery is necessary depends on the specific injury or condition, so some cases should be evaluated by a qualified medical professional.",
-  },
-  {
-    q: "Why does my knee hurt when I squat, run, or exercise?",
-    a: "Knee pain during exercise can have several causes, including changes in training load, limited mobility, weakness, previous injuries, or reduced tolerance to certain movements. Rather than automatically avoiding the activity, rehabilitation can help identify what your knee needs and progressively build its strength and capacity.",
-  },
-  {
-    q: "Can I work out with knee pain?",
-    a: "Yes. The right type of exercise can be an important part of rehabilitating your knee and improving its strength and function. Completely avoiding exercise may lead to further weakness and reduced tolerance to activity, which can make it harder to recover. However, you should avoid exercises that cause pain or movements that contributed to your injury. Instead, your training should be modified and progressively structured around what your knee can tolerate so you can build strength, improve capacity, and safely return to the activities you enjoy.",
-  },
-];
-
-const FAQ_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: FAQS.map(({ q, a }) => ({
-    "@type": "Question",
-    name: q,
-    acceptedAnswer: { "@type": "Answer", text: a },
-  })),
-};
-
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState<{ name: string; url: string } | null>(null);
 
   return (
     <div className="min-h-screen bg-white">
-      <Head>
-        {/* The site's only structured data so far. Moved here with the FAQ
-            section itself; LocalBusiness/Person/Review schema still to come. */}
-        <script type="application/ld+json">{JSON.stringify(FAQ_SCHEMA)}</script>
-      </Head>
       {/* Hero — white background, centered serif headline, green italic accent */}
       <motion.section
         className="relative pt-40 pb-28 px-6 md:px-12 overflow-hidden"
@@ -905,55 +858,6 @@ export default function Home() {
           >
             {SCARCITY_CLOSER}
           </motion.p>
-        </div>
-      </section>
-
-      {/* STEP 9 (slot) · FAQs — her own answers, verbatim (see FAQS above).
-          Moved here from /services on 2026-08-23 at Joshua's request. Sits in
-          the slot the removed guarantee used to occupy: objections answered,
-          then straight into the CTA below. Rendered with <details>/<summary>
-          so every answer is in the static HTML whether or not it's open —
-          crawlers read it, and it works with JavaScript disabled. */}
-      <section id="faq" className="scroll-mt-24 bg-slate-50 border-y border-slate-100 py-24 md:py-32 px-6 md:px-12">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
-              Common questions
-            </p>
-            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900">
-              The questions she{" "}
-              <span className="italic text-green-brand">gets asked most.</span>
-            </h2>
-          </div>
-
-          <div className="divide-y divide-slate-200 border-y border-slate-200">
-            {FAQS.map(({ q, a }) => (
-              <details key={q} className="group py-2">
-                <summary className="flex items-start justify-between gap-6 cursor-pointer list-none py-5 [&::-webkit-details-marker]:hidden">
-                  <h3 className="text-lg md:text-xl font-serif text-slate-900 group-hover:text-green-brand transition-colors">
-                    {q}
-                  </h3>
-                  <ChevronDown
-                    className="w-5 h-5 shrink-0 mt-1 text-green-brand transition-transform duration-300 group-open:rotate-180"
-                    strokeWidth={2}
-                    aria-hidden="true"
-                  />
-                </summary>
-                <p className="pb-6 pr-11 text-slate-700 font-normal leading-relaxed">
-                  {a}
-                </p>
-              </details>
-            ))}
-          </div>
-
-          {/* No button here on purpose: the navy CTA is the next thing on the
-              page, and two identical "Book Your Free Call" buttons 200px apart
-              weakened it. This line just hands off to it. (The /services
-              version of this block did carry a button — it was the last
-              section on that page.) */}
-          <p className="mt-12 text-center text-lg text-slate-700">
-            If your question isn't here, ask her on the call.
-          </p>
         </div>
       </section>
 

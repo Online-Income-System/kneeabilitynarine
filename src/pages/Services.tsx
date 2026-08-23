@@ -9,6 +9,7 @@ import {
   Building2,
   Users,
   GraduationCap,
+  ChevronDown,
 } from "lucide-react";
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -106,6 +107,44 @@ const GROUP_PHOTOS_TOP: string[] = [
 ];
 const GROUP_PHOTO_WIDE = "/narine-contact-9.jpg";
 
+/* Her five FAQs, verbatim from the doc she sent 2026-08-23. Not reworded —
+   she wrote these answers herself, and they clear her own no-advice-over-
+   email rule because they're general and non-prescriptive. Rendered with
+   <details>/<summary> so every answer sits in the static HTML whether or not
+   it's open: crawlers read it, and it works with JavaScript disabled. */
+const FAQS: { q: string; a: string }[] = [
+  {
+    q: "How can I get rid of knee pain?",
+    a: "Knee pain can improve when you address the underlying factors contributing to it rather than simply trying to mask the pain. A personalized rehabilitation program can help improve your strength, mobility, movement, and tolerance to activity so you can gradually return to the activities you enjoy.",
+  },
+  {
+    q: "What are the best exercises for knee pain?",
+    a: "The best exercises for knee pain depend on the individual and what is contributing to their symptoms. Strengthening the muscles around the knee, hips, and posterior chain while improving mobility and gradually increasing your knee's ability to handle load can be an important part of rehabilitation.",
+  },
+  {
+    q: "Can knee pain be fixed without surgery?",
+    a: "Many types of knee pain can improve with conservative treatment such as progressive strength training, mobility work, activity modification, and rehabilitation. Whether surgery is necessary depends on the specific injury or condition, so some cases should be evaluated by a qualified medical professional.",
+  },
+  {
+    q: "Why does my knee hurt when I squat, run, or exercise?",
+    a: "Knee pain during exercise can have several causes, including changes in training load, limited mobility, weakness, previous injuries, or reduced tolerance to certain movements. Rather than automatically avoiding the activity, rehabilitation can help identify what your knee needs and progressively build its strength and capacity.",
+  },
+  {
+    q: "Can I work out with knee pain?",
+    a: "Yes. The right type of exercise can be an important part of rehabilitating your knee and improving its strength and function. Completely avoiding exercise may lead to further weakness and reduced tolerance to activity, which can make it harder to recover. However, you should avoid exercises that cause pain or movements that contributed to your injury. Instead, your training should be modified and progressively structured around what your knee can tolerate so you can build strength, improve capacity, and safely return to the activities you enjoy.",
+  },
+];
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 export default function Services() {
   return (
     <div className="min-h-screen bg-white">
@@ -115,6 +154,9 @@ export default function Services() {
           name="description"
           content="Ways to train with Narine: 1:1 online coaching with weekly support and done-for-you nutrition, plus in-person and hybrid options in Burbank, CA. Workshops, seminars and employee wellness programs available. Every plan starts with a free call."
         />
+        {/* First structured data on the site. Her five FAQs below are a clean
+            FAQPage candidate; LocalBusiness/Person/Review schema still to come. */}
+        <script type="application/ld+json">{JSON.stringify(FAQ_SCHEMA)}</script>
       </Head>
 
       {/* Hero */}
@@ -368,6 +410,53 @@ export default function Services() {
         </div>
       </section>
 
+      {/* FAQs — her own answers, verbatim (see FAQS above) */}
+      <section id="faq" className="scroll-mt-24 py-24 md:py-28 px-6 md:px-12">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+              Common questions
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900">
+              The questions she{" "}
+              <span className="italic text-green-brand">gets asked most.</span>
+            </h2>
+          </div>
+
+          <div className="divide-y divide-slate-200 border-y border-slate-200">
+            {FAQS.map(({ q, a }) => (
+              <details key={q} className="group py-2">
+                <summary className="flex items-start justify-between gap-6 cursor-pointer list-none py-5 [&::-webkit-details-marker]:hidden">
+                  <h3 className="text-lg md:text-xl font-serif text-slate-900 group-hover:text-green-brand transition-colors">
+                    {q}
+                  </h3>
+                  <ChevronDown
+                    className="w-5 h-5 shrink-0 mt-1 text-green-brand transition-transform duration-300 group-open:rotate-180"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
+                </summary>
+                <p className="pb-6 pr-11 text-slate-700 font-normal leading-relaxed">
+                  {a}
+                </p>
+              </details>
+            ))}
+          </div>
+
+          <div className="mt-14 text-center">
+            <p className="text-lg text-slate-700 mb-8">
+              If your question isn't here, ask her on the call.
+            </p>
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-green-brand text-white text-lg font-medium hover:bg-green-brand-dark transition-all hover:scale-105 shadow-xl shadow-green-brand/25"
+            >
+              Book Your Free Call
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
