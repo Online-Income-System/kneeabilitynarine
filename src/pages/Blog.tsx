@@ -1,9 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Head } from "vite-react-ssg";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { BLOG_POSTS } from "../data/blog";
+import Seo from "../components/Seo";
+import {
+  graph,
+  blogListingSchema,
+  localBusinessSchema,
+  personSchema,
+} from "../lib/schema";
 
 /* ─────────────────────────────────────────────────────────────────────────
    BLOG LISTING — see src/data/blog.ts for the full migration notes (which
@@ -25,13 +31,12 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Head>
-        <title>Blog | Knee Ability Narine</title>
-        <meta
-          name="description"
-          content="Real, research-backed guidance on knee pain, injury recovery, and training smarter from Narine Ashnalikyan, ATG-certified rehab coach in Burbank, CA."
-        />
-      </Head>
+      <Seo
+        title="Blog | Knee Ability Narine"
+        description="Real, research-backed guidance on knee pain, injury recovery, and training smarter from Narine Ashnalikyan, ATG-certified rehab coach in Burbank, CA."
+        path="/blog"
+        schema={graph(blogListingSchema(), localBusinessSchema(), personSchema())}
+      />
 
       {/* Hero */}
       <motion.section

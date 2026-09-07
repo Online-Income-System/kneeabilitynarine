@@ -1,0 +1,61 @@
+# robots.txt for kneeabilitynarine.com
+#
+# Everything on this site is meant to be found. There is no admin area, no
+# customer portal and no paid content, so there is nothing to disallow.
+#
+# The AI crawlers below are listed explicitly rather than left to the
+# wildcard. That is a deliberate decision, not boilerplate: allowing them is
+# what lets ChatGPT, Claude, Perplexity and Google's AI Overviews quote
+# Narine's articles and name her as the source when someone asks about knee
+# or back pain. For a business whose whole search strategy is answering the
+# questions people are already asking, being quotable is the point.
+#
+# If that decision is ever reversed, change Allow to Disallow here. Note
+# that blocking Google-Extended removes the content from Gemini and AI
+# Overviews grounding but does NOT remove it from ordinary Google search.
+
+User-agent: *
+Allow: /
+
+# Search
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI assistants and AI search
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://kneeabilitynarine.com/sitemap.xml

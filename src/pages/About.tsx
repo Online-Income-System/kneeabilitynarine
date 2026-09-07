@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Head } from "vite-react-ssg";
 import { motion } from "motion/react";
 import { ArrowRight, Brain, Users } from "lucide-react";
+import Seo from "../components/Seo";
+import { graph, personSchema, localBusinessSchema } from "../lib/schema";
 
 /* ─────────────────────────────────────────────────────────────────────────
    ABOUT PAGE — her real origin story (wiki/identity/origin-story.md +
@@ -77,13 +78,13 @@ const MISSION_BODY: string[] = [
 export default function About() {
   return (
     <div className="min-h-screen bg-white">
-      <Head>
-        <title>About Narine | Knee Ability Narine</title>
-        <meta
-          name="description"
-          content="Narine Ashnalikyan rebuilt her own body from patellar tendinitis before building Knee Ability Narine. ATG certified, Armenian speaking, Burbank, CA and online, 75+ people out of knee and back pain."
-        />
-      </Head>
+      <Seo
+        title="About Narine | Knee Ability Narine"
+        description="Narine Ashnalikyan rebuilt her own body from patellar tendinitis before building Knee Ability Narine. ATG certified, Armenian speaking, Burbank, CA and online, 75+ people out of knee and back pain."
+        path="/about"
+        image="/narine-about-photo.jpg"
+        schema={graph(personSchema(), localBusinessSchema())}
+      />
 
       {/* Hero */}
       <motion.section

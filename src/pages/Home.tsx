@@ -26,6 +26,14 @@ import {
 import { Link } from "react-router-dom";
 import Reviews from "../components/Reviews";
 import { GOOGLE } from "../data/reviews";
+import Seo from "../components/Seo";
+import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "../lib/site";
+import {
+  graph,
+  localBusinessSchema,
+  personSchema,
+  webSiteSchema,
+} from "../lib/schema";
 
 /* ─────────────────────────────────────────────────────────────────────────
    HERO COPY — her VSL promise, verbatim. Variants live in the build notes.
@@ -338,6 +346,16 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* The site's entity graph lives here, on the homepage, and every
+          other page references these nodes by @id rather than redeclaring
+          them. LocalBusiness carries the AggregateRating, which is legitimate
+          because the review carousel below renders those same reviews. */}
+      <Seo
+        title={DEFAULT_TITLE}
+        description={DEFAULT_DESCRIPTION}
+        path="/"
+        schema={graph(localBusinessSchema(), personSchema(), webSiteSchema())}
+      />
       {/* Hero — white background, centered serif headline, green italic accent */}
       <motion.section
         className="relative pt-40 pb-28 px-6 md:px-12 overflow-hidden"

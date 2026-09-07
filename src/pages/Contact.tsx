@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import { Head } from "vite-react-ssg";
 import { motion } from "motion/react";
 import { CalendarCheck, MessageCircle, Search, ClipboardList, Star } from "lucide-react";
 import { GOOGLE } from "../data/reviews";
+import Seo from "../components/Seo";
+import { graph, localBusinessSchema, personSchema } from "../lib/schema";
 
 /* ─────────────────────────────────────────────────────────────────────────
    CONTACT PAGE — the entry point for the free call, sourced from the real
@@ -185,13 +186,12 @@ function CalendlyEmbed() {
 export default function Contact() {
   return (
     <div className="min-h-screen bg-white">
-      <Head>
-        <title>Book Your Free Call | Knee Ability Narine</title>
-        <meta
-          name="description"
-          content="Book a free call with Narine: a real conversation about your pain, a body assessment, and a personalised plan to get you moving again. Burbank, CA and online."
-        />
-      </Head>
+      <Seo
+        title="Book Your Free Call | Knee Ability Narine"
+        description="Book a free call with Narine: a real conversation about your pain, a body assessment, and a personalised plan to get you moving again. Burbank, CA and online."
+        path="/contact"
+        schema={graph(localBusinessSchema(), personSchema())}
+      />
 
       {/* Hero */}
       <motion.section

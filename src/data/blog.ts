@@ -7,6 +7,41 @@ export interface BlogPost {
   image: string;
   /** Markdown body, rendered via markdown-to-jsx on the post page. */
   body: string;
+
+  /* ─── OPTIONAL SEO / GEO FIELDS (added 2026-09-07) ───────────────────────
+     All optional, so the nine migrated posts keep working untouched. New
+     posts should fill in `topics` and `takeaways` as a minimum. */
+
+  /** ISO date of the last substantive edit. Emitted as `dateModified`.
+   *  Leave unset until the post is actually revised: a dateModified that
+   *  moves without the content changing is a quality signal working against
+   *  you rather than for you. */
+  updated?: string;
+
+  /** The anatomical or clinical subjects this post is genuinely about, e.g.
+   *  ["Low back pain", "Lumbar spine", "Rehabilitation"]. Emitted as the
+   *  BlogPosting `about` array. Highest-value field for GEO: it states the
+   *  topic outright instead of making an assistant infer it from prose.
+   *  Three to five entries. Do not keyword-stuff. */
+  topics?: string[];
+
+  /** Two to five plain-language answers to the question the reader arrived
+   *  with, rendered in a summary box directly under the headline. These are
+   *  what an AI assistant lifts verbatim, so write them as complete
+   *  standalone sentences that survive with no surrounding context. */
+  takeaways?: string[];
+
+  /** A YouTube video embedded in the post and declared as a VideoObject. */
+  video?: {
+    /** The 11-character video ID, not the full URL. */
+    youtubeId: string;
+    title: string;
+    description?: string;
+    /** ISO 8601 duration, e.g. "PT3M12S". Omit if unknown. */
+    durationIso?: string;
+    /** ISO date the video went up on YouTube. Defaults to the post date. */
+    uploadDate?: string;
+  };
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -40,6 +75,12 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "returning-to-sports-after-injury",
+    topics: [
+      "Return to sport",
+      "ACL injury",
+      "Sports injury rehabilitation",
+      "Re-injury prevention",
+    ],
     title: "Returning to Sports After Injury: 5 Things You Need to Know Before You Go Back",
     date: "2026-05-24",
     excerpt: "Returning to sports too soon after an injury is one of the most common mistakes athletes make. Here are 5 things you need to know before you go back.",
@@ -124,6 +165,13 @@ If you're recovering from an injury and want to make sure you're doing it right,
   },
   {
     slug: "from-3-knee-surgeries-to-running-spartan-races-johns-knee-recovery-story",
+    topics: [
+      "Knee pain",
+      "ACL reconstruction",
+      "Meniscus tear",
+      "Knee rehabilitation",
+      "Chronic pain recovery",
+    ],
     title: "From 3 Knee Surgeries to Running Spartan Races: John's Knee Recovery Story",
     date: "2026-05-08",
     excerpt: "After 3 knee surgeries and a decade of chronic pain, John found a training approach that actually worked. Here's how he went from barely getting through a workday to running Spartan races.",
@@ -211,6 +259,12 @@ Motion is lotion. Let's get you moving.`,
   },
   {
     slug: "how-to-prevent-overuse-injuries-5-tips-every-competitive-athlete-needs-to-know",
+    topics: [
+      "Overuse injury",
+      "Injury prevention",
+      "Training load management",
+      "Athletic recovery",
+    ],
     title: "How to Prevent Overuse Injuries: 5 Tips Every Competitive Athlete Needs to Know",
     date: "2026-05-01",
     excerpt: "Overuse injuries are almost always preventable. Here are 5 tips every competitive athlete needs to train smarter, recover better, and stay in the game long-term.",
@@ -300,6 +354,12 @@ If you're dealing with an overuse injury or want to build a program that keeps y
   },
   {
     slug: "how-to-strengthen-your-hamstrings-and-prevent-acl-and-knee-injuries",
+    topics: [
+      "Hamstring strength",
+      "ACL injury prevention",
+      "Posterior chain",
+      "Knee injury prevention",
+    ],
     title: "How to Strengthen Your Hamstrings and Prevent ACL and Knee Injuries",
     date: "2026-04-23",
     excerpt: "Weak hamstrings are one of the leading causes of ACL injuries. Here's why hamstring training matters \u2014 and the exercises that actually build the strength to keep you training.",
@@ -382,6 +442,12 @@ Motion is lotion. Let's get you moving.`,
   },
   {
     slug: "why-mobility-training-should-be-part-of-every-athletes-routine",
+    topics: [
+      "Mobility training",
+      "Joint health",
+      "Range of motion",
+      "Injury prevention",
+    ],
     title: "Why Mobility Training Should Be Part of Every Athlete's Routine",
     date: "2026-04-15",
     excerpt: "Mobility is strength, flexibility, and control \u2014 and if you're not training it, you're losing it. Here are 5 reasons it needs to be part of your routine.",
@@ -460,6 +526,12 @@ Motion is lotion. Let's get you moving.`,
   },
   {
     slug: "why-training-legs-is-non-negotiable",
+    topics: [
+      "Leg strength training",
+      "Longevity",
+      "Lower body strength",
+      "Injury prevention",
+    ],
     title: "Why Training Legs Is Non-Negotiable: 6 Reasons Your Future Self Will Thank You",
     date: "2026-04-07",
     excerpt: "Skipping leg day is costing you more than aesthetics. From longevity and brain health to injury prevention and cardiovascular fitness \u2014 here's why strong legs are non-negotiable.",
@@ -543,6 +615,13 @@ Motion is lotion. Let's get you moving.`,
   },
   {
     slug: "why-your-knees-hurt-five-lower-leg-areas-to-strengthen",
+    topics: [
+      "Knee pain",
+      "Tibialis anterior",
+      "Calf strength",
+      "Lower leg strength",
+      "Knee rehabilitation",
+    ],
     title: "Why Your Knees Hurt (And It's Not Your Knees): 5 Lower Leg Areas to Strengthen for Knee Pain Relief",
     date: "2026-04-03",
     excerpt: "Knee pain slowing you down? The problem might not be your knees. Weakness in your feet, ankles, tibialis, calves, and patellar tendon creates a chain reaction that puts excessive load on your knees. Here's how to fix it from the ground up.",
@@ -671,6 +750,12 @@ Start from the ground up. Build the chain. Get back to moving the way you're sup
   },
   {
     slug: "stress-sleep-and-emotions-the-missing-piece-of-injury-recovery",
+    topics: [
+      "Sleep and recovery",
+      "Stress and pain",
+      "Chronic pain",
+      "Injury recovery",
+    ],
     title: "Stress, Sleep, and Emotions: The Missing Piece of Injury Recovery",
     date: "2026-03-30",
     excerpt: "Doing all the right exercises and still not healing fast enough? Stress, sleep deprivation, and emotional strain are physically slowing your recovery \u2014 and most people never address them. Here's the full picture of what it actually takes to heal.",
@@ -757,6 +842,12 @@ Motion is lotion. Let's get you moving.`,
   },
   {
     slug: "how-to-reduce-patellar-tendonitis-pain-7-tips-that-actually-work",
+    topics: [
+      "Patellar tendonitis",
+      "Jumper's knee",
+      "Knee pain",
+      "Tendon rehabilitation",
+    ],
     title: "How to Reduce Patellar Tendonitis Pain: 7 Tips That Actually Work",
     date: "2026-03-20",
     excerpt: "Patellar tendonitis pain doesn't have to be permanent. Discover 7 evidence-backed tips to reduce knee pain and rebuild strength \u2014 from someone who's been through it.",

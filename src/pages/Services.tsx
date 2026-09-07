@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Head } from "vite-react-ssg";
 import { motion } from "motion/react";
 import {
   Check,
@@ -11,6 +10,8 @@ import {
   GraduationCap,
   ChevronDown,
 } from "lucide-react";
+import Seo from "../components/Seo";
+import { graph, localBusinessSchema, personSchema } from "../lib/schema";
 
 /* ─────────────────────────────────────────────────────────────────────────
    SERVICES PAGE — her three real offers from wiki/offers/offer-architecture.md:
@@ -148,16 +149,12 @@ const FAQ_SCHEMA = {
 export default function Services() {
   return (
     <div className="min-h-screen bg-white">
-      <Head>
-        <title>Services | Knee Ability Narine</title>
-        <meta
-          name="description"
-          content="Ways to train with Narine: 1:1 online coaching with weekly support and done-for-you nutrition, plus in-person and hybrid options in Burbank, CA. Workshops, seminars and employee wellness programs available. Every plan starts with a free call."
-        />
-        {/* First structured data on the site. Her five FAQs below are a clean
-            FAQPage candidate; LocalBusiness/Person/Review schema still to come. */}
-        <script type="application/ld+json">{JSON.stringify(FAQ_SCHEMA)}</script>
-      </Head>
+      <Seo
+        title="Services | Knee Ability Narine"
+        description="Ways to train with Narine: 1:1 online coaching with weekly support and done-for-you nutrition, plus in-person and hybrid options in Burbank, CA. Workshops, seminars and employee wellness programs available. Every plan starts with a free call."
+        path="/services"
+        schema={graph(localBusinessSchema(), personSchema(), FAQ_SCHEMA)}
+      />
 
       {/* Hero */}
       <motion.section
