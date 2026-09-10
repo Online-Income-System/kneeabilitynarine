@@ -74,6 +74,75 @@ export interface BlogPost {
    Sorted newest-first by `date` wherever this array is consumed. */
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "strong-tibs-why-weak-ankles-cause-knee-pain",
+    topics: [
+      "Tibialis raises",
+      "Ankle strength",
+      "Shin splints",
+      "Knee pain prevention",
+      "Ankle sprain recovery",
+    ],
+    title: "Why Weak Tibs Are Wrecking Your Ankles, Knees, and Feet",
+    date: "2026-09-11",
+    excerpt: "Weak tibs are a common, overlooked cause of ankle, shin, and knee pain in jumping and pivoting sports. Here's the raise that cut Narine's own ankle recovery time from 12 weeks to 1.",
+    image: "/blog-why-your-knees-hurt-five-lower-leg-areas-to-strengthen.jpg",
+    takeaways: [
+      "Your ankle joint is where the tibia, fibula, and talus meet. The tibialis muscles crossing that joint are one of the most under-trained muscle groups in sport.",
+      "When your tibialis is weak, the force of every jump landing, cut, or takedown gets absorbed by your lower leg or your knee instead of your ankle.",
+      "Narine's first ankle injury took 8 to 12 weeks to heal. After a year and a half of consistent tib raises, her next one took one week.",
+      "Start with tib raises against a wall, then progress to a loaded tib bar as you get stronger.",
+    ],
+    video: {
+      youtubeId: "OXQl_s5bmtU",
+      title: "Narine explaining why weak tibs cause ankle, shin, and knee pain",
+      description: "Narine breaks down why the tibialis is one of the most under-trained muscle groups in sport, and the tib raise progression that changed her own recovery time.",
+    },
+    body: `One of the biggest reasons you might have foot, ankle, lower leg, or knee pain is weak tibs. Here's what that actually means, and why it matters more than most people training these sports realize.
+
+### What "weak tibs" actually means
+
+Your ankle joint is where your shin bone (the tibia), your calf bone (the fibula), and your talus bone meet. The tibialis muscles cross that joint, and for most people, they're never trained at all, not because they don't matter, but because nobody thinks to.
+
+Lack of training in your ankles and your tibialis muscles could be the real reason behind ongoing foot, ankle, lower leg, and knee problems. That's the connection worth understanding, because the pain usually shows up somewhere else (the knee, the shin) while the actual weak link is the ankle.
+
+### Where this shows up
+
+If you're playing a sport like basketball or volleyball, where you're constantly jumping, ask yourself: if your tibs are weak, what absorbs the force of that jump instead? Usually your lower leg muscles, or your knee.
+
+The same thing happens in dance, the jive, quickstep, or tango on heels, for example. Weak ankles or tibs make you more likely to roll your foot or sprain your ankle, or end up with pain through your feet.
+
+And in Judo, where you're often hopping on one foot repeatedly to get someone else down, weak feet, ankles, or tibs make an ankle or knee injury far more likely on exactly that kind of movement. This lower-leg chain is the same one I broke down across all five areas in [why your knees hurt (and it's not your knees)](/blog/why-your-knees-hurt-five-lower-leg-areas-to-strengthen). This article goes deep on the tibialis piece specifically.
+
+### Why I trust this: my own recovery timeline
+
+After my first ankle injury, I was out for 8 to 12 weeks. Then, about a year and a half into doing tib exercises consistently, I had another ankle injury, and it only took me one week to recover.
+
+That difference, 8 to 12 weeks versus one week, is the whole case for training this muscle group on purpose. It's not a theory for me. It's the actual before-and-after from my own training.
+
+### How to strengthen your tibs
+
+Start with tib raises against a wall. Once that feels easy, increase the load with a tib bar, adding weight as you progress.
+
+This is why I have every one of my clients build tib strength too, not just the ones dealing with a current injury, but anyone doing repeated jumping, pivoting, or takedown-style movement, where the ankle needs to be able to absorb force on its own instead of passing it up the chain.
+
+### Frequently Asked Questions
+
+**What is the tibialis muscle, and why does it matter?** The tibialis muscles sit at the front of your lower leg and cross the ankle joint, where the tibia, fibula, and talus meet. They help control and absorb force at the ankle. When they're weak, that force has to go somewhere else, usually the lower leg or the knee, which is why an under-trained tibialis shows up as pain in joints other than the ankle itself.
+
+**Can weak ankles really cause knee pain?** Yes. The ankle, tibialis, and knee work together as a chain during jumping, landing, and changing direction. If the ankle can't absorb its share of the force because the tibialis is weak, the knee often ends up compensating, which can lead to irritation or pain over time.
+
+**How do I do a tib raise without a tib bar?** Stand with your heels on the ground and lift your toes and the front of your foot up toward your shin, using a wall for balance if needed. That's the basic tib raise. Once it feels easy, a loaded tib bar lets you add resistance and keep progressing.
+
+**How long until I notice a difference in ankle strength?** There's no fixed timeline. It depends on your starting point and consistency. What's worth taking from this is the comparison: after a year and a half of regular tib work, a second ankle injury healed in a week instead of the 8 to 12 weeks the first one took.
+
+**Do I need to play a jumping sport for this to matter?** No. Anyone doing repeated jumping, pivoting, dancing on heels, or takedown-style movement benefits from a stronger tibialis, because all of those movements ask the ankle to absorb force. It's also relevant if you already have recurring shin, ankle, or knee pain and haven't identified why.
+
+### The takeaway
+
+If ankle, shin, or knee pain keeps coming back no matter what you do at the knee itself, the real issue might be one joint down. Build the tibs, and give the rest of the chain less work to do.`,
+  },
+
+  {
     slug: "returning-to-sports-after-injury",
     topics: [
       "Return to sport",
