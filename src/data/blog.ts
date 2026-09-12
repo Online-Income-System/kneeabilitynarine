@@ -131,7 +131,7 @@ This is why I have every one of my clients build tib strength too, not just the 
 
 **Can weak ankles really cause knee pain?** Yes. The ankle, tibialis, and knee work together as a chain during jumping, landing, and changing direction. If the ankle can't absorb its share of the force because the tibialis is weak, the knee often ends up compensating, which can lead to irritation or pain over time.
 
-**How do I do a tib raise without a tib bar?** Stand with your heels on the ground and lift your toes and the front of your foot up toward your shin, using a wall for balance if needed. That's the basic tib raise. Once it feels easy, a loaded tib bar lets you add resistance and keep progressing.
+**How do I do a tib raise without a tib bar?** Stand with your heels on the ground and lift your toes and the front of your foot up toward your shin, using a wall for balance if needed. That's the basic tib raise. A loaded tib bar lets you do this exercise seated, add resistance, and keep progressing.
 
 **How long until I notice a difference in ankle strength?** There's no fixed timeline. It depends on your starting point and consistency. What's worth taking from this is the comparison: after a year and a half of regular tib work, a second ankle injury healed in a week instead of the 8 to 12 weeks the first one took.
 
@@ -139,7 +139,7 @@ This is why I have every one of my clients build tib strength too, not just the 
 
 ### The takeaway
 
-If ankle, shin, or knee pain keeps coming back no matter what you do at the knee itself, the real issue might be one joint down. Build the tibs, and give the rest of the chain less work to do.`,
+If ankle, shin, or knee pain keeps coming back no matter what you do at the knee itself, the real issue might be one level down. Build the tibs, and give the rest of the chain less work to do.`,
   },
 
   {
