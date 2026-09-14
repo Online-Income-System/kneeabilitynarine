@@ -85,7 +85,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Why Weak Tibs Are Wrecking Your Ankles, Knees, and Feet",
     date: "2026-09-11",
     excerpt: "Weak tibs are a common, overlooked cause of ankle, shin, and knee pain in jumping and pivoting sports. Here's the raise that cut Narine's own ankle recovery time from 12 weeks to 1.",
-    image: "/blog-why-your-knees-hurt-five-lower-leg-areas-to-strengthen.jpg",
+    image: "/blog-strong-tibs-why-weak-ankles-cause-knee-pain.jpg",
     takeaways: [
       "Your ankle joint is where the tibia, fibula, and talus meet. The tibialis muscles crossing that joint are one of the most under-trained muscle groups in sport.",
       "When your tibialis is weak, the force of every jump landing, cut, or takedown gets absorbed by your lower leg or your knee instead of your ankle.",
