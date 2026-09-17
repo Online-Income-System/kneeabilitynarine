@@ -74,6 +74,83 @@ export interface BlogPost {
    Sorted newest-first by `date` wherever this array is consumed. */
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "my-knee-protocol-what-i-do-when-my-knee-tweaks",
+    topics: [
+      "Knee pain",
+      "Backward walking",
+      "Tibialis raises",
+      "Ankle stability",
+      "Recovery split squats",
+      "Knee tweak recovery",
+    ],
+    title: "My Knee Protocol: What I Do the Moment My Knee Tweaks",
+    date: "2026-09-17",
+    excerpt: "Narine's own 6-step routine for the moment her knee tweaks: backward walking, tibialis raises, ankle rotations, and the recovery split squats that bring the blood flow back.",
+    image: "/blog-why-your-knees-hurt-five-lower-leg-areas-to-strengthen.jpg",
+    takeaways: [
+      "Backward walking for 10 to 15 minutes increases blood flow to the knee and works the vastus medialis differently than walking forward does.",
+      "A lot of knee tweaks actually start at a weak ankle, not the knee itself. That's why tibialis raises are part of this routine, not just knee work.",
+      "Recovery split squats use little to no weight, three sets of ten, with an extra pause at the bottom for blood flow. This is recovery, not a strength session.",
+      "The routine ends with a hamstring stretch and a calf stretch, because tight hamstrings and calves are part of why the knee tweaked in the first place.",
+    ],
+    video: {
+      youtubeId: "F7bbzqD75tA",
+      title: "Narine walking through her own knee protocol",
+    },
+    body: `I train Muay Thai and I used to train Judo. Occasionally, my knee would tweak when I first started doing Judo. Between the jumping, the pivoting, and the takedowns, it happened. What I want to show you here isn't a diagnosis or a fix for a specific injury. It's the exact routine I go through myself the moment it happens, before it turns into something bigger.
+
+### Backward walking
+
+I start here because it's the easiest way I can get my knees over my toes without putting pressure through them. If you don't have a backward treadmill, walking backward at the park works exactly the same way.
+
+I do this for 10 to 15 minutes, and I feel a difference in my knee almost immediately. The relief comes from increased blood flow to the knee. Walking backward is also useful for a different reason: it strengthens the vastus medialis, and it engages that muscle differently than walking forward does. For someone with knee pain, the vastus medialis often doesn't fire properly when walking forward, but it does when walking backward.
+
+### Tibialis (tib) raises
+
+When I did Judo, my knee tweak would usually not come from my knee. It came from my ankle. So I did tib raises to strengthen my ankles. You can do these loaded, with a tib bar, or against a wall if you don't have one.
+
+I needed a lot of ankle and tib strength for Judo specifically, because I was often jumping on one leg to take another person down, and that jump had to be absorbed by something. If my tibs are strong, they absorb that force. If they're not, my knee ends up absorbing it instead, and that's what causes irritation or pain.
+
+### Solo ankle rotations
+
+I did solo ankle rotations, because between falling, tripping, and everything else that came with Judo, I wanted my weaker ankle doing extra work. I used an ankle weight: five rotations clockwise, five counterclockwise, then back and forth until failure. This helped bring my weaker ankle up to speed with my stronger one.
+
+### Recovery split squats
+
+When I have a tweak or an injury, I still do split squats, but for recovery, not for strength, and that distinction matters. Normally I'll load 35 lbs in each hand. When I'm recovering, that's too heavy. I drop down to about 20 lbs in each hand, or no weight at all.
+
+Split squats are great for blood flow to the knee. I hold an extra second or two at the bottom to get more of that blood flow, and I do three sets of ten. I've found I get more out of the movement when I add reps and take that extra pause, rather than adding weight. Split squats also strengthen the glutes, quads, and foot and ankle stability, and they open up mobility in the hip flexors: all useful while a knee is recovering.
+
+### Elephant Walk stretch
+
+Next is the Elephant Walk. My hamstrings get tight from hard leg days, and a tight hamstring pulls on the knee, so this stretch helps them recover alongside everything else.
+
+### Calf stretch
+
+I finish with a calf stretch, to release the tension that builds up from training legs hard and from the other sports I do. I like using ATG Buddies for this, or any kind of elevated surface (even a low branch or a step) to get my toes up and feel the stretch through the calf.
+
+### Why this works together
+
+None of these six steps is a fix on its own. Backward walking gets blood moving. Tib raises and ankle rotations address the ankle weakness that's often the actual source of a knee tweak, not the knee itself, which is the same lower-leg chain I've written about in [why your knees hurt and it's not your knees](/blog/why-your-knees-hurt-five-lower-leg-areas-to-strengthen). Recovery split squats keep blood flowing without adding real load. The two stretches release the tightness that built up around the joint in the first place.
+
+### Frequently Asked Questions
+
+**What should I do the moment I tweak my knee?** Start with something low-impact that increases blood flow (backward walking works well for this) before moving into any strengthening work. The goal in the first session or two is circulation and gentle movement, not load.
+
+**Why does walking backward help knee pain?** Walking backward lets you move your knee over your toes without loading it the way forward walking does, and it increases blood flow to the joint. It also engages the vastus medialis differently than forward walking, which matters because that muscle often doesn't fire properly in people with knee pain.
+
+**Can a weak ankle really cause knee pain?** Yes. When your ankle and tibialis muscles are weak, the force from jumping, pivoting, or landing has to go somewhere else, often the knee. Strengthening the ankle through tib raises is frequently part of resolving a knee that keeps tweaking.
+
+**Do I need heavy weight for recovery split squats?** No, the opposite. During recovery, split squats are done with little to no weight. The extra reps and the pause at the bottom are what drive the benefit, not the load.
+
+**How long should I keep doing this knee protocol for?** Until the tweak has settled and you can move normally again without a reaction. For some people that's a few days; for others it's longer. It's a routine to return to whenever a tweak happens, not a one-time fix.
+
+### The takeaway
+
+No pain or injury is normal at any age, and it's rehabbable. A tweak doesn't mean something is broken. It means something needs attention, and there's a routine for that.`,
+  },
+
+  {
     slug: "strong-tibs-why-weak-ankles-cause-knee-pain",
     topics: [
       "Tibialis raises",
