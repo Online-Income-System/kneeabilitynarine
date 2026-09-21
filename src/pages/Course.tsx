@@ -23,12 +23,13 @@ import { GOOGLE, REVIEWS } from "../data/reviews";
      page says).
    Do not add either without her explicit answer on file.
 
-   CTA MECHANISM — placeholder, see COURSE_ACCESS_HREF below. Links to
-   /contact (Calendly + text, already live) rather than a direct checkout,
-   since there is no confirmed working payment link yet. Swap this one
-   constant for a real checkout URL (Pillar or a Stripe Payment Link) once
-   that decision is made and tested end to end. */
-const COURSE_ACCESS_HREF = "/contact";
+   CTA MECHANISM — links straight through to Narine's real Pillar checkout
+   (the sales page + payment form she already has live), rather than trying
+   to replicate payment processing on this site. Confirmed with her
+   2026-09-15. A plain <a> is used instead of react-router's Link since this
+   is a fully external URL, Link cannot navigate off-site. */
+const COURSE_ACCESS_HREF =
+  "https://pillar.io/kneeabilitynarine/checkout/0147d9c0-6798-11ee-a21d-a3e35b1bdc1d";
 const COURSE_PRICE = "$397";
 
 const FEATURED_REVIEWS = REVIEWS.filter((r) => r.featured).slice(0, 3);
@@ -70,7 +71,6 @@ export default function Course() {
         description="Narine's self-paced course: the same method she uses with her 1:1 clients, yours to keep, at your own pace. $397."
         path="/course"
         schema={graph(localBusinessSchema(), personSchema(), FAQ_SCHEMA)}
-        noindex
       />
 
       {/* Hero */}
@@ -95,13 +95,13 @@ export default function Course() {
             go through it at your own pace.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3">
-            <Link
-              to={COURSE_ACCESS_HREF}
+            <a
+              href={COURSE_ACCESS_HREF}
               className="inline-flex items-center gap-2 rounded-full bg-green-brand text-white font-semibold px-8 py-4 text-lg shadow-lg shadow-green-brand/25 hover:bg-green-brand-dark transition-colors"
             >
               Get started, {COURSE_PRICE}
               <ArrowRight className="w-5 h-5" />
-            </Link>
+            </a>
             <p className="text-sm text-slate-500">One time. Yours to keep.</p>
           </div>
         </div>
@@ -231,13 +231,13 @@ export default function Course() {
           <h2 className="text-2xl md:text-3xl font-serif font-medium text-slate-900 mb-4">
             Ready to start?
           </h2>
-          <Link
-            to={COURSE_ACCESS_HREF}
+          <a
+            href={COURSE_ACCESS_HREF}
             className="inline-flex items-center gap-2 rounded-full bg-green-brand text-white font-semibold px-8 py-4 text-lg shadow-lg shadow-green-brand/25 hover:bg-green-brand-dark transition-colors"
           >
             Get started, {COURSE_PRICE}
             <ArrowRight className="w-5 h-5" />
-          </Link>
+          </a>
         </div>
       </section>
     </div>
