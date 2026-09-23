@@ -15,11 +15,17 @@ function ScrollToTop() {
   return null;
 }
 
+// Standalone sales pages: no site header, so the only way forward is the
+// checkout button. /course is the course sales funnel (unlisted).
+const STANDALONE_PATHS = new Set(["/course", "/course/"]);
+
 export default function Layout() {
+  const { pathname } = useLocation();
+  const standalone = STANDALONE_PATHS.has(pathname);
   return (
     <div className="min-h-screen bg-white selection:bg-green-brand-50 selection:text-green-brand-dark">
       <ScrollToTop />
-      <Navbar />
+      {!standalone && <Navbar />}
       <main>
         <Outlet />
       </main>

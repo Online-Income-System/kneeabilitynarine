@@ -56,8 +56,9 @@ const CTA_LABEL = `Get the program, ${COURSE_PRICE}`;
 
 /* ─── STEP 1 · HERO ────────────────────────────────────────────────────── */
 const HERO_KICKER = "Self-paced course · Knee Ability Rehab Program";
-const HERO_HEADLINE = "Get out of knee pain with Narine's method.";
-const HERO_HEADLINE_ACCENT = "On your own time.";
+// Same headline as the homepage, per Joshua 2026-09-23.
+const HERO_HEADLINE = "Get out of knee and back pain.";
+const HERO_HEADLINE_ACCENT = "Without surgery, shots, or steroids.";
 const HERO_SUBHEADLINE =
   "15 exercises. 5 guided stretches. Built on the same method Narine uses with her 1:1 clients. Watch it anytime, anywhere.";
 
@@ -353,7 +354,7 @@ export default function Course() {
 
       {/* STEP 1 · Hero */}
       <motion.section
-        className="relative pt-40 pb-28 px-6 md:px-12 overflow-hidden"
+        className="relative pt-20 md:pt-24 pb-28 px-6 md:px-12 overflow-hidden"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
