@@ -68,7 +68,7 @@ async function readPostDates() {
 
    Pages that must never be indexed go in EXCLUDE. 404.html is here because a
    soft-404 in a sitemap is a real ranking problem, not a cosmetic one. */
-const EXCLUDE = new Set(["/404", "/200"]);
+const EXCLUDE = new Set(["/404", "/200", "/course"]);
 
 async function collectRoutes(dir, base = "") {
   const out = [];
