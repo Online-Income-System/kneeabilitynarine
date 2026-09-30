@@ -42,7 +42,25 @@ export interface BlogPost {
     /** ISO date the video went up on YouTube. Defaults to the post date. */
     uploadDate?: string;
   };
+
+  /** An Instagram reel or post embedded at the top of the article, for posts
+   *  built from her Instagram rather than YouTube. Plays inline via
+   *  Instagram's own embed player. Use the clean post URL, no tracking
+   *  query string. */
+  instagram?: {
+    url: string;
+    title: string;
+  };
+
+  /** Live at its own URL but hidden everywhere else: left off the /blog
+   *  listing, the Blog schema and sitemap.xml, and marked noindex. Used so
+   *  Narine can review a new article on the real site before it's public.
+   *  Remove the flag once she approves. */
+  unlisted?: boolean;
 }
+
+/** Posts that should appear publicly (listing, schema, sitemap). */
+export const isListed = (p: BlogPost) => !p.unlisted;
 
 /* ─────────────────────────────────────────────────────────────────────────
    Migrated 2026-07-30 from her existing Squarespace blog
@@ -73,6 +91,85 @@ export interface BlogPost {
 
    Sorted newest-first by `date` wherever this array is consumed. */
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    /* Built 2026-09-30 from Narine's Instagram reel ("The Key to Fixing Knee
+       & Back Pain"), her transcript supplied by Joshua. Stays close to what
+       she says in the reel: no exercise routine added, since she doesn't
+       give one. UNLISTED until she approves it; remove `unlisted` then. */
+    slug: "strong-legs-weak-hips-knee-and-back-pain",
+    topics: [
+      "Hip flexors",
+      "Knee pain",
+      "Low back pain",
+      "Hip strength",
+      "Leg training",
+    ],
+    title: "Strong Legs, Weak Hips: Why Lifters Still Get Knee and Back Pain",
+    date: "2026-09-30",
+    excerpt: "If you train legs hard but never train your hip flexors, your knees or your back will pay for it. Narine explains why big, strong legs still end up in pain.",
+    image: "/blog-strong-legs-weak-hips-knee-and-back-pain.jpg",
+    unlisted: true,
+    takeaways: [
+      "If you train legs hard but don't strengthen your hip flexors, you're likely to end up with knee pain or back pain.",
+      "Big, heavy legs need strong hips to lift them. When your hips are weak or tight, your knees and lower back pick up the extra work.",
+      "This is common in bodybuilders and bigger athletes, especially men: big, strong legs, but knee or back pain that holds them back.",
+      "The muscles that don't show off your strength, like your hip flexors, are often the ones that keep you out of pain.",
+    ],
+    instagram: {
+      url: "https://www.instagram.com/reel/DdslooFiziz/",
+      title: "Narine on why strong legs need strong hips",
+    },
+    body: `You need to hear this if you train legs hard.
+
+If you're building big, strong legs and you're not strengthening your hip flexors, you're going to end up with knee pain or back pain. I see it all the time.
+
+### Big legs need strong hips
+
+Your hip flexors are the muscles at the front of your hips. They help you lift your legs.
+
+The bigger and heavier your legs get, the more work it takes to lift them. You can't just grow your legs and expect your hips to keep up on their own. If your hips aren't strong enough for the legs you've built, something else has to do the work. Most of the time, that's your knees or your lower back.
+
+Tight hips cause the same problem. When your hips are tight, your legs can't move the way they should, so the load ends up somewhere it was never meant to go.
+
+### Who this happens to most
+
+I see this most in bodybuilders and bigger athletes, and more often in men. They have big, strong, athletic legs. From the outside, they look like the strongest people in the gym.
+
+But they're in pain. Their knees hurt, or their back hurts. And that pain holds them back. It stunts their athleticism, so they can't run, jump or play the way they want to.
+
+Having strong-looking legs doesn't mean your legs are strong in the right places.
+
+### The strength you can't see
+
+Most people train what they can see in the mirror: quads, glutes, calves. The muscles that look strong.
+
+Your hip flexors don't show off your strength. Nobody checks them out in the mirror. But they make all the difference in whether your knees and back stay out of pain.
+
+This is the same idea behind everything I do with clients. Pain often shows up in one place when the real problem is somewhere else. I've written about how this works lower down the leg, in [why your knees hurt](/blog/why-your-knees-hurt-five-lower-leg-areas-to-strengthen) and [weak tibs](/blog/strong-tibs-why-weak-ankles-cause-knee-pain). Your hips work the same way, from above.
+
+### Don't push through it
+
+If your knees or back already hurt when you train legs, don't push through it. You may not be strong enough in the right places yet, and that's okay. Pushing through is how a small problem turns into a big one.
+
+No pain is normal at any age, and it can be rehabbed. That's true even if your legs are the strongest thing about you.
+
+### Frequently Asked Questions
+
+**Can weak hip flexors cause knee pain?** Yes. When your hip flexors are weak, your hips can't lift and control your legs the way they should. Your knees end up taking load they weren't built to take, and over time that turns into knee pain.
+
+**Why does my back hurt if my legs are so strong?** Strong legs need strong hips to lift and move them. If your hips are weak or tight, your lower back often picks up the extra work, and that's when back pain starts.
+
+**Do bodybuilders need to train their hip flexors?** Yes. Big, heavy legs need hip strength to match. Bodybuilders and bigger athletes are some of the people I see this problem in most.
+
+**Should I keep training legs if my knee or back hurts?** Don't push through pain. Pain is your body telling you something isn't strong enough yet. Go easier, and get the weak areas stronger first.
+
+**How do I know if my hips are the problem?** It's hard to tell on your own, because the pain shows up in your knees or back, not in your hips. Finding the real imbalance is the first thing I look for with every client.
+
+### The takeaway
+
+Don't neglect the parts of your body that don't show your strength. They're the ones that make all the difference.`,
+  },
+
   {
     slug: "my-knee-protocol-what-i-do-when-my-knee-tweaks",
     topics: [

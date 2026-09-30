@@ -16,7 +16,7 @@
 
 import { SITE_URL, BUSINESS, PROFILES, absoluteUrl } from "./site";
 import { GOOGLE } from "../data/reviews";
-import { BLOG_POSTS, type BlogPost } from "../data/blog";
+import { BLOG_POSTS, isListed, type BlogPost } from "../data/blog";
 
 /* Stable @id values. Using fragment identifiers on the canonical origin
    means every schema block on every page refers to the SAME business and
@@ -237,7 +237,7 @@ export function blogListingSchema() {
     publisher: { "@id": ORG_ID },
     author: { "@id": PERSON_ID },
     inLanguage: "en-US",
-    blogPost: BLOG_POSTS.map((p) => ({
+    blogPost: BLOG_POSTS.filter(isListed).map((p) => ({
       "@type": "BlogPosting",
       "@id": `${SITE_URL}/blog/${p.slug}#article`,
       headline: p.title,

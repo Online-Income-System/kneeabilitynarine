@@ -164,6 +164,7 @@ export default function BlogPost() {
         publishedTime={post.date}
         modifiedTime={post.updated ?? post.date}
         schema={schema}
+        noindex={post.unlisted}
       />
 
       {/* Hero */}
@@ -221,6 +222,26 @@ export default function BlogPost() {
               title={post.video.title}
               caption={post.video.description}
             />
+          )}
+
+          {/* Instagram reel version of the headline video, for posts built
+              from her Instagram. Same embed player the homepage testimonials
+              use, sized for a vertical 9:16 reel. */}
+          {post.instagram && (
+            <figure className="mb-12">
+              <div className="mx-auto w-full max-w-sm rounded-2xl overflow-hidden shadow-lg bg-black">
+                <iframe
+                  src={`${post.instagram.url.replace(/\/?$/, "/")}embed/captioned`}
+                  className="w-full aspect-[9/16] max-h-[80vh] bg-black"
+                  frameBorder={0}
+                  scrolling="no"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  loading="lazy"
+                  title={post.instagram.title}
+                />
+              </div>
+            </figure>
           )}
 
           <Markdown options={markdownOptions}>{post.body}</Markdown>

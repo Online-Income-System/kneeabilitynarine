@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
-import { BLOG_POSTS } from "../data/blog";
+import { BLOG_POSTS, isListed } from "../data/blog";
 import Seo from "../components/Seo";
 import {
   graph,
@@ -27,7 +27,7 @@ function formatDate(iso: string) {
 }
 
 export default function Blog() {
-  const posts = [...BLOG_POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));
+  const posts = BLOG_POSTS.filter(isListed).sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
     <div className="min-h-screen bg-white">

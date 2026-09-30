@@ -97,6 +97,11 @@ async function collectRoutes(dir, base = "") {
         : `/${base ? `${base}/` : ""}${name}`;
 
     if (EXCLUDE.has(route)) continue;
+    /* Any page that rendered a noindex tag stays out of the sitemap too, so
+       an unlisted blog post (see `unlisted` in src/data/blog.ts) never leaks
+       in here while it's waiting for Narine's review. */
+    const html = await readFile(path.join(dir, entry.name), "utf8");
+    if (/<meta[^>]*name="robots"[^>]*content="noindex/i.test(html)) continue;
     out.push(route);
   }
   return out;
