@@ -75,7 +75,7 @@ export default function Blog() {
               <Link to={`/blog/${post.slug}`} className="group block h-full">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 mb-5 shadow-sm">
                   <img
-                    src={post.image}
+                    src={post.thumbnail ?? post.image}
                     alt=""
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"

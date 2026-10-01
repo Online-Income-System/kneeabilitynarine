@@ -52,6 +52,15 @@ export interface BlogPost {
     title: string;
   };
 
+  /** CSS aspect ratio for the header image on the post page, e.g.
+   *  "1200 / 1183". Defaults to 16 / 10. Set it when the photo has to be
+   *  shown whole (e.g. two people head to toe) rather than cropped to 16:10. */
+  imageAspect?: string;
+
+  /** Separate 4:3 crop used on the /blog listing card, for posts whose
+   *  header image isn't 4:3. Defaults to `image`. */
+  thumbnail?: string;
+
   /** Live at its own URL but hidden everywhere else: left off the /blog
    *  listing, the Blog schema and sitemap.xml, and marked noindex. Used so
    *  Narine can review a new article on the real site before it's public.
@@ -107,7 +116,11 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Strong Legs, Weak Hips: Why Lifters Still Get Knee and Back Pain",
     date: "2026-09-30",
     excerpt: "If you train legs hard but never train your hip flexors, your knees or your back will pay for it. Narine explains why big, strong legs still end up in pain.",
+    // Photo of Narine coaching a client, supplied by Joshua 2026-10-01.
+    // Header shows both people head to toe; the listing gets a 4:3 crop.
     image: "/blog-strong-legs-weak-hips-knee-and-back-pain.jpg",
+    imageAspect: "1200 / 1183",
+    thumbnail: "/blog-strong-legs-weak-hips-knee-and-back-pain-thumb.jpg",
     unlisted: true,
     takeaways: [
       "If you train legs hard but don't strengthen your hip flexors, you're likely to end up with knee pain or back pain.",

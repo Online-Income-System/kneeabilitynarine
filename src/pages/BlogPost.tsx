@@ -194,7 +194,10 @@ export default function BlogPost() {
 
       {/* Featured image */}
       <section className="px-6 md:px-12 mb-12 md:mb-16">
-        <div className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden shadow-xl shadow-green-brand/10 bg-slate-100 aspect-[16/10]">
+        <div
+          className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden shadow-xl shadow-green-brand/10 bg-slate-100"
+          style={{ aspectRatio: post.imageAspect ?? "16 / 10" }}
+        >
           <img
             src={post.image}
             alt=""
