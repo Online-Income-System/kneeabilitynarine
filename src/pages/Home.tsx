@@ -184,6 +184,13 @@ function instagramEmbedUrl(url: string): string {
 }
 const VIDEO_TESTIMONIALS: { name: string; outcome: string; url: string }[] = [
   {
+    // Added 2026-10-03 at Narine's request, placed first. Outcome taken from
+    // her own reel caption: 55, torn meniscus, limping, PT didn't work.
+    name: "Jay",
+    outcome: "55, torn meniscus, limping. In 3 months, taking stairs 2 at a time and playing sports with his son.",
+    url: "https://www.instagram.com/reel/Dd-kC66Rsx-/",
+  },
+  {
     name: "Ruzanna",
     outcome: "18 years of knee pain from a bad surgery, meniscus tear — rehabbed in 5 months.",
     url: "https://www.instagram.com/p/DE1XWxQRqdW/",
@@ -685,13 +692,15 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Flex-wrap rather than grid so a short last row (9 videos in rows
+              of 4) sits centred instead of hugging the left edge. */}
+          <div className="flex flex-wrap justify-center gap-6">
             {VIDEO_TESTIMONIALS.map(({ name, outcome, url }, i) => (
               <motion.button
                 key={name}
                 type="button"
                 onClick={() => setActiveVideo({ name, url })}
-                className="group relative block w-full text-left aspect-[4/5] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300"
+                className="group relative block w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] text-left aspect-[4/5] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300"
                 style={{ backgroundImage: PROOF_CARD_THEMES[i % PROOF_CARD_THEMES.length] }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
