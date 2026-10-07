@@ -191,6 +191,13 @@ const VIDEO_TESTIMONIALS: { name: string; outcome: string; url: string }[] = [
     url: "https://www.instagram.com/reel/Dd-kC66Rsx-/",
   },
   {
+    // Added 2026-10-07, placed second (after Jay, the other newest).
+    // Outcome taken from Narine's own reel caption.
+    name: "Juan",
+    outcome: "31, knees hurt on a bodyweight squat. In 3 to 4 months, squatting 300 to 400 lbs and back to flag football.",
+    url: "https://www.instagram.com/reel/DeLJPOdJGo6/",
+  },
+  {
     name: "Ruzanna",
     outcome: "18 years of knee pain from a bad surgery, meniscus tear — rehabbed in 5 months.",
     url: "https://www.instagram.com/p/DE1XWxQRqdW/",
