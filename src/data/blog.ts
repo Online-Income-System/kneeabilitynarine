@@ -106,7 +106,7 @@ export const BLOG_POSTS: BlogPost[] = [
        repetition cut, and two new sections (how she checks hips, how she
        strengthens them) added from her voice note to Joshua, in her words.
        Exercise names are hers; no sets, reps or routine added.
-       UNLISTED until she approves it; remove `unlisted` then. */
+       Made public 2026-10-12 (Joshua), dated that day. */
     slug: "strong-legs-weak-hips-knee-and-back-pain",
     topics: [
       "Hip flexors",
@@ -117,15 +117,13 @@ export const BLOG_POSTS: BlogPost[] = [
       "Leg training",
     ],
     title: "Strong Legs, Weak Hips: Why Lifters Still Get Knee and Back Pain",
-    date: "2026-09-30",
-    updated: "2026-10-12",
+    date: "2026-10-12",
     excerpt: "If you train legs hard but never train your hips, your knees or your back will pay for it. Narine explains why, how she checks for weak hips, and what she has clients do about it.",
     // Photo of Narine coaching a client, supplied by Joshua 2026-10-01.
     // Header shows both people head to toe; the listing gets a 4:3 crop.
     image: "/blog-strong-legs-weak-hips-knee-and-back-pain.jpg",
     imageAspect: "1200 / 1183",
     thumbnail: "/blog-strong-legs-weak-hips-knee-and-back-pain-thumb.jpg",
-    unlisted: true,
     takeaways: [
       "If you train legs hard but don't strengthen your hips, you're likely to end up with knee pain or back pain.",
       "Big, heavy legs need strong hips to lift them. When your hips can't keep up, your knees and lower back take the extra work.",
