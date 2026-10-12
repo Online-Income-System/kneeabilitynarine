@@ -102,20 +102,24 @@ export const isListed = (p: BlogPost) => !p.unlisted;
 export const BLOG_POSTS: BlogPost[] = [
   {
     /* Built 2026-09-30 from Narine's Instagram reel ("The Key to Fixing Knee
-       & Back Pain"), her transcript supplied by Joshua. Stays close to what
-       she says in the reel: no exercise routine added, since she doesn't
-       give one. UNLISTED until she approves it; remove `unlisted` then. */
+       & Back Pain"), her transcript supplied by Joshua. Rewritten 2026-10-12:
+       repetition cut, and two new sections (how she checks hips, how she
+       strengthens them) added from her voice note to Joshua, in her words.
+       Exercise names are hers; no sets, reps or routine added.
+       UNLISTED until she approves it; remove `unlisted` then. */
     slug: "strong-legs-weak-hips-knee-and-back-pain",
     topics: [
       "Hip flexors",
       "Knee pain",
       "Low back pain",
       "Hip strength",
+      "Hip mobility",
       "Leg training",
     ],
     title: "Strong Legs, Weak Hips: Why Lifters Still Get Knee and Back Pain",
     date: "2026-09-30",
-    excerpt: "If you train legs hard but never train your hip flexors, your knees or your back will pay for it. Narine explains why big, strong legs still end up in pain.",
+    updated: "2026-10-12",
+    excerpt: "If you train legs hard but never train your hips, your knees or your back will pay for it. Narine explains why, how she checks for weak hips, and what she has clients do about it.",
     // Photo of Narine coaching a client, supplied by Joshua 2026-10-01.
     // Header shows both people head to toe; the listing gets a 4:3 crop.
     image: "/blog-strong-legs-weak-hips-knee-and-back-pain.jpg",
@@ -123,10 +127,10 @@ export const BLOG_POSTS: BlogPost[] = [
     thumbnail: "/blog-strong-legs-weak-hips-knee-and-back-pain-thumb.jpg",
     unlisted: true,
     takeaways: [
-      "If you train legs hard but don't strengthen your hip flexors, you're likely to end up with knee pain or back pain.",
-      "Big, heavy legs need strong hips to lift them. When your hips are weak or tight, your knees and lower back pick up the extra work.",
-      "This is common in bodybuilders and bigger athletes, especially men: big, strong legs, but knee or back pain that holds them back.",
-      "The muscles that don't show off your strength, like your hip flexors, are often the ones that keep you out of pain.",
+      "If you train legs hard but don't strengthen your hips, you're likely to end up with knee pain or back pain.",
+      "Big, heavy legs need strong hips to lift them. When your hips can't keep up, your knees and lower back take the extra work.",
+      "Weak hips are easy to spot with the right test: people with strong legs often can't sit and lift their legs up, like in an L-sit.",
+      "Strong hips take four things: outer hip strength, hip flexor strength, hip mobility and hip flexibility.",
     ],
     instagram: {
       url: "https://www.instagram.com/reel/DdslooFiziz/",
@@ -134,31 +138,42 @@ export const BLOG_POSTS: BlogPost[] = [
     },
     body: `You need to hear this if you train legs hard.
 
-If you're building big, strong legs and you're not strengthening your hip flexors, you're going to end up with knee pain or back pain. I see it all the time.
+If you're building big, strong legs and you're not making your hips strong too, you're going to end up with knee pain or back pain. I see it all the time.
 
 ### Big legs need strong hips
 
 Your hip flexors are the muscles at the front of your hips. They help you lift your legs.
 
-The bigger and heavier your legs get, the more work it takes to lift them. You can't just grow your legs and expect your hips to keep up on their own. If your hips aren't strong enough for the legs you've built, something else has to do the work. Most of the time, that's your knees or your lower back.
+The bigger and heavier your legs get, the more work it takes to lift them. If your hips aren't strong enough for the legs you've built, something else has to do the work. Most of the time, that's your knees or your lower back.
 
-Tight hips cause the same problem. When your hips are tight, your legs can't move the way they should, so the load ends up somewhere it was never meant to go.
+Tight hips cause the same problem. When your hips are tight, your legs can't move the way they should, so the load ends up in the wrong place.
 
 ### Who this happens to most
 
-I see this most in bodybuilders and bigger athletes, and more often in men. They have big, strong, athletic legs. From the outside, they look like the strongest people in the gym.
+I see this most in bodybuilders and bigger athletes, and more often in men. They have big, strong legs. From the outside, they look like the strongest people in the gym.
 
-But they're in pain. Their knees hurt, or their back hurts. And that pain holds them back. It stunts their athleticism, so they can't run, jump or play the way they want to.
+But their knees hurt, or their back hurts. And that pain holds them back. They can't run, jump or play the way they want to.
 
-Having strong-looking legs doesn't mean your legs are strong in the right places.
+### How I check if your hips are weak
 
-### The strength you can't see
+I test people with a lot of exercises. I start at the feet and check strength all the way up to the hips. That shows me if there's a weak spot below the hips first. (I've written about those lower spots in [why your knees hurt](/blog/why-your-knees-hurt-five-lower-leg-areas-to-strengthen) and [weak tibs](/blog/strong-tibs-why-weak-ankles-cause-knee-pain).)
 
-Most people train what they can see in the mirror: quads, glutes, calves. The muscles that look strong.
+Then I check the hips and look at the difference.
 
-Your hip flexors don't show off your strength. Nobody checks them out in the mirror. But they make all the difference in whether your knees and back stay out of pain.
+A lot of people have strong legs but weak hips. I can tell because they can't hold their hips up. When they sit down and try to lift their legs, like in an L-sit, they can't do it.
 
-This is the same idea behind everything I do with clients. Pain often shows up in one place when the real problem is somewhere else. I've written about how this works lower down the leg, in [why your knees hurt](/blog/why-your-knees-hurt-five-lower-leg-areas-to-strengthen) and [weak tibs](/blog/strong-tibs-why-weak-ankles-cause-knee-pain). Your hips work the same way, from above.
+Once you know what to look for, it's very easy to see. There's a big gap between how strong their legs are and how strong their hips are.
+
+### How I make hips stronger
+
+Strong hips take four things:
+
+- Outer hip strength
+- Hip flexor strength
+- Hip mobility
+- Hip flexibility
+
+Most people need all four. For the hip flexors, I have clients do L-sits, hip flexor lifts and reverse squats. For the outer hips, we use exercises like our outer hip drop set, and cables.
 
 ### Don't push through it
 
@@ -168,15 +183,13 @@ No pain is normal at any age, and it can be rehabbed. That's true even if your l
 
 ### Frequently Asked Questions
 
-**Can weak hip flexors cause knee pain?** Yes. When your hip flexors are weak, your hips can't lift and control your legs the way they should. Your knees end up taking load they weren't built to take, and over time that turns into knee pain.
+**Can weak hips cause knee pain?** Yes. When your hips are weak, they can't lift and control your legs the way they should. Your knees end up taking load they weren't built to take.
 
-**Why does my back hurt if my legs are so strong?** Strong legs need strong hips to lift and move them. If your hips are weak or tight, your lower back often picks up the extra work, and that's when back pain starts.
+**How do I know if my hips are the problem?** The pain shows up in your knees or back, so it's hard to tell on your own. I test strength from the feet up to the hips. A common sign of weak hips is not being able to sit and lift your legs, like in an L-sit.
 
-**Do bodybuilders need to train their hip flexors?** Yes. Big, heavy legs need hip strength to match. Bodybuilders and bigger athletes are some of the people I see this problem in most.
+**What do I need to fix weak hips?** Four things: outer hip strength, hip flexor strength, hip mobility and hip flexibility. Most people need work on all four.
 
-**Should I keep training legs if my knee or back hurts?** Don't push through pain. Pain is your body telling you something isn't strong enough yet. Go easier, and get the weak areas stronger first.
-
-**How do I know if my hips are the problem?** It's hard to tell on your own, because the pain shows up in your knees or back, not in your hips. Finding the real imbalance is the first thing I look for with every client.
+**Should I keep training legs if my knee or back hurts?** Don't push through pain. Get the weak areas stronger first.
 
 ### The takeaway
 
