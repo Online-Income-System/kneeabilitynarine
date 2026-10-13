@@ -187,7 +187,7 @@ No pain is normal at any age, and it can be rehabbed. That's true even if your l
 
 **What do I need to fix weak hips?** Four things: outer hip strength, hip flexor strength, hip mobility and hip flexibility. Most people need work on all four.
 
-**Should I keep training legs if my knee or back hurts?** Don't push through pain. Get the weak areas stronger first.
+**Should I keep training legs if my knee or back hurts?** Don't push through pain. Stop doing the usual exercises that are causing the pain. Do rehab exercises instead, to make your legs and back stronger.
 
 ### The takeaway
 
