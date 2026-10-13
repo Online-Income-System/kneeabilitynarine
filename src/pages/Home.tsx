@@ -198,6 +198,11 @@ const VIDEO_TESTIMONIALS: { name: string; outcome: string; url: string }[] = [
     url: "https://www.instagram.com/reel/DeLJPOdJGo6/",
   },
   {
+    name: "Marine",
+    outcome: "Blue belts in judo and jiu-jitsu, but always injured: knees, back, shoulder, elbow. Now she trains pain free and thrives.",
+    url: "https://www.instagram.com/reel/Dea_M68ifaz/",
+  },
+  {
     name: "Ruzanna",
     outcome: "18 years of knee pain from a bad surgery, meniscus tear — rehabbed in 5 months.",
     url: "https://www.instagram.com/p/DE1XWxQRqdW/",
