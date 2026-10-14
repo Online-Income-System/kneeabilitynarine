@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import NewsletterSignup from "./components/NewsletterSignup";
 
 // Client-side route changes (React Router <Link> nav) don't reset scroll
 // position the way a real browser navigation does — without this, clicking
@@ -29,6 +30,7 @@ export default function Layout() {
       <main>
         <Outlet />
       </main>
+      {!standalone && <NewsletterSignup />}
       <Footer />
     </div>
   );

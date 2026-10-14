@@ -4,3 +4,7 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+# Serverless functions (newsletter sign-up -> GHL)
+[functions]
+  directory = "netlify/functions"
