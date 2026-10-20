@@ -27,7 +27,8 @@ import Seo from "../components/Seo";
 import { graph, localBusinessSchema, personSchema } from "../lib/schema";
 
 /* ─────────────────────────────────────────────────────────────────────────
-   COURSE SALES PAGE: Knee Ability Rehab Program ($397, self-paced).
+   COURSE SALES PAGE: Back to Sports Knee Rehab Program ($397, self-paced).
+   Renamed from "Knee Ability Rehab Program" at Narine's request, 20 Oct 2026.
 
    UNLISTED ON PURPOSE. This page is its own link to send people, not part
    of the website: noindex, excluded from sitemap.xml, and nothing on the
@@ -47,7 +48,7 @@ import { graph, localBusinessSchema, personSchema } from "../lib/schema";
    until it's confirmed it was a real former price.
    ───────────────────────────────────────────────────────────────────────── */
 
-const COURSE_NAME = "Knee Ability Rehab Program";
+const COURSE_NAME = "Back to Sports Knee Rehab Program";
 const COURSE_PRICE = "$397";
 // Straight to her Pillar checkout. External URL, so plain <a>, not Link.
 const CHECKOUT_HREF =
@@ -55,7 +56,7 @@ const CHECKOUT_HREF =
 const CTA_LABEL = `Get the program, ${COURSE_PRICE}`;
 
 /* ─── STEP 1 · HERO ────────────────────────────────────────────────────── */
-const HERO_KICKER = "Self-paced course · Knee Ability Rehab Program";
+const HERO_KICKER = `Self-paced course · ${COURSE_NAME}`;
 // Same headline as the homepage, per Joshua 2026-09-23.
 const HERO_HEADLINE = "Get out of knee and back pain.";
 const HERO_HEADLINE_ACCENT = "Without surgery, shots, or steroids.";
