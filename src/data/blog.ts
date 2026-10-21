@@ -101,6 +101,112 @@ export const isListed = (p: BlogPost) => !p.unlisted;
    Sorted newest-first by `date` wherever this array is consumed. */
 export const BLOG_POSTS: BlogPost[] = [
   {
+    /* Built 2026-10-21 from Narine's voice note to Joshua (20 Oct), in her
+       words. She reviewed it in Google Docs, made small edits and added the
+       hip and groin FAQ; repetition trimmed after her review. No exercises,
+       sets or routines added. Header: her coaching photo (narine-contact-4),
+       cropped to 4:3. */
+    slug: "my-doctor-said-i-need-surgery-do-i-really-need-it",
+    topics: [
+      "Knee surgery",
+      "ACL tear",
+      "Meniscus tear",
+      "Knee rehabilitation",
+      "Back pain",
+    ],
+    title: "My Doctor Said I Need Surgery. Do I Really Need It?",
+    date: "2026-10-21",
+    excerpt: "Your doctor says you need knee surgery. Narine explains why, 9 times out of 10, you can rehab instead, and why you should give rehab a real try first.",
+    image: "/blog-my-doctor-said-i-need-surgery.jpg",
+    imageAspect: "4 / 3",
+    takeaways: [
+      "In most cases, you can rehab a knee injury without surgery. ACL tears and meniscus tears can be rehabbed. It's been done.",
+      "Surgery is another injury. You need rehab before surgery and after it, so it makes sense to try rehab first.",
+      "Knee pain often doesn't start in the knee. Weak hamstrings, weak hips and overuse are common causes.",
+      "Give rehab a good 8 to 12 months. If you're still in pain after that, then you can decide about surgery.",
+    ],
+    body: `So here's the thing. Nine times out of ten, or even nine and a half times out of ten, you don't need surgery.
+
+Unless you were in a horrible car accident and smashed your knee, and it needs to be fixed structurally, there are so many injuries you can rehab without surgery. ACL tears. Meniscus tears. Patellar tendinitis. You can rehab them without surgery. It's been done.
+
+I've helped a lot of my clients rehab their injuries without surgery, even though their doctors said they needed it.
+
+### Why your doctor said surgery
+
+Here's what you have to remember about doctors. They recommend surgery because that's what they know how to do. They don't know how to rehab.
+
+If you talk to a surgeon, they're going to tell you one thing, and that's surgery.
+
+So if you want to rehab your knee without surgery, talk to someone who does that, and who has the experience to back it up.
+
+I'm not a surgeon. I would never tell you which surgery you need. But I will tell you when I can rehab your knee without it.
+
+### Surgery is another injury
+
+It's not like you get surgery and you're magically healed. Surgery is another injury.
+
+You have to rehab before you have surgery. And you have to rehab after it. So you might as well try rehab first.
+
+### Your knee injury isn't one in a million
+
+A lot of people tell me their doctor made them feel like their knee injury was so unique and so special. Like they were one in a million. That makes it feel like surgery is the only option you have.
+
+There are good doctors out there. They're not all bad, of course. But you have to think critically about your options.
+
+### Your pain might not start in your knee
+
+A lot of doctors look at a knee injury and only focus on the knee. But every injury is different. An ACL injury is different from a meniscus tear. Tendinitis is different again. So is osteoarthritis.
+
+And your injury doesn't always come from the knee. Here's what I see:
+
+- **ACL injury:** often your hamstrings and the back of your knee are weak. (More on that in [how to strengthen your hamstrings](/blog/how-to-strengthen-your-hamstrings-and-prevent-acl-and-knee-injuries).)
+- **Meniscus tear:** often your hips are weak. (More on that in [strong legs, weak hips](/blog/strong-legs-weak-hips-knee-and-back-pain).)
+- **Patellar tendinitis:** that's from overuse. You need to strengthen your posterior chain (the muscles along the back of your body), and all the muscles around your knee.
+
+It's not only about the knee.
+
+### What surgery can't fix
+
+Some things, surgery can't fix. How do you fix tendinitis with surgery? You can't.
+
+And some people get meniscus surgery and they're still in pain. How do you explain that? Because surgery isn't meant to heal you or rehab you.
+
+To get rid of knee pain, you have to strengthen all the muscles around your knee, fix your imbalances, and fix the root cause of the pain.
+
+### This goes for your back too
+
+I know we're talking about the knee, but this goes for the back too. And back surgery is even more risky.
+
+If a knee surgery goes wrong, you'll be in pain, and it's going to be hard. If a back surgery goes wrong, you could be paralysed. Is that risk worth it?
+
+You can strengthen your back. Your lower back, your mid back and your upper back. And you can work on your hips. The back is more complex, so it takes longer. It can take years. But with the right rehab, you will notice a difference after a few months.
+
+### I dare you to try
+
+If you're sceptical, I dare you to try rehab. What's the worst that can happen? It's a lot less risky than surgery.
+
+Give yourself a good 8 to 12 months of rehab. If you don't see any progress after that, then go and get the surgery.
+
+### Frequently Asked Questions
+
+**Can you rehab an ACL tear without surgery?** In many cases, yes. ACL injuries often come with weak hamstrings and a weak back of the knee, so that's part of what we work on.
+
+**Can a meniscus tear heal without surgery?** Many can be rehabbed without surgery. I often see weak hips behind meniscus tears. And some people have meniscus surgery and are still in pain, because surgery doesn't fix the root cause. I've helped several clients rehab their meniscus tears without surgery.
+
+**How long should I try rehab before surgery?** Give it a good 8 to 12 months. If you're still in pain after that, you can decide about surgery.
+
+**Is surgery ever the right choice?** Yes. For example, if a bad accident has damaged your knee and it needs to be fixed structurally. But in most cases, rehab is worth trying first.
+
+**Does this apply to back pain too?** Yes. Back surgery carries even bigger risks than knee surgery. It takes longer to rehab your back, but most people notice a difference after a few months of the right rehab.
+
+**What about hip and groin pain?** Again, this is rehabbable. I've helped many people get out of hip and groin pain without surgery. The right exercises, progression, and coach can help you get there.
+
+### The takeaway
+
+No pain is normal at any age, and most injuries can be rehabbed. Before you say yes to surgery, give rehab a real try.`,
+  },
+
+  {
     /* Built 2026-09-30 from Narine's Instagram reel ("The Key to Fixing Knee
        & Back Pain"), her transcript supplied by Joshua. Rewritten 2026-10-12:
        repetition cut, and two new sections (how she checks hips, how she
