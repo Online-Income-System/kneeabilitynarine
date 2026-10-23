@@ -203,6 +203,11 @@ const VIDEO_TESTIMONIALS: { name: string; outcome: string; url: string }[] = [
     url: "https://www.instagram.com/reel/Dea_M68ifaz/",
   },
   {
+    name: "Jacob",
+    outcome: "20+ years of basketball, years of Achilles pain, and other PTs and chiros hadn't helped. In a couple of months, his pain went from 9/10 to 1-2/10.",
+    url: "https://www.instagram.com/reel/DezrlnOvUhB/",
+  },
+  {
     name: "Ruzanna",
     outcome: "18 years of knee pain from a bad surgery, meniscus tear — rehabbed in 5 months.",
     url: "https://www.instagram.com/p/DE1XWxQRqdW/",
