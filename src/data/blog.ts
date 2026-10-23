@@ -177,13 +177,13 @@ To get rid of knee pain, you have to strengthen all the muscles around your knee
 
 I know we're talking about the knee, but this goes for the back too. And back surgery is even more risky.
 
-If a knee surgery goes wrong, you'll be in pain, and it's going to be hard. If a back surgery goes wrong, you could be paralysed. Is that risk worth it?
+If a knee surgery goes wrong, you'll be in pain, and it's going to be hard. If a back surgery goes wrong, you could be paralyzed. Is that risk worth it?
 
 You can strengthen your back. Your lower back, your mid back and your upper back. And you can work on your hips. The back is more complex, so it takes longer. It can take years. But with the right rehab, you will notice a difference after a few months.
 
 ### I dare you to try
 
-If you're sceptical, I dare you to try rehab. What's the worst that can happen? It's a lot less risky than surgery.
+If you're skeptical, I dare you to try rehab. What's the worst that can happen? It's a lot less risky than surgery.
 
 Give yourself a good 8 to 12 months of rehab. If you don't see any progress after that, then go and get the surgery.
 
