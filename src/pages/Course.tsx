@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "motion/react";
 import {
   ArrowRight,
   Dumbbell,
-  StretchHorizontal,
   ClipboardList,
   Mountain,
   Moon,
@@ -40,9 +39,15 @@ import { graph, localBusinessSchema, personSchema } from "../lib/schema";
    nothing is claimed either way. The FAQ sits in that slot instead.
 
    Course facts come only from her live Pillar page (read 2026-09-23):
-   name, $397 price, 15 exercises, 5 guided stretches, anytime/anywhere
-   access, accountability worksheets, and the John / Lola / Russ quotes.
-   Everything else is her already-approved site copy.
+   name, $397 price, 15 exercises, anytime/anywhere access, accountability
+   worksheets, and the John / Lola / Russ quotes. Everything else is her
+   already-approved site copy.
+
+   2026-11-02: the "5 guided stretches" were removed everywhere on this page
+   at Narine's request — she's pulling them out into a separate mobility
+   course. Her Pillar page still lists them in its "Includes" ticks and the
+   course itself still contains them, so both need to change on her side
+   before this page is sent to anyone new, or the handoff contradicts itself.
 
    The $595 "was" price on her Pillar page is deliberately NOT shown here
    until it's confirmed it was a real former price.
@@ -61,7 +66,7 @@ const HERO_KICKER = `Self-paced course · ${COURSE_NAME}`;
 const HERO_HEADLINE = "Get out of knee and back pain.";
 const HERO_HEADLINE_ACCENT = "Without surgery, shots, or steroids.";
 const HERO_SUBHEADLINE =
-  "15 exercises. 5 guided stretches. Built on the same method Narine uses with her 1:1 clients. Watch it anytime, anywhere.";
+  "15 exercises, built on the same method Narine uses with her 1:1 clients. Watch them anytime, anywhere.";
 
 /* ─── STEP 2 · IDENTIFY THE PROBLEM ───────────────────────────────────── */
 const PROBLEM_KICKER = "Sound familiar?";
@@ -90,20 +95,15 @@ const METHOD_STEPS: { num: string; Icon: typeof Dumbbell; title: string; text: s
   },
   {
     num: "02",
-    Icon: StretchHorizontal,
-    title: "Loosen up",
-    text: "5 guided stretches to help you get more flexible and move better. Tight muscles pull on your knee.",
-  },
-  {
-    num: "03",
     Icon: ClipboardList,
     title: "Track your progress",
     text: "Worksheets to write down what you did and how it felt, so you can see yourself getting better.",
   },
 ];
+// Two cards since the stretches step came out (2026-11-02), so this keeps
+// the old three-step ramp's bookends: palest tint into full brand green.
 const METHOD_CARD_THEMES: { bg: string; light: boolean }[] = [
   { bg: "#e3f5ee", light: false },
-  { bg: "#93d8c0", light: false },
   { bg: "#16a07c", light: true },
 ];
 // Her core message #1, from her 2026-08-20 notes. Matters more in a
@@ -235,11 +235,6 @@ const OFFER_ITEMS: { Icon: typeof Dumbbell; title: string; text: string }[] = [
     text: "Picked to get your recovery started and build your strength back up.",
   },
   {
-    Icon: StretchHorizontal,
-    title: "5 guided stretches",
-    text: "Follow along to get more flexible and move better.",
-  },
-  {
     Icon: Clock,
     title: "Anytime, anywhere",
     text: "Log in whenever it suits you. Go at your own pace.",
@@ -268,7 +263,7 @@ const SCARCITY_BODY =
 const FAQS: { q: string; a: string }[] = [
   {
     q: "What do I get?",
-    a: "15 exercises, 5 guided stretches, and worksheets to track your progress. You can watch them anytime, anywhere.",
+    a: "15 exercises and worksheets to track your progress. You can watch them anytime, anywhere.",
   },
   {
     q: "How much is it?",
@@ -304,7 +299,7 @@ const FAQ_SCHEMA = {
 /* ─── STEP 10 · CALL TO ACTION ─────────────────────────────────────── */
 const CTA_HEADLINE = "Your knee doesn't have to feel like this forever.";
 const CTA_HEADLINE_ACCENT = "Start the program today.";
-const CTA_SUBHEAD = `15 exercises, 5 stretches, and Narine's method, for ${COURSE_PRICE}.`;
+const CTA_SUBHEAD = `15 exercises, worksheets, and Narine's method, for ${COURSE_PRICE}.`;
 
 /* ─── STEP 11 · WARNING ────────────────────────────────────────────── */
 const WARNING_HEADLINE = "The longer you wait,";
@@ -317,7 +312,7 @@ const WARNING_CLOSER = "It's not too late to start. But every week you wait is a
 
 /* ─── STEP 12 · P.S. ───────────────────────────────────────────────── */
 const PS_BODY =
-  `If you skipped to the bottom: the ${COURSE_NAME} is 15 exercises, 5 guided stretches, and worksheets to track your progress. It's built on the same method Narine uses with her 1:1 clients. It's ${COURSE_PRICE}, one time, and you can start today, from anywhere.`;
+  `If you skipped to the bottom: the ${COURSE_NAME} is 15 exercises and worksheets to track your progress. It's built on the same method Narine uses with her 1:1 clients. It's ${COURSE_PRICE}, one time, and you can start today, from anywhere.`;
 
 function CheckoutButton({ size = "lg" }: { size?: "lg" | "md" }) {
   const sizing =
@@ -347,7 +342,7 @@ export default function Course() {
     <div className="min-h-screen bg-white">
       <Seo
         title={`${COURSE_NAME} | Knee Ability Narine`}
-        description={`Narine's self-paced course: 15 exercises and 5 guided stretches built on the same method she uses with her 1:1 clients. ${COURSE_PRICE}.`}
+        description={`Narine's self-paced course: 15 exercises built on the same method she uses with her 1:1 clients, with worksheets to track your progress. ${COURSE_PRICE}.`}
         path="/course"
         schema={graph(localBusinessSchema(), personSchema(), FAQ_SCHEMA)}
         noindex
@@ -432,7 +427,7 @@ export default function Course() {
             <p className="text-lg md:text-xl text-slate-700 font-normal leading-relaxed">{METHOD_SUBHEAD}</p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {METHOD_STEPS.map(({ num, Icon, title, text }, i) => {
               const theme = METHOD_CARD_THEMES[i];
               return (
@@ -642,7 +637,7 @@ export default function Course() {
               {OFFER_HEADLINE} <span className="italic text-green-brand">{OFFER_HEADLINE_ACCENT}</span>
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6 mb-12">
+          <div className="grid sm:grid-cols-3 gap-6 mb-12">
             {OFFER_ITEMS.map(({ Icon, title, text }) => (
               <div key={title} className="flex gap-5 rounded-2xl bg-white p-7 shadow-md">
                 <div className="shrink-0 w-12 h-12 rounded-xl bg-green-brand-50 flex items-center justify-center">
