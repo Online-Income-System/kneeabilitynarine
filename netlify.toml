@@ -1,0 +1,10 @@
+# Netlify deploy config — kneeabilitynarine.com
+# Static build via vite-react-ssg (publish dir: dist).
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Serverless functions (newsletter sign-up -> GHL)
+[functions]
+  directory = "netlify/functions"

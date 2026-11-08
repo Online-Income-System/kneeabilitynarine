@@ -1,0 +1,406 @@
+import React, { useEffect, useRef } from "react";
+import { motion } from "motion/react";
+import { CalendarCheck, MessageCircle, Search, ClipboardList, Star } from "lucide-react";
+import { GOOGLE } from "../data/reviews";
+import Seo from "../components/Seo";
+import { graph, localBusinessSchema, personSchema } from "../lib/schema";
+
+/* ─────────────────────────────────────────────────────────────────────────
+   CONTACT PAGE — the entry point for the free call, sourced from the real
+   flow in wiki/offers/offer-architecture.md: free call -> body assessment
+   -> personalised 1:1 plan. No prices (hers are in flux, same call made on
+   Home/Services). Zero I/me/my.
+
+   Booking, replacing the old contact form (per Narine's direct instruction):
+   two cards side by side — a live Calendly embed, and a "text Narine
+   directly" card. The Calendly link is hers (calendly.com/knee-ability-narine
+   /30min). Her phone number (818-351-6191) is sourced from two independent
+   places in her own material: the CTA in her original Squarespace site copy
+   ("Text me the word 'consult' to schedule..." -> sms:8183516191) and the
+   GoHighLevel setup note in wiki/strategy/open-questions.md referencing the
+   same number as the one to connect. Not fabricated, not guessed.
+
+   The old Netlify Forms wiring (data-netlify, fetch() submission) is gone
+   along with the form itself — OPEN ITEM for Joshua from that build is now
+   moot, nothing left to turn on in the Netlify dashboard for this page.
+
+   Photo gallery below: per Joshua's direct instruction, this must be about
+   her clients and Narine working with them, not Narine solo. He named 9
+   specific files from her "Pics for website" Drive folder showing her with
+   clients — 7 of them (P2355455, P2365990, P2366084, P2366255, P2366397,
+   P2366632, PFF01527) were all 14-19MB, over the Drive download tool's
+   10MB cap and confirmed unreachable through that tool by repeated direct
+   testing. Joshua then attached all 9 originals straight to the chat,
+   which bypasses that cap entirely since it's a limit of the Drive
+   download tool specifically, not of image size in general. Resized each
+   from its 14-19MB original down to a 1600px-max-edge, quality-82 JPEG
+   (each landed at 160-270KB) before adding here — full source list:
+   P1965856.JPEG, P1976606.JPG, P2355455.JPG, P2365990.JPG, P2366084.JPG,
+   P2366255.JPG, P2366397.JPG, P2366632.JPG, PFF01527.JPG, mapped in that
+   order to narine-contact-1 through narine-contact-9. All 9 individually
+   viewed before use to confirm each one genuinely shows her with a client
+   or class, not just described from a filename.
+
+   Layout (updated 2026-07-30, twice, per Joshua): on sm+ screens, the 3
+   portrait shots (narine-contact-1, 7, 4) sit in one row across the top —
+   7 was previously bottom-left and got moved to the middle slot. Below
+   that, two more rows, each square-landscape-square: row two is
+   narine-contact-2, 8 (wide), 3; row three is narine-contact-5, 9 (wide),
+   6. This started as a single row of all 6 non-portrait photos, but with
+   6 photos crammed into one row the two wide group/class shots — the
+   ones with the most faces in them, and per Joshua the most impactful
+   photos in the whole set — were too small to read clearly. Splitting
+   into two rows of 3 gives every photo here noticeably more height.
+   Below sm, this precise arrangement gets too cramped, so mobile falls
+   back to a plain 2-column stack with the two landscape shots spanning
+   both columns. */
+const CALENDLY_URL = "https://calendly.com/knee-ability-narine/30min";
+// Button label updated 2026-08-01 per Narine: show "Text Narine" instead of
+// the raw phone number. The number itself still lives in PHONE_SMS below
+// (that's what the href actually dials into); this is display text only.
+const TEXT_BUTTON_LABEL = "Text Narine";
+const PHONE_SMS = "sms:8183516191";
+
+const TOP_ROW: string[] = [
+  "/narine-contact-1.jpg",
+  "/narine-contact-7.jpg",
+  "/narine-contact-4.jpg",
+];
+
+// Each row is square-landscape-square: one of the two wide group/class
+// shots per row, flanked by a square on each side. Split into two rows
+// (2026-07-30, per Joshua) instead of cramming all 6 into one row — with
+// 6 photos across a single row the group shots (the ones with the most
+// faces in them, and the ones he singled out as the most impactful) were
+// too small to read clearly. Two rows of 3 gives every photo here roughly
+// 50% more height than the single-row version did.
+const ROW_TWO: { src: string; wide?: boolean }[] = [
+  { src: "/narine-contact-2.jpg" },
+  { src: "/narine-contact-8.jpg", wide: true },
+  { src: "/narine-contact-3.jpg" },
+];
+
+const ROW_THREE: { src: string; wide?: boolean }[] = [
+  { src: "/narine-contact-5.jpg" },
+  { src: "/narine-contact-9.jpg", wide: true },
+  { src: "/narine-contact-6.jpg" },
+];
+
+// Same 9 photos, plain reading order, for the mobile fallback stack.
+const MOBILE_ORDER: { src: string; wide?: boolean }[] = [
+  { src: "/narine-contact-1.jpg" },
+  { src: "/narine-contact-7.jpg" },
+  { src: "/narine-contact-4.jpg" },
+  { src: "/narine-contact-2.jpg" },
+  { src: "/narine-contact-3.jpg" },
+  { src: "/narine-contact-8.jpg", wide: true },
+  { src: "/narine-contact-9.jpg", wide: true },
+  { src: "/narine-contact-5.jpg" },
+  { src: "/narine-contact-6.jpg" },
+];
+
+const EXPECT: { icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; title: string; text: string }[] = [
+  {
+    icon: Search,
+    title: "The full picture",
+    text: "Where you're at, what hurts, and what you want to be able to do again. She listens first.",
+  },
+  {
+    icon: ClipboardList,
+    title: "A real assessment",
+    text: "What's actually behind the pain, beyond where it shows up. That's what the plan gets built around.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "A custom plan",
+    text: "You follow a plan built specifically for you and your injuries, with a roadmap to actually get out of pain.",
+  },
+];
+
+// Loads Calendly's widget script once, then uses the documented
+// initInlineWidget API to render into this component's own container.
+// Using the imperative API (rather than dropping a raw <script> tag in
+// JSX, which React won't execute) means this also re-initializes cleanly
+// if a visitor navigates away from /contact and back in this SPA.
+//
+// IMPORTANT: the container must NOT use the class "calendly-inline-widget".
+// That class name also makes widget.js's own auto-scan (which runs
+// independently of our imperative call) try to initialize this element by
+// reading its data-url attribute — which we deliberately don't set, since
+// we pass the url programmatically instead. That auto-scan then crashes
+// with "Cannot read properties of null (reading 'split')" in the widget's
+// minified parseOptions, which was silently breaking the live embed (found
+// via a live console/network check on kneeabilitynarine.netlify.app/contact
+// after Joshua reported the widget not loading). Renamed the container's
+// class to something Calendly's script won't recognize so only our
+// explicit initInlineWidget call runs.
+function CalendlyEmbed() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scriptId = "calendly-widget-script";
+    let cancelled = false;
+
+    function init() {
+      if (cancelled || !containerRef.current) return;
+      const Calendly = (window as any).Calendly;
+      if (!Calendly) return;
+      containerRef.current.innerHTML = "";
+      Calendly.initInlineWidget({
+        url: CALENDLY_URL,
+        parentElement: containerRef.current,
+      });
+    }
+
+    const existing = document.getElementById(scriptId) as HTMLScriptElement | null;
+    if (existing) {
+      if ((window as any).Calendly) {
+        init();
+      } else {
+        existing.addEventListener("load", init);
+      }
+    } else {
+      const script = document.createElement("script");
+      script.id = scriptId;
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      script.addEventListener("load", init);
+      document.body.appendChild(script);
+    }
+
+    return () => {
+      cancelled = true;
+      existing?.removeEventListener("load", init);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="narine-calendly-widget"
+      style={{ minWidth: "280px", height: "700px" }}
+    />
+  );
+}
+
+export default function Contact() {
+  return (
+    <div className="min-h-screen bg-white">
+      <Seo
+        title="Book Your Free Call | Knee Ability Narine"
+        description="Book a free call with Narine: a real conversation about your pain, a body assessment, and a personalised plan to get you moving again. Burbank, CA and online."
+        path="/contact"
+        schema={graph(localBusinessSchema(), personSchema())}
+      />
+
+      {/* Hero */}
+      <motion.section
+        className="relative pt-40 pb-16 px-6 md:px-12 overflow-hidden"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_10%,rgba(22,160,124,0.08)_0%,transparent_100%)]" />
+        <div className="max-w-3xl mx-auto text-center mb-14">
+          <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+            Book your free call
+          </p>
+          <h1 className="text-5xl md:text-6xl font-serif font-medium leading-[1.1] text-slate-900 mb-6">
+            Start with{" "}
+            <span className="italic text-green-brand">a conversation.</span>
+          </h1>
+          <p className="text-xl text-slate-700 font-normal leading-relaxed max-w-2xl mx-auto mb-4">
+            One free call. What you're feeling, what you want to be able to
+            do, and what the path there looks like.
+          </p>
+          <div className="flex items-center justify-center gap-1.5 text-sm text-slate-500">
+            <div className="flex text-star-gold">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-star-gold" strokeWidth={0} />
+              ))}
+            </div>
+            <span>
+              {GOOGLE.rating.toFixed(1)} · {GOOGLE.reviewCount} Google reviews
+            </span>
+          </div>
+        </div>
+
+        {/* Book directly — Calendly embed + text-Narine, side by side */}
+        <div className="max-w-5xl mx-auto grid sm:grid-cols-2 gap-6 items-stretch">
+          <div className="rounded-3xl border border-slate-100 shadow-2xl shadow-green-brand/10 bg-white p-6 md:p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-11 h-11 rounded-xl bg-green-brand-50 flex items-center justify-center shrink-0">
+                <CalendarCheck className="w-6 h-6 text-green-brand" strokeWidth={2} />
+              </div>
+              <h2 className="text-xl font-serif text-slate-900">
+                Pick a time that works
+              </h2>
+            </div>
+            <CalendlyEmbed />
+          </div>
+
+          <div className="rounded-3xl bg-green-brand p-8 md:p-10 text-white flex flex-col justify-center">
+            <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center mb-6">
+              <MessageCircle className="w-6 h-6 text-white" strokeWidth={2} />
+            </div>
+            <h2 className="text-xl font-serif mb-3">Prefer to text?</h2>
+            <p className="text-white/85 font-normal leading-relaxed mb-8">
+              Reach Narine directly, no form to fill out. Text the word
+              "consult" to book a consult.
+            </p>
+            <a
+              href={PHONE_SMS}
+              className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white text-green-brand-dark text-lg font-medium hover:bg-green-brand-50 transition-all hover:scale-[1.02]"
+            >
+              {TEXT_BUTTON_LABEL}
+            </a>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* What to expect */}
+      <section className="bg-slate-50 border-t border-slate-100 py-24 md:py-28 px-6 md:px-12">
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-2xl mb-14">
+            <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+              What to expect
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900">
+              One conversation could change everything.
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {EXPECT.map(({ icon: Icon, title, text }) => (
+              <div
+                key={title}
+                className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"
+              >
+                <div className="w-11 h-11 rounded-xl bg-green-brand-50 flex items-center justify-center mb-5">
+                  <Icon className="w-6 h-6 text-green-brand" strokeWidth={2} />
+                </div>
+                <h3 className="text-lg font-serif text-slate-900 mb-3">
+                  {title}
+                </h3>
+                <p className="text-slate-700 font-normal leading-relaxed">
+                  {text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Photo gallery — a peek inside the gym, keeps this page from feeling empty */}
+      <section className="py-24 md:py-28 px-6 md:px-12">
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-2xl mb-14 text-center mx-auto">
+            <p className="text-green-brand text-xs font-semibold uppercase tracking-[0.25em] mb-6">
+              In the gym
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-slate-900">
+              Narine, working with her clients.
+            </h2>
+          </div>
+          {/* sm+: 3 portraits across the top, 2 squares flanking the 2
+              landscape shots underneath — see file-header comment. */}
+          <div className="hidden sm:block space-y-4 md:space-y-5">
+            <div className="grid grid-cols-3 gap-4 md:gap-5">
+              {TOP_ROW.map((src, i) => (
+                <motion.div
+                  key={src}
+                  className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm bg-slate-100"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.05 }}
+                >
+                  <img
+                    src={src}
+                    alt="Narine coaching a client at her gym in Burbank, CA"
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.currentTarget.closest("div") as HTMLElement).style.display = "none";
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+            <div className="flex gap-4 md:gap-5 h-56 md:h-72">
+              {ROW_TWO.map(({ src, wide }, i) => (
+                <motion.div
+                  key={src}
+                  className={`relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 ${wide ? "flex-[2]" : "flex-1"}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: (TOP_ROW.length + i) * 0.05 }}
+                >
+                  <img
+                    src={src}
+                    alt="Narine coaching a client at her gym in Burbank, CA"
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.currentTarget.closest("div") as HTMLElement).style.display = "none";
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+            <div className="flex gap-4 md:gap-5 h-56 md:h-72">
+              {ROW_THREE.map(({ src, wide }, i) => (
+                <motion.div
+                  key={src}
+                  className={`relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 ${wide ? "flex-[2]" : "flex-1"}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeOut",
+                    delay: (TOP_ROW.length + ROW_TWO.length + i) * 0.05,
+                  }}
+                >
+                  <img
+                    src={src}
+                    alt="Narine coaching a client at her gym in Burbank, CA"
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.currentTarget.closest("div") as HTMLElement).style.display = "none";
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Below sm: plain 2-column stack, landscape shots span both columns */}
+          <div className="grid grid-cols-2 sm:hidden gap-4 auto-rows-[160px]">
+            {MOBILE_ORDER.map(({ src, wide }, i) => (
+              <motion.div
+                key={src}
+                className={`relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 ${wide ? "col-span-2" : ""}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.05 }}
+              >
+                <img
+                  src={src}
+                  alt="Narine coaching a client at her gym in Burbank, CA"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => {
+                    (e.currentTarget.closest("div") as HTMLElement).style.display = "none";
+                  }}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
