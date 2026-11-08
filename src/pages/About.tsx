@@ -9,9 +9,9 @@ import { graph, personSchema, localBusinessSchema } from "../lib/schema";
    ABOUT PAGE — her real origin story (wiki/identity/origin-story.md +
    founder-profile.md), structure cloned from Joshua's own About.tsx
    (hero -> photo/intro -> stat blocks -> thematic sections -> CTA), but
-   entirely third person throughout, per her house rule: bio/credentials
-   content about Narine herself uses "she/her," never first-person "I/my"
-   the way the rest of the site never uses "I/my" from her either.
+   written in first person ("I/my") since 8 Nov 2026, at Narine's request:
+   her About sections speak in her own voice. Testimonials, image alt text
+   and SEO/schema text stay third person.
    Uses a different full-body photo than the homepage (that one's the bicep-flex
    shot; this is her front-facing deadlift setup), per Joshua's request not to
    reuse the same image twice. Still uncropped, full body, per her house rule. */
@@ -37,42 +37,42 @@ function SectionLabel({
 }
 
 const ORIGIN_BODY: string[] = [
-  "Tango dancing was her identity before any of this. It was stress relief, community, the thing that made her feel like herself. Then at 30, a knee injury during jiu jitsu turned into patellar tendinitis, and it hit at the same time she lost her job.",
-  "No income, no training, and a burning pain that consistently woke her up in the middle of the night. She tried chiropractors, creams, rest. Nothing worked. She finally found a trainer who specialized in rehabbing injuries and was inspired to get the same certification after she was out of pain. It took eight months to get out of chronic pain, and a full year before she was back to martial arts training.",
-  "The turning point wasn't a new treatment. It was a different question. Her ligaments and tendons weren't weak because she was broken. They were weak because they'd never been properly strengthened. She rebuilt them on purpose, slowly, chasing adaptation instead of relief. At 31 she started Judo, pain free. The year after, Muay Thai.",
-  "Friends and family had been watching her rebuild and started asking for help. She got certified, took her first client within a week, and built what's now Knee Ability Narine.",
+  "Tango dancing was my identity before any of this. It was stress relief, community, the thing that made me feel like myself. Then at 30, a knee injury during jiu jitsu turned into patellar tendinitis, and it hit at the same time I lost my job.",
+  "No income, no training, and a burning pain that consistently woke me up in the middle of the night. I tried chiropractors, creams, rest. Nothing worked. I finally found a trainer who specialized in rehabbing injuries and was inspired to get the same certification after I was out of pain. It took eight months to get out of chronic pain, and a full year before I was back to martial arts training.",
+  "The turning point wasn't a new treatment. It was a different question. My ligaments and tendons weren't weak because I was broken. They were weak because they'd never been properly strengthened. I rebuilt them on purpose, slowly, chasing adaptation instead of relief. At 31 I started Judo, pain free. The year after, Muay Thai.",
+  "Friends and family had been watching me rebuild and started asking for help. I got certified, took my first client within a week, and built what's now Knee Ability Narine.",
 ];
 
 const STATS: { value: string; label: string; sub: string }[] = [
   {
-    value: "75+",
+    value: "80+",
     label: "People out of pain",
     sub: "Clients rebuilt from the ground up, in person in Burbank, CA and online anywhere.",
   },
   {
     value: "3 years",
     label: "Coaching as Knee Ability Narine",
-    sub: "Certified in 2023, the same day her corporate contract ended.",
+    sub: "Certified in 2023, the same day my corporate contract ended.",
   },
 ];
 
 const APPROACH_BODY: string[] = [
   "Every session runs on one rule that doesn't bend: never push through pain. If something hurts, that's information, not something to work through.",
-  "Training with her isn't only about following a cookie-cutter program. The real results come from what she does beyond the program itself. She knows when to push a client forward and when to have them regress. And if you have more than one injury, she knows how to rehab the second and third injury too. Because every pain point in the body is connected. Knee, back, hip, groin, ankle, shin splint, and shoulder injuries all get treated with the same method, for the same reason.",
-  "She also asks for honesty, transparency, and humility in return, because you won't get results if you aren't honest about what you're feeling. The more honest you are, the faster she can adjust the plan.",
-  "If you're scared or in pain, you'll be met at whatever pace you need, sometimes starting with a conversation or a meditation before any exercise begins.",
+  "Training with me isn't only about following a cookie-cutter program. The real results come from what I do beyond the program itself. I know when to push a client forward and when to have them regress. And if you have more than one injury, I know how to rehab the second and third injury too. Because every pain point in the body is connected. Knee, back, hip, groin, ankle, shin splint, and shoulder injuries all get treated with the same method, for the same reason.",
+  "I also ask for honesty, transparency, and humility in return, because you won't get results if you aren't honest about what you're feeling. The more honest you are, the faster I can adjust the plan.",
+  "If you're scared or in pain, I'll meet you at whatever pace you need, sometimes starting with a conversation or a meditation before any exercise begins.",
 ];
 const APPROACH_CLOSER =
-  "With her, you're not getting a trainer who knows how to create a generic rehab program. You're getting an experienced coach who knows how to help people actually get out of pain safely.";
+  "With me, you're not getting a trainer who knows how to create a generic rehab program. You're getting an experienced coach who knows how to help people actually get out of pain safely.";
 
 /* Restored 2026-08-23 at Narine's request: the Armenian line was cut in the
    Round 2 edits, and she asked for it back — "I actually think niching like
    this is important." Same round, she asked to add that she speaks Armenian
    and can work with people in Armenian, so that's the third paragraph. */
 const MISSION_BODY: string[] = [
-  "When she started, there weren't other women doing rehab training in her market. She built her practice to fill that gap, and many of her clients, especially women, say they feel safer and better understood working with her.",
-  "She's Armenian, and she's especially motivated to serve people in her own community: strong, mobile, back to the sports they love, and still able to work and play with their grandchildren without pain.",
-  "She speaks Armenian too. If that's easier for you, the whole thing can be in Armenian, from the first call through every session.",
+  "When I started, there weren't other women doing rehab training in my market. I built my practice to fill that gap, and many of my clients, especially women, say they feel safer and better understood working with me.",
+  "I'm Armenian, and I'm especially motivated to serve people in my own community: strong, mobile, back to the sports they love, and still able to work and play with their grandchildren without pain.",
+  "I speak Armenian too. If that's easier for you, the whole thing can be in Armenian, from the first call through every session.",
 ];
 
 export default function About() {
@@ -80,7 +80,7 @@ export default function About() {
     <div className="min-h-screen bg-white">
       <Seo
         title="About Narine | Knee Ability Narine"
-        description="Narine Ashnalikyan rebuilt her own body from patellar tendinitis before building Knee Ability Narine. ATG certified, Armenian speaking, Burbank, CA and online, 75+ people out of knee and back pain."
+        description="Narine Ashnalikyan rebuilt her own body from patellar tendinitis before building Knee Ability Narine. ATG certified, Armenian speaking, Burbank, CA and online, 80+ people out of knee and back pain."
         path="/about"
         image="/narine-about-photo.jpg"
         schema={graph(personSchema(), localBusinessSchema())}
@@ -99,14 +99,14 @@ export default function About() {
             About Narine
           </p>
           <h1 className="text-5xl md:text-6xl font-serif font-medium leading-[1.1] text-slate-900 mb-6">
-            She rebuilt her own body first.{" "}
+            I rebuilt my own body first.{" "}
             <span className="italic text-green-brand">
-              Then she built a method around it.
+              Then I built a method around it.
             </span>
           </h1>
           <p className="text-xl text-slate-700 font-normal leading-relaxed max-w-2xl mx-auto">
-            Pain wasn't the enemy. Low capacity was. Everything she teaches
-            started with proving that on herself.
+            Pain wasn't the enemy. Low capacity was. Everything I teach
+            started with proving that on myself.
           </p>
         </div>
       </motion.section>
@@ -164,7 +164,7 @@ export default function About() {
       {/* Her approach */}
       <section className="py-24 px-6 md:px-12 bg-slate-50 border-y border-slate-100">
         <div className="max-w-3xl mx-auto">
-          <SectionLabel icon={Brain}>Her approach</SectionLabel>
+          <SectionLabel icon={Brain}>My approach</SectionLabel>
           <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mb-10 leading-tight">
             Pain was never the problem.{" "}
             <span className="italic text-green-brand">Low capacity was.</span>
@@ -186,7 +186,7 @@ export default function About() {
           <SectionLabel icon={Users}>Why this work</SectionLabel>
           <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mb-10 leading-tight">
             The first woman doing rehab training{" "}
-            <span className="italic text-green-brand">in her area.</span>
+            <span className="italic text-green-brand">in my area.</span>
           </h2>
           <div className="space-y-6 text-lg text-slate-700 leading-relaxed">
             {MISSION_BODY.map((para, i) => (

@@ -106,20 +106,20 @@ const METHOD_RULE_SUB = "Not on day one. Not on day ninety. No exceptions.";
 const METHOD_CLOSER = "It's never too late to start.";
 
 /* ─── STEP 4 · PRESENT CREDENTIALS (Meet Narine) ──────────────────────────
-   Sources: wiki/identity/founder-profile.md + origin-story.md. Third person
-   here (bio section, not benefit copy) — mirrors Mason's "Meet Mason" block.
+   Sources: wiki/identity/founder-profile.md + origin-story.md. First person
+   since 8 Nov 2026, at Narine's request (was third person) — mirrors Mason's "Meet Mason" block.
    Photo: P1955242 from the "Pics for website" Drive folder, cropped 4:5. */
 const MEET_KICKER = "Meet Narine";
-const MEET_HEADLINE = "She's been exactly where you are.";
-const MEET_HEADLINE_ACCENT = "And she got out."; // italic green
+const MEET_HEADLINE = "I've been exactly where you are.";
+const MEET_HEADLINE_ACCENT = "And I got out."; // italic green
 const MEET_BODY: string[] = [
-  "At 30, a knee injury during jiu jitsu turned into chronic pain. She lost her job at the same time. Some mornings the only question was how bad today would be.",
-  "The turning point was the same insight this method is built on: her body wasn't broken, it was underprepared. She rebuilt it from the ground up, and by 31 she was training pain free again, Judo first, then Muay Thai the year after. She's been running that same rebuild for her clients ever since.",
+  "At 30, a knee injury during jiu jitsu turned into chronic pain. I lost my job at the same time. Some mornings the only question was how bad today would be.",
+  "The turning point was the same insight this method is built on: my body wasn't broken, it was underprepared. I rebuilt it from the ground up, and by 31 I was training pain free again, Judo first, then Muay Thai the year after. I've been running that same rebuild for my clients ever since.",
 ];
 const MEET_PHOTO = "/narine-meet-photo.jpg";
 const MEET_STATS: { Icon: typeof Award; label: string }[] = [
   { Icon: Award, label: "ATG Certified Coach" },
-  { Icon: Users, label: "75+ people out of pain" },
+  { Icon: Users, label: "80+ people out of pain" },
   { Icon: MapPin, label: "Burbank, CA & online" },
 ];
 
@@ -361,7 +361,7 @@ const WARNING_CLOSER =
    actual site — not ship at full length. Replaced with her own shortened
    version, verbatim. */
 const PS_BODY: string[] = [
-  "If you skimmed straight to the bottom: it starts with one free call. In-person spots are limited, and online fills up too. Training with Narine isn't about following a cookie-cutter rehab program; she knows when to have you progress, when to regress, and how to rehab multiple injuries that work together so you can actually get out of pain safely. Hike again. Dance again. Sleep through the night again. That's what's actually possible from here.",
+  "If you skimmed straight to the bottom: it starts with one free call. In-person spots are limited, and online fills up too. Training with me isn't about following a cookie-cutter rehab program; I know when to have you progress, when to regress, and how to rehab multiple injuries that work together so you can actually get out of pain safely. Hike again. Dance again. Sleep through the night again. That's what's actually possible from here.",
 ];
 const PS_CTA_LABEL = "Book Your Free Call";
 
@@ -641,7 +641,7 @@ export default function Home() {
               to="/about"
               className="group mt-8 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-green-brand text-white text-base font-medium hover:bg-green-brand-dark transition-all hover:scale-105 shadow-lg shadow-green-brand/20"
             >
-              Read her full story
+              Read my full story
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>

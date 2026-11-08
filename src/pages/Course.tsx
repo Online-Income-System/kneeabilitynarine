@@ -66,7 +66,7 @@ const HERO_KICKER = `Self-paced course · ${COURSE_NAME}`;
 const HERO_HEADLINE = "Get out of knee and back pain.";
 const HERO_HEADLINE_ACCENT = "Without surgery, shots, or steroids.";
 const HERO_SUBHEADLINE =
-  "15 exercises, built on the same method Narine uses with her 1:1 clients. Watch them anytime, anywhere.";
+  "15 exercises, built on the same method I use with my 1:1 clients. Watch them anytime, anywhere.";
 
 /* ─── STEP 2 · IDENTIFY THE PROBLEM ───────────────────────────────────── */
 const PROBLEM_KICKER = "Sound familiar?";
@@ -78,7 +78,7 @@ const PROBLEM_BODY: string[] = [
 ];
 const PROBLEM_HARD_QUESTION = "On the bad days, you start to wonder: is this just life now?";
 // Her own core belief, from her 2026-08-20 notes.
-const PROBLEM_CLOSER = "Narine's answer: no pain is normal at any age, and it can be rehabbed.";
+const PROBLEM_CLOSER = "My answer: no pain is normal at any age, and it can be rehabbed.";
 
 /* ─── STEP 3 · PROVIDE THE SOLUTION ───────────────────────────────────── */
 const METHOD_KICKER = "The Ground-Up Method";
@@ -115,16 +115,16 @@ const METHOD_CLOSER = "It's never too late to start.";
 
 /* ─── STEP 4 · PRESENT CREDENTIALS (homepage copy, already approved) ─── */
 const MEET_KICKER = "Meet Narine";
-const MEET_HEADLINE = "She's been exactly where you are.";
-const MEET_HEADLINE_ACCENT = "And she got out.";
+const MEET_HEADLINE = "I've been exactly where you are.";
+const MEET_HEADLINE_ACCENT = "And I got out.";
 const MEET_BODY: string[] = [
-  "At 30, a knee injury during jiu jitsu turned into chronic pain. She lost her job at the same time. Some mornings the only question was how bad today would be.",
-  "She rebuilt her body from the ground up, and by 31 she was training pain free again, Judo first, then Muay Thai the year after. She's been running that same rebuild for her clients ever since. This course is that method, put together so you can do it yourself.",
+  "At 30, a knee injury during jiu jitsu turned into chronic pain. I lost my job at the same time. Some mornings the only question was how bad today would be.",
+  "I rebuilt my body from the ground up, and by 31 I was training pain free again, Judo first, then Muay Thai the year after. I've been running that same rebuild for my clients ever since. This course is that method, put together so you can do it yourself.",
 ];
 const MEET_PHOTO = "/narine-meet-photo.jpg";
 const MEET_STATS: { Icon: typeof Award; label: string }[] = [
   { Icon: Award, label: "ATG Certified Coach" },
-  { Icon: Users, label: "75+ people out of pain" },
+  { Icon: Users, label: "80+ people out of pain" },
   { Icon: MapPin, label: "Burbank, CA & online" },
 ];
 
@@ -132,7 +132,7 @@ const MEET_STATS: { Icon: typeof Award; label: string }[] = [
    Real outcomes from her 1:1 clients (reviews.ts), framed honestly as
    what her clients got back, not as promised course results. */
 const BENEFITS_KICKER = "What changes";
-const BENEFITS_HEADLINE = "This is what her clients";
+const BENEFITS_HEADLINE = "This is what my clients";
 const BENEFITS_HEADLINE_ACCENT = "got back.";
 const BENEFITS_SUBHEAD = "The course is built on the same method.";
 const BENEFITS: { Icon: typeof Mountain; title: string; text: string }[] = [
@@ -175,7 +175,7 @@ const PROOF_KICKER = "Real stories";
 const PROOF_HEADLINE = "Hear it from people who were";
 const PROOF_HEADLINE_ACCENT = "exactly where you are.";
 const PROOF_SUBHEAD =
-  "These are people Narine has trained with this method. Tap a video to watch it here.";
+  "These are people I've trained with this method. Tap a video to watch it here.";
 const QUOTES: { name: string; text: string }[] = [
   {
     name: "John",
@@ -247,17 +247,17 @@ const OFFER_ITEMS: { Icon: typeof Dumbbell; title: string; text: string }[] = [
 ];
 // Sets up the Pillar handoff so the change of page isn't a surprise.
 const OFFER_NEXT_STEP =
-  "When you click, you'll make an account on Narine's course page and pay there. Then you can start right away.";
+  "When you click, you'll make an account on my course page and pay there. Then you can start right away.";
 
 /* ─── STEP 8 · SCARCITY (real, not a countdown) ───────────────────────
    The only real limit is her 1:1 capacity (homepage Step 8). The course
    is the way to start without waiting for a spot. No fake "limited spots"
    on the course itself. */
 const SCARCITY_KICKER = "Why the course";
-const SCARCITY_HEADLINE = "Narine only takes a few 1:1 clients at a time.";
+const SCARCITY_HEADLINE = "I only take a few 1:1 clients at a time.";
 const SCARCITY_HEADLINE_ACCENT = "The course has no waitlist.";
 const SCARCITY_BODY =
-  "In-person spots in Burbank open one or two at a time. When they're full, you wait. The course lets you start her method today, from anywhere.";
+  "In-person spots in Burbank open one or two at a time. When they're full, you wait. The course lets you start my method today, from anywhere.";
 
 /* ─── STEP 9 · FAQ (in the guarantee's slot, see header note) ────────── */
 const FAQS: { q: string; a: string }[] = [
@@ -271,19 +271,19 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How do I get in?",
-    a: "Click the button. You'll make an account on Narine's course page and pay there. Then you can start right away.",
+    a: "Click the button. You'll make an account on my course page and pay there. Then you can start right away.",
   },
   {
     q: "What if an exercise hurts?",
     a: "Go easier, or stop. Never push through pain. You may not be strong enough for that exercise yet, and that's okay.",
   },
   {
-    q: "Is this the same as training with Narine 1:1?",
-    a: "No. In 1:1, Narine watches your form every week and changes your plan as you go. The course gives you her method to do on your own. It's a strong start, and a lot better than waiting to see if the pain goes away by itself.",
+    q: "Is this the same as training with you 1:1?",
+    a: "No. In 1:1, I watch your form every week and change your plan as you go. The course gives you my method to do on your own. It's a strong start, and a lot better than waiting to see if the pain goes away by itself.",
   },
   {
     q: "What if I need more help than a course?",
-    a: "That's what 1:1 is for. Get in touch and Narine will help you work out which one fits you.",
+    a: "That's what 1:1 is for. Get in touch and I'll help you work out which one fits you.",
   },
 ];
 const FAQ_SCHEMA = {
@@ -299,7 +299,7 @@ const FAQ_SCHEMA = {
 /* ─── STEP 10 · CALL TO ACTION ─────────────────────────────────────── */
 const CTA_HEADLINE = "Your knee doesn't have to feel like this forever.";
 const CTA_HEADLINE_ACCENT = "Start the program today.";
-const CTA_SUBHEAD = `15 exercises, worksheets, and Narine's method, for ${COURSE_PRICE}.`;
+const CTA_SUBHEAD = `15 exercises, worksheets, and my method, for ${COURSE_PRICE}.`;
 
 /* ─── STEP 11 · WARNING ────────────────────────────────────────────── */
 const WARNING_HEADLINE = "The longer you wait,";
@@ -312,7 +312,7 @@ const WARNING_CLOSER = "It's not too late to start. But every week you wait is a
 
 /* ─── STEP 12 · P.S. ───────────────────────────────────────────────── */
 const PS_BODY =
-  `If you skipped to the bottom: the ${COURSE_NAME} is 15 exercises and worksheets to track your progress. It's built on the same method Narine uses with her 1:1 clients. It's ${COURSE_PRICE}, one time, and you can start today, from anywhere.`;
+  `If you skipped to the bottom: the ${COURSE_NAME} is 15 exercises and worksheets to track your progress. It's built on the same method I use with my 1:1 clients. It's ${COURSE_PRICE}, one time, and you can start today, from anywhere.`;
 
 function CheckoutButton({ size = "lg" }: { size?: "lg" | "md" }) {
   const sizing =

@@ -23,6 +23,7 @@ Change only what she asked for. Don't tidy up, rename or "improve" anything else
 ## Writing rules for anything on the site
 
 - **American spelling** (color, paralyzed, skeptical). Narine asked for this.
+- **First person.** On the site, Narine speaks as "I" and "my" (About, Home, Course and anywhere else it's about her). Testimonials, image descriptions (alt text) and the SEO/schema descriptions for Google stay in third person.
 - **Her words, not yours.** Blog posts and page copy are built from her own videos, voice notes and writing. Keep as much of her wording as possible. Never invent quotes, stories, client results or facts for her. If something is missing, ask her.
 - **Her voice:** warm and conversational, like she talks to her clients. Short sentences, but not cold. Cut salesy padding, keep the human parts.
 - Speak to the reader as **"you"**.
