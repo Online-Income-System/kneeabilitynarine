@@ -49,21 +49,27 @@ export default async (req: Request) => {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         Accept: "application/json",
+        Origin: "https://kneeabilitynarine.com",
+        Referer: "https://kneeabilitynarine.com/",
+        "User-Agent":
+          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36",
       },
       body: form.toString(),
       redirect: "manual",
     });
-    // Kit answers with JSON ({"status":"success",...}) or a redirect to its
-    // thank-you page. Both mean the sign-up went through.
-    if (res.status >= 200 && res.status < 400) {
-      const text = await res.text().catch(() => "");
-      if (text.includes('"status":"failed"')) {
-        console.error("newsletter-signup: Kit refused", text.slice(0, 300));
-        return json({ ok: false, error: "crm" }, 502);
-      }
+    const text = await res.text().catch(() => "");
+    // Always log what Kit said, so a failed sign-up can be traced in
+    // Netlify's function logs.
+    console.log(
+      "newsletter-signup: Kit replied",
+      res.status,
+      res.headers.get("location") ?? "",
+      text.slice(0, 400).replace(/\s+/g, " "),
+    );
+    // Only count it as a sign-up when Kit says so in its JSON reply.
+    if (res.status === 200 && /"status"\s*:\s*"success"/.test(text)) {
       return json({ ok: true });
     }
-    console.error("newsletter-signup: Kit error", res.status, (await res.text()).slice(0, 300));
     return json({ ok: false, error: "crm" }, 502);
   } catch (err) {
     console.error("newsletter-signup: request error", err);
