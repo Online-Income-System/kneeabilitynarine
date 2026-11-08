@@ -44,7 +44,7 @@ Change only what she asked for. Don't tidy up, rename or "improve" anything else
 | Business name, phone, area, booking link | `src/lib/site.ts` |
 | SEO data (schema) | `src/lib/schema.ts` and `src/components/Seo.tsx` |
 | Images | `public/` |
-| Newsletter sign-up | `src/components/NewsletterSignup.tsx` and `netlify/functions/newsletter-signup.mts` |
+| Newsletter sign-up (to Kit) | `src/components/NewsletterSignup.tsx` and `netlify/functions/newsletter-signup.mts` |
 | Build and deploy settings | `netlify.toml` (build `npm run build`, publish `dist`) |
 
 ## Adding a blog post
@@ -73,7 +73,7 @@ Video testimonials are in the `VIDEO_TESTIMONIALS` list in `src/pages/Home.tsx`.
 ## Things to leave alone unless she asks
 
 - **`src/lib/site.ts` business details** must match her Google Business Profile and Yelp exactly. Don't change them unless she says her listing changed. Never add a street address: she doesn't publish one.
-- **The newsletter function** needs two settings in Netlify (`GHL_TOKEN` and `GHL_LOCATION_ID`). If she moves to a new email tool (for example Kit), that's a planned job: change the function to send to the new tool, and walk her through adding its key in Netlify.
+- **The newsletter function** (`netlify/functions/newsletter-signup.mts`) sends sign-ups to her Kit form "Website sign-up" (form ID in the file). No keys or Netlify settings needed. If she wants sign-ups to go to a different Kit form, change the form ID there.
 - Don't remove or rename the SEO fields, schema or FAQ heading format.
 - Don't add tracking, pop-ups or new services without asking her.
 

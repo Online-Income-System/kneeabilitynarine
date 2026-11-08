@@ -1,15 +1,15 @@
 // Newsletter sign-up: the "Join my newsletter" box on every page posts here.
-// Adds (or updates) the contact in GHL and tags them, so they get the newsletter.
+// Sends the person to Narine's Kit form "Website sign-up" (form 10160399),
+// the same way a Kit-hosted form would. No API key or Netlify settings needed.
 //
-// Needs two environment variables in Netlify (Site configuration > Environment variables):
-//   GHL_TOKEN        Private Integration token from GHL (scopes: contacts.write, contacts.readonly)
-//   GHL_LOCATION_ID  Narine's GHL sub-account ID (1PIEiMCAtHWOd1szdHWF)
+// To change which Kit form people join, change KIT_FORM_ID below.
+// Whether people must confirm by email (double opt-in) is set in Kit:
+// the form's Settings > Incentive > "Send incentive email".
 //
-// Tags added: narine-list (the newsletter list) and newsletter-signup (joined from the site).
-// Tags are ADDED with a separate call so an existing contact keeps their other tags.
+// Switched from GHL to Kit on 8 Nov 2026.
 
-const GHL = "https://services.leadconnectorhq.com";
-const TAGS = ["narine-list", "newsletter-signup"];
+const KIT_FORM_ID = "10160399";
+const KIT_URL = `https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions`;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const json = (data: unknown, status = 200) =>
@@ -39,49 +39,32 @@ export default async (req: Request) => {
     return json({ ok: false, error: "invalid" }, 400);
   }
 
-  const token = process.env.GHL_TOKEN;
-  const locationId = process.env.GHL_LOCATION_ID;
-  if (!token || !locationId) {
-    console.error("newsletter-signup: GHL_TOKEN or GHL_LOCATION_ID is not set");
-    return json({ ok: false, error: "config" }, 500);
-  }
-
-  const headers = {
-    Authorization: `Bearer ${token}`,
-    Version: "2021-07-28",
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  };
+  const form = new URLSearchParams();
+  form.set("email_address", email);
+  form.set("fields[first_name]", firstName);
 
   try {
-    const upsert = await fetch(`${GHL}/contacts/upsert`, {
+    const res = await fetch(KIT_URL, {
       method: "POST",
-      headers,
-      body: JSON.stringify({
-        locationId,
-        firstName,
-        email,
-        source: "Website newsletter sign-up",
-      }),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Accept: "application/json",
+      },
+      body: form.toString(),
+      redirect: "manual",
     });
-    const data = await upsert.json().catch(() => ({}));
-    const contactId = (data as { contact?: { id?: string } })?.contact?.id;
-    if (!upsert.ok || !contactId) {
-      console.error("newsletter-signup: upsert failed", upsert.status, JSON.stringify(data));
-      return json({ ok: false, error: "crm" }, 502);
+    // Kit answers with JSON ({"status":"success",...}) or a redirect to its
+    // thank-you page. Both mean the sign-up went through.
+    if (res.status >= 200 && res.status < 400) {
+      const text = await res.text().catch(() => "");
+      if (text.includes('"status":"failed"')) {
+        console.error("newsletter-signup: Kit refused", text.slice(0, 300));
+        return json({ ok: false, error: "crm" }, 502);
+      }
+      return json({ ok: true });
     }
-
-    const tag = await fetch(`${GHL}/contacts/${contactId}/tags`, {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ tags: TAGS }),
-    });
-    if (!tag.ok) {
-      console.error("newsletter-signup: tagging failed", tag.status, await tag.text());
-      return json({ ok: false, error: "crm" }, 502);
-    }
-
-    return json({ ok: true });
+    console.error("newsletter-signup: Kit error", res.status, (await res.text()).slice(0, 300));
+    return json({ ok: false, error: "crm" }, 502);
   } catch (err) {
     console.error("newsletter-signup: request error", err);
     return json({ ok: false, error: "crm" }, 502);

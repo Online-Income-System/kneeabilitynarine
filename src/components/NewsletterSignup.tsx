@@ -3,7 +3,7 @@ import React, { useState } from "react";
 /* "Join my newsletter" box, shown above the footer on every page except the
    standalone /course sales page (so it also sits at the end of every blog
    post). Posts to the Netlify function netlify/functions/newsletter-signup.mts,
-   which adds the person to GHL with the tags narine-list + newsletter-signup. */
+   which sends the person to Narine's Kit form "Website sign-up". */
 
 type Status = "idle" | "sending" | "done" | "error";
 
