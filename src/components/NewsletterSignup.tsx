@@ -2,8 +2,13 @@ import React, { useState } from "react";
 
 /* "Join my newsletter" box, shown above the footer on every page except the
    standalone /course sales page (so it also sits at the end of every blog
-   post). Posts to the Netlify function netlify/functions/newsletter-signup.mts,
-   which sends the person to Narine's Kit form "Website sign-up". */
+   post). The visitor's browser sends the sign-up straight to Narine's Kit form
+   "Website sign-up", the same way Kit's own embedded forms do. (Sending it
+   from a Netlify function was blocked by Kit's Cloudflare bot check.)
+   To use a different Kit form, change KIT_FORM_ID. */
+
+const KIT_FORM_ID = "10160399";
+const KIT_URL = `https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions`;
 
 type Status = "idle" | "sending" | "done" | "error";
 
@@ -15,15 +20,23 @@ export default function NewsletterSignup() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    // Hidden "company" field: real people never fill it in, spam bots do.
+    if (company.trim() !== "") {
+      setStatus("done");
+      return;
+    }
     setStatus("sending");
+    const body = new URLSearchParams();
+    body.set("email_address", email.trim());
+    body.set("fields[first_name]", firstName.trim());
     try {
-      const res = await fetch("/.netlify/functions/newsletter-signup", {
+      const res = await fetch(KIT_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, email, company }),
+        headers: { Accept: "application/json" },
+        body,
       });
       const data = await res.json().catch(() => ({}));
-      setStatus(res.ok && data.ok ? "done" : "error");
+      setStatus(res.ok && (data as { status?: string }).status === "success" ? "done" : "error");
     } catch {
       setStatus("error");
     }

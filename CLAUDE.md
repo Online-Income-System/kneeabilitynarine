@@ -73,7 +73,7 @@ Video testimonials are in the `VIDEO_TESTIMONIALS` list in `src/pages/Home.tsx`.
 ## Things to leave alone unless she asks
 
 - **`src/lib/site.ts` business details** must match her Google Business Profile and Yelp exactly. Don't change them unless she says her listing changed. Never add a street address: she doesn't publish one.
-- **The newsletter function** (`netlify/functions/newsletter-signup.mts`) sends sign-ups to her Kit form "Website sign-up" (form ID in the file). No keys or Netlify settings needed. If she wants sign-ups to go to a different Kit form, change the form ID there.
+- **The newsletter sign-up box** (`src/components/NewsletterSignup.tsx`) sends sign-ups from the visitor's browser straight to her Kit form "Website sign-up" (form ID in the file). No keys or Netlify settings needed. Don't move this into a Netlify function: Kit's Cloudflare check blocks requests from servers. `netlify/functions/newsletter-signup.mts` is no longer used.
 - Don't remove or rename the SEO fields, schema or FAQ heading format.
 - Don't add tracking, pop-ups or new services without asking her.
 
